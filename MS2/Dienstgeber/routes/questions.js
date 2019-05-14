@@ -4,6 +4,7 @@ const https = require('https');
 let finalObject = [];
 let ultraArray = [];
 
+
 router.get('/',async (req, res, next) => {
 
     //SETUP: BaseURL to get Data from
@@ -17,30 +18,30 @@ router.get('/',async (req, res, next) => {
     let films_all = await getData(baseURL, '/films/', '?page=1')*/
 
     ultraArray.push(species_all);
-/*  ultraArray.push(planets_all);
+/*    ultraArray.push(planets_all);
     ultraArray.push(vehicles_all);
     ultraArray.push(people_all);
     ultraArray.push(starships_all);
     ultraArray.push(films_all);*/
     console.log("\n\n### Finish getData Routine ###")
 
-    console.log("HILFE :D ");
+    //console.log("HILFE :D ");
 
     //console.log(ultraArray.species_all)
     //console.log(ultraArray[0])
 
-    console.log("MIESE");
+    //console.log("MIESE");
 
 
-/*   console.log(getQuestionText("species"));
-   console.log(getQuestionText("planets"));*/
+/*   console.log(getQuestionTemplate("species"));
+   console.log(getQuestionTemplate("planets"));*/
 
-   let testi = getQuestionText("species");
+   /*let testi = getQuestionTemplate("species");
     console.log("ÖHHHHHHHHHHHHHHH");
     console.log(testi.cat)
-    console.log(testi);
+    console.log(testi);*/
 
-    let myQuestionText = getQuestionText("species");
+    let myQuestionText = getQuestionTemplate("species");
     let myQuestion = await getValue(ultraArray[0], myQuestionText.cat, myQuestionText.text);
 
     res.status(200).send(myQuestion);
@@ -49,7 +50,7 @@ router.get('/',async (req, res, next) => {
 
 
 
-function getQuestionText(category){
+function getQuestionTemplate(category){
 
 
     let speciesQuestions = [];
@@ -171,66 +172,81 @@ function getRandom(range) {
 }
 
 
-function getValue(object, propertyName, questionText) {
+function getValue(dataArray, category, questionText) {
     return new Promise((resolve, reject) => {
         //console.log('Try to get name');
-        //console.log('object' + JSON.stringify(object.length));
-        //console.log('test' + (object.length));
-        let testi = []
-        let rnd1 = getRandom(object.length)
-        let rnd2 = getRandom(object.length)
-        let rnd3 = getRandom(object.length)
+        //console.log('dataArray' + JSON.stringify(dataArray.length));
+        //console.log('test' + (dataArray.length));
+        let allSkinColors = []
+        let rnd1 = getRandom(dataArray.length)
+        let rnd2 = getRandom(dataArray.length)
+        let rnd3 = getRandom(dataArray.length)
 
-        let ra = getRandom(4)
 
-        //console.log("RIGHT ANSWER " + ra);
-        //console.log("Answer 1 " + rnd1);
-        //console.log("Answer 2 " + rnd2);
-        //console.log("Answer 3 " + rnd3);
 
-        let rnd = Math.floor(Math.random() * object.length + 1)
+
+
+        let rightAnswerPosition = getRandom(4)
+
+        console.log("STELLE (INT) DER RIGHT ANSWER " + rightAnswerPosition);
+        console.log("Unser erster Random!!! " + rnd1);
+        console.log("Unser zww Random!!! " + rnd2);
+        console.log("Unser drrrr Random!!! " + rnd3);
+
+        let rnd = Math.floor(Math.random() * dataArray.length + 1)
+
+        console.log("WAS IS RANDOM ? :D" + rnd);
         //Get all Values
-        for(let i= 0; i< object.length; i++)
+        // Für alle Einträge der Liste "Species"
+        for(let i= 0; i< dataArray.length; i++)
         {
-            var obj = object[i]
-            //console.log(propertyName);
-            //console.log("Klappts???" +obj[propertyName])
-            testi[i] = obj[propertyName]
+            let obj = dataArray[i]
+            //console.log(category);
+            console.log("ÖH" +i);
+            console.log("Klappts???" +obj[category])
+            allSkinColors[i] = obj[category] // skincolor
         }
-        //console.log("RND NAME ?" + object[rnd].name + "RND RND " + rnd + "RND RND SKIN" + object[rnd][propertyName]);
-        //console.log("Which Skincolor got the spezies : '" + object[rnd].name + "' ?")
+        console.log("RND NAME ?" + dataArray[rnd].name + "RND RND " + rnd + "RND RND SKIN" + dataArray[rnd][category]);
+        //console.log("Which Skincolor got the spezies : '" + dataArray[rnd].name + "' ?")
         // answers = Question, A1, A2, A3, A4, Integer
+
+/*        console.log("ANSWER 1: " + allSkinColors[rnd1]);
+        console.log("ANSWER 2: " + allSkinColors[rnd2]);
+        console.log("ANSWER 3: " + allSkinColors[rnd3]);
+        console.log("ANSWER 4: " + allSkinColors[rnd] + "\n\n");
+        console.log(" RIGHT A " + rightAnswerPosition)*/
+
         let question = [];
-        //console.log("ANSWER 1: " + testi[rnd1]);
-        //console.log("ANSWER 2: " + testi[rnd2]);
-        //console.log("ANSWER 3: " + testi[rnd3]);
-        //console.log("ANSWER 4: " + testi[rnd] + "\n\n");
-        //console.log(" RIGHT A " + ra)
         // Pushing Question in Object for testing purpose
-        question.push(questionText + object[rnd].name + "' ?")
+        question.push(questionText + " " +dataArray[rnd].name + " ?")
 
         // Prepare answer Block
-        for(let x = 1; x < 5 ; x++)
+
+        console.log("RA POSI" + rightAnswerPosition);
+        for(let x = 0; x < 4 ; x++)
         {
-            if(x === ra)
+            if(x === rightAnswerPosition)
             {
-                question.push(testi[rnd])
-                //console.log("HALLO JAMOIN MEINE FRAGE IS GLEICH RA" + ra + x);
+
+                console.log("richtige antwort" + allSkinColors[rnd]);
+                question.push(allSkinColors[rnd])
+                //console.log("HALLO JAMOIN MEINE FRAGE IS GLEICH RA" + rightAnswerPosition + x);
             }
             else
             {
-                question.push(testi[getRandom(object.length)])
+                question.push(allSkinColors[getRandom(dataArray.length)])
             }
         }
-        question.push(ra);
-        for(let y = 0; y < 4; y++)
+        question.push(rightAnswerPosition);
+        for(let y = 0; y < 6; y++)
         {
+            console.log("//");
             console.log(question[y]);
         }
 
 
 
-        //console.log("RIGHT ANSWER: " + object[rnd].skin_colors )
+        //console.log("RIGHT ANSWER: " + dataArray[rnd].skin_colors )
 
         resolve(question)
 
