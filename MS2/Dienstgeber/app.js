@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const functions = require('./public/javascripts/functions')
 var indexRouter = require('./routes/index');
 var questionsRouter = require('./routes/questions');
 var quizRouter = require('./routes/quiz');
@@ -23,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/questions', questionsRouter);
 app.use('/quiz', quizRouter);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -40,4 +40,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// Starting init Routine
+app.listen(async function () {
+
+  await myFunction();
+
+
+});
 module.exports = app;
