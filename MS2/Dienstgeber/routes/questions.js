@@ -5,313 +5,248 @@ const https = require('https');
 //let ultraArray = [];
 const functions = require('../public/javascripts/functions')
 
+
+var postedContent = {} // empty Object
+var keyy = 0;
+
+
+const fs = require('fs');
+
+
 router.get('/',async (req, res, next) => {
 
-    //SETUP: BaseURL to get Data from
-    //let baseURL = 'https://swapi.co/api'
-    //INIT: Get all Data from API
-    //let species_all = await getData(baseURL, '/species/', '?page=1')
-/*    let planets_all = await getData(baseURL, '/planets/', '?page=1')
-    let vehicles_all = await getData(baseURL, '/vehicles/', '?page=1')
-    let people_all = await getData(baseURL, '/people/', '?page=1')
-    let starships_all = await getData(baseURL, '/starships/', '?page=1')
-    let films_all = await getData(baseURL, '/films/', '?page=1')*/
 
-    //ultraArray.push(species_all);
-/*    ultraArray.push(planets_all);
-    ultraArray.push(vehicles_all);
-    ultraArray.push(people_all);
-    ultraArray.push(starships_all);
-    ultraArray.push(films_all);*/
-    //console.log("\n\n### Finish getData Routine ###")
-
-    //console.log("HILFE :D ");
-
-    //console.log(ultraArray.species_all)
-    //console.log(ultraArray[0])
-
-    //console.log("MIESE");
-
-
-/*   console.log(getQuestionTemplate("species"));
-   console.log(getQuestionTemplate("planets"));*/
-
-   /*let testi = getQuestionTemplate("species");
-    console.log("ÖHHHHHHHHHHHHHHH");
-    console.log(testi.cat)
-    console.log(testi);*/
-
-
-
-
-    let myQuestionText = getQuestionTemplate("species");
     let myArray = getAllData();
-    //console.log(myArray);
-    let myQuestion = await getValue(myArray[0], myQuestionText.cat, myQuestionText.text);
+    let myCustomArray = [];
+    let arrayindex;
+    let myQuestionText;
+    let topics = [];
+
+    topics.push('species');
+    topics.push('planets');
+    topics.push('people');
+    topics.push('vehicles');
+    topics.push('starships');
+    topics.push('films');
+    //topics.push('custom');
+
+
+
+    // Check query for specific response
+    if(req.query.type === undefined){
+        let rnd = getRandom(topics.length)
+        let rndTopic = topics[rnd]
+       // console.log("MY RND" + rnd);
+       // console.log("MY TOPIC " + rndTopic)
+        myQuestionText = getQuestionTemplate(rndTopic);
+        arrayindex = rnd;
+    }
+    else if(req.query.type === 'custom')
+    {
+        myQuestionText = getQuestionTemplate("custom");
+        arrayindex = 6;
+    }
+    else if(req.query.type === 'species')
+    {
+        myQuestionText = getQuestionTemplate("species");
+        arrayindex = 0;
+    }
+    else if(req.query.type === 'planets')
+    {
+        myQuestionText = getQuestionTemplate("planets");
+        arrayindex = 1;
+    }
+    else if(req.query.type === 'people')
+    {
+        myQuestionText = getQuestionTemplate("people");
+        arrayindex = 2;
+    }
+    else if(req.query.type === 'vehicles')
+    {
+        myQuestionText = getQuestionTemplate("vehicles");
+        arrayindex = 3;
+    }
+    else if(req.query.type === 'starships')
+    {
+        myQuestionText = getQuestionTemplate("starships");
+        arrayindex = 4;
+    }
+    else if(req.query.type === 'films')
+    {
+        myQuestionText = getQuestionTemplate("films");
+        arrayindex = 5;
+    }
+    else
+    {
+        myQuestionText = getQuestionTemplate("species");
+        console.log("LEIDER DEN ERROR PART ERWISCHT :(((")
+        arrayindex = 0;
+
+        console.log("ERROR")
+    }
+
+/*    for (let n = 0; n < myArray[arrayindex].length; n++)
+    {
+        console.log("\n"+myArray[arrayindex][n].name);
+    }*/
+
+
+    //console.log("------------------------MY GET VALUE SHIIIED" + myArray[arrayindex[0]]);
+    let myQuestion = await getValue(myArray[arrayindex], myQuestionText.cat, myQuestionText.text);
 
     res.status(200).send(myQuestion);
 
 });
 
+router.post('/', async (req, res, next) => {
 
-    /*
-    function getQuestionTemplate(category){
+    let counter = 0;
 
-
-        let speciesQuestions = [];
-
-        let speciesText = [];
-        let peopleText = [];
-        let planetsText = [];
-        let vehicleText = [];
-        let starshipText = [];
-        let filmsText = [];
+    await fs.readFile('database.json', (err, data) => {
+        if (err) throw err;
+        let isThereData = JSON.parse(data);
 
 
-        // Sample QuestionText ## Species ##
-        speciesText.push({text :"Which Skincolor(s) got the species", cat: "skin_colors"});
-        speciesText.push({text :"Which Language(s) speak the species", cat: "language"});
-        speciesText.push({text :"Which average Lifespan got the species", cat: "average_lifespan"});
 
-        // Sample QuestionText ## People ##
-        peopleText.push({text: "Which Haircolor got", cat: "hair_color"});
-        peopleText.push({text: "Which Homeworld got", cat: "homeworld"});
-        peopleText.push({text: "Which gender got", cat: "gender"});
+/*        for (let i = 0; i < isThereData.length; i++) {
 
-        // Sample QuestionText ## Planets ##
-        planetsText.push({text :"Which Clima got the Planet", cat: "climate"});
-        planetsText.push({text :"Which Terrain got the Planet", cat: "terrain"});
-        planetsText.push({text :"Which population got the Planet", cat: "population"});
+            console.log("is there Data???" + JSON.stringify(Object.keys(isThereData)[i]));
 
-        // Sample QuestionText ## Vehicles ##
-        vehicleText.push({text: "Which Vehicleclass got", cat: "vehicle_class"});
-        vehicleText.push({text: "Which Lenght in (m) got", cat: "length"});
-        vehicleText.push({text: "How big have to be the Crew of", cat: "crew"});
-
-        // Sample QuestionText ## Starships ##
-        starshipText.push({text :"Which Starshipclass got", cat: "starship_class"});
-        starshipText.push({text :"How many Passengers can carry", cat: "language"});
-        starshipText.push({text :"How Expensive (in Credits) is ", cat: "cost_in_credits"});
-
-        // Sample QuestionText ## Films ##
-        filmsText.push({text: "Which episode got", cat: "episode_id"});
-        filmsText.push({text: "Who is the Director of", cat: "director"});
-        filmsText.push({text: "When came out", cat: "realease_date"});
-
-        //
-        /!*console.log(speciesText);
-        console.log(peopleText);*!/
-        if(category === "species")
-        {
-            let rnd = getRandom(speciesText.length);
-            return speciesText[rnd];
+             counter = JSON.stringify(Object.keys(isThereData)[i])
         }
-        else if(category === "people")
-        {
-            let rnd = getRandom(peopleText.length);
-            return peopleText[rnd];
-        }
-        else if(category === "planets")
-        {
-            let rnd = getRandom(planetsText.length);
-            return planetsText[rnd];
-        }
-        else if(category === "vehicles")
-        {
-            let rnd = getRandom(vehicleText.length);
-            return vehicleText[rnd];
-        }
-        else if(category === "starships")
-        {
-            let rnd = getRandom(starshipText.length);
-            return starshipText[rnd];
-        }
-        else if(category === "films")
-        {
-            let rnd = getRandom(filmsText.length);
-            return filmsText[rnd];
-        }
-        else
-        {
-            console.log("ERROR");
-        }
+        let int = parseInt(counter) + 1;
+        console.log("MEIN SCHEISSE Zahl : " + int);
 
 
 
+        console.log("IS THERE DATA? LENGHT " + isThereData.length);*/
+
+        counter = isThereData.length;
+        console.log("CNTR" + counter)
+    });
+
+
+    console.log("CNTRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR" + counter)
+    postedContent[counter] = []; // empty Array, which you can push() values into
 
 
 
-    /!*    let questionTexts = [];
-        let cat = category;
-        let text = [];
-        text.push("Which Skincolor got the species XY");
-        text.push("species");
+    let customQuestionText = "";
+    let customQuestonAnswers = [];
+    let customQuestionRaInteger;
 
-
-        for(let i = 0; i <= text.length; i++)
-        {
-            questionTexts.push(text[i])
-        }
-
-        let rnd = getRandom(questionTexts.length);
-        return questionTexts[rnd];*!/
-
-
+    // Fragetext vorhanden?
+    if(req.body.text !== undefined)
+    {
+        postedContent[counter].push(req.body.text);
     }
+    if(req.body.answers !== undefined)
+    {
+        postedContent[counter].push(req.body.answers);
+        customQuestonAnswers.push(req.body.answers.a1)
+        customQuestonAnswers.push(req.body.answers.a2)
+        customQuestonAnswers.push(req.body.answers.a3)
+        customQuestonAnswers.push(req.body.answers.a4)
 
 
-    function getQuestionConstruct (){
-
-
-
-
-        return question;
+/*        console.log(customQuestonAnswers[0] + " stelle 0");
+        console.log(customQuestonAnswers[1] + " stelle 1");
+        console.log(customQuestonAnswers[2] + " stelle 2");
+        console.log(customQuestonAnswers[3] + " stelle 3");*/
     }
-
-
-
-
-    //Hilfsmethode um zufällige Zahl zu erstellen
-    function getRandom(range) {
-        return Math.floor(Math.random()* range)
+    if(req.body.right !== undefined)
+    {
+        postedContent[counter].push(req.body.right);
     }
-
-
-    function getValue(dataArray, category, questionText) {
-        return new Promise((resolve, reject) => {
-            //console.log('Try to get name');
-            //console.log('dataArray' + JSON.stringify(dataArray.length));
-            //console.log('test' + (dataArray.length));
-            let allSkinColors = []
-            let rnd1 = getRandom(dataArray.length)
-            let rnd2 = getRandom(dataArray.length)
-            let rnd3 = getRandom(dataArray.length)
+    postedContent[counter].push(req.body.userID);
 
 
 
 
-
-            let rightAnswerPosition = getRandom(4)
-
-            console.log("STELLE (INT) DER RIGHT ANSWER " + rightAnswerPosition);
-            console.log("Unser erster Random!!! " + rnd1);
-            console.log("Unser zww Random!!! " + rnd2);
-            console.log("Unser drrrr Random!!! " + rnd3);
-
-            let rnd = Math.floor(Math.random() * dataArray.length + 1)
-
-            console.log("WAS IS RANDOM ? :D" + rnd);
-            //Get all Values
-            // Für alle Einträge der Liste "Species"
-            for(let i= 0; i< dataArray.length; i++)
-            {
-                let obj = dataArray[i]
-                //console.log(category);
-                console.log("ÖH" +i);
-                console.log("Klappts???" +obj[category])
-                allSkinColors[i] = obj[category] // skincolor
-            }
-            console.log("RND NAME ?" + dataArray[rnd].name + "RND RND " + rnd + "RND RND SKIN" + dataArray[rnd][category]);
-            //console.log("Which Skincolor got the spezies : '" + dataArray[rnd].name + "' ?")
-            // answers = Question, A1, A2, A3, A4, Integer
-
-    /!*        console.log("ANSWER 1: " + allSkinColors[rnd1]);
-            console.log("ANSWER 2: " + allSkinColors[rnd2]);
-            console.log("ANSWER 3: " + allSkinColors[rnd3]);
-            console.log("ANSWER 4: " + allSkinColors[rnd] + "\n\n");
-            console.log(" RIGHT A " + rightAnswerPosition)*!/
-
-            let question = [];
-            // Pushing Question in Object for testing purpose
-            question.push(questionText + " " +dataArray[rnd].name + " ?")
-
-            // Prepare answer Block
-
-            console.log("RA POSI" + rightAnswerPosition);
-            for(let x = 0; x < 4 ; x++)
-            {
-                if(x === rightAnswerPosition)
-                {
-
-                    console.log("richtige antwort" + allSkinColors[rnd]);
-                    question.push(allSkinColors[rnd])
-                    //console.log("HALLO JAMOIN MEINE FRAGE IS GLEICH RA" + rightAnswerPosition + x);
-                }
-                else
-                {
-                    question.push(allSkinColors[getRandom(dataArray.length)])
-                }
-            }
-            question.push(rightAnswerPosition);
-            for(let y = 0; y < 6; y++)
-            {
-                console.log("//");
-                console.log(question[y]);
-            }
+    // TODO CQ - Counter einbauen um auf ID's zuzugreifen :)
 
 
+    // TODO : Write custom Q insto Database
 
-            //console.log("RIGHT ANSWER: " + dataArray[rnd].skin_colors )
+    // TODO TODOOOHOOO -> Später -> put, post, delete custom questions if authorized uID = uID usw :D :)
 
-            resolve(question)
+    //key++;
 
-            if(error){
-                reject(error)
-            }
-        })
-    }
+    //let postData = JSON.stringify(customQuestion, null, 2);
+
+    //let postData = postedContent[keyy];
+
+    //let aData = []
+
+  /*  fs.readFile('database.json', (err, data) => {
+        if (err) throw err;
+        let currentData = {};
+        currentData[key] = []
+        currentData[key].push(JSON.parse(data));
+
+        console.log("test");
+        console.log(currentData)
+        let nigger = [];
+        nigger.push(JSON.stringify(postedContent))
+        console.log(postedContent);
+        console.log(postedContent[keyy]);
+
+        //aData.push(currentData)
+/!*
+
+        console.log("'HHHHHHHHHHHHHHHHHHHHHHHHHHHH'.log");
+
+        console.log(aData);
+        console.log("'HHHHHHHHHHHHHHHHHHHHHHHHHHHH'.log");
+        console.log(postData);
+        console.log("MY CQK \n\n" + customQuestion[key]);
+*!/
+
+        let aData = currentData.concat(JSON.parse(data))
+        let x = JSON.stringify(aData, null, 2);
+        fs.appendFile('database.json', x, (err) => {
+            if (err) throw err;
+            console.log('Data written to file');
+        });*/
 
 
+    //let postData = JSON.stringify(customQuestion, null, 2);
+
+    let myData = [];;
+        fs.readFile('database.json', (err, data)=> {
+            if (err) throw err;
+            let dbData = JSON.parse(data);
+            console.log(dbData);
 
 
+            //let a = [];
+            let b = [];
+            //a.push(JSON.stringify(dbData, null, 2));
+            //b.push(JSON.stringify(postedContent, null, 2));
+            //a.push(dbData)
+            b.push(postedContent)
+            /*myData.push(dbData);
+            myData.push(b);
+            */
+            myData = dbData.concat(b)
 
 
-    function getData(url, path, parameter, currentObjects) {
-        //console.log("Starting  get Call on Path [extern API] : " + url + path + parameter + "\n\n")
-
-        //Return new Promise to guarantee right Process timing
-        return new Promise((resolve, reject) => {
-
-
-            if (currentObjects !== undefined) {
-                finalObject = finalObject.concat(currentObjects);
-            }
-            else
-            {
-                console.log("Finish get Call on Path [extern API] : " + url + path + parameter + "\n\n")
-            }
-            if (parameter === undefined) { parameter = '' }
-            if (path === undefined) { path = '' }
-            https.get(url + path + parameter, (res) => {
-                let str = '';
-
-                //Response on Data
-                res.on('data', function (chunk) {
-                    str += chunk
-                });
-
-                //On Respond End
-                res.on('end', async function () {
-                    let jsonObject = JSON.parse(str);
-
-                    //If more Pages are available start async recursive getData call
-                    if (jsonObject.next !== null) {
-                        //preparedObject = jsonObject.results
-                        console.log("Finish get Call next Path [extern API] : " + jsonObject.next + "\n\n")
-                        resolve(await getData(jsonObject.next, '', '', jsonObject.results))
-                    } else {
-                        //Concat Final Object with last results
-                        finalObject = finalObject.concat(jsonObject.results)
-                        resolve(finalObject)
-                    }
-                });
-                // On Error reject Promise
-                res.on('error', function (error) {
-                    reject(error);
-                })
+            fs.writeFile('database.json', JSON.stringify(myData, null, 2), (err) => {
+                if (err) throw err;
+                console.log('The Database were updated!');
             });
-        })
-    }*/
+
+            res.status(200).send(JSON.stringify(myData, null , 2));
+        });
+
+
+/*    });*/
+
+
+
+
+
+});
 
 module.exports = router;
 

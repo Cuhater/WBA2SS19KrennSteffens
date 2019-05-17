@@ -3,27 +3,42 @@ const functions = express()
 const https = require('https');
 let finalObject = [];
 let ultraArray = [];
-
+let a = 0;
+let questionPool = [];
 
 myFunction = async () => {
 
-    //SETUP: BaseURL to get Data from
+  /*  //SETUP: BaseURL to get Data from
     let baseURL = 'https://swapi.co/api'
     //INIT: Get all Data from API
-    let species_all = await getData(baseURL, '/species/', '?page=1')
-    /*
-    let planets_all = await getData(baseURL, '/planets/', '?page=1')
-    let vehicles_all = await getData(baseURL, '/vehicles/', '?page=1')
-    let people_all = await getData(baseURL, '/people/', '?page=1')
-    let starships_all = await getData(baseURL, '/starships/', '?page=1')
+
+    let species_all;
+    let planets_all;
+
+    species_all = await getData(baseURL, '/species/', '?page=4')
+    ultraArray.push(species_all); // 0
+    finalObject = []
+
+    planets_all = await getData(baseURL, '/planets/', '?page=6')
+    ultraArray.push(planets_all); // 1
+    finalObject = []
+
+    let people_all = await getData(baseURL, '/people/', '?page=7')
+    ultraArray.push(people_all);
+    finalObject = []
+
+    let vehicles_all = await getData(baseURL, '/vehicles/', '?page=4')
+    ultraArray.push(vehicles_all);
+    finalObject = []
+
+    let starships_all = await getData(baseURL, '/starships/', '?page=2')
+    ultraArray.push(starships_all);
+    finalObject = []
+
     let films_all = await getData(baseURL, '/films/', '?page=1')
-*/
-    ultraArray.push(species_all);
-    /*  ultraArray.push(planets_all);
-      ultraArray.push(vehicles_all);
-      ultraArray.push(people_all);
-      ultraArray.push(starships_all);
-      ultraArray.push(films_all); */
+    ultraArray.push(films_all);
+    finalObject = []*/
+
     console.log("\n\n### Finish init Routine ###")
     console.log("\n\n##### System is waiting for incoming Requests #####")
 }
@@ -34,7 +49,7 @@ getAllData = () => {
 
 getQuestionTemplate = (category) => {
 
-    let speciesQuestions = [];
+    //let speciesQuestions = [];
 
     let speciesText = [];
     let peopleText = [];
@@ -51,7 +66,7 @@ getQuestionTemplate = (category) => {
     // Sample QuestionText ## People ##
     peopleText.push({text: "Which Haircolor got", cat: "hair_color"});
     peopleText.push({text: "Which Homeworld got", cat: "homeworld"});
-    peopleText.push({text: "Which gender got", cat: "gender"});
+    //peopleText.push({text: "Which gender got", cat: "gender"});
 
     // Sample QuestionText ## Planets ##
     planetsText.push({text: "Which Clima got the Planet", cat: "climate"});
@@ -65,7 +80,7 @@ getQuestionTemplate = (category) => {
 
     // Sample QuestionText ## Starships ##
     starshipText.push({text: "Which Starshipclass got", cat: "starship_class"});
-    starshipText.push({text: "How many Passengers can carry", cat: "language"});
+    starshipText.push({text: "How many Passengers can carry", cat: "passengers"});
     starshipText.push({text: "How Expensive (in Credits) is ", cat: "cost_in_credits"});
 
     // Sample QuestionText ## Films ##
@@ -107,174 +122,140 @@ getValue = (dataSource, category, questionText) => {
         // Prepare Array to gather all possible Answers
         let allAnswersOfTopic = []
 
-
         // Get INT 0-3 for the Position of the right Answer
         let rightAnswerPosition = getRandom(4)
-        console.log(" DIE STELLE DER RICHTIGEN ANTWORT " + rightAnswerPosition);
+        //console.log(" DIE STELLE DER RICHTIGEN ANTWORT " + rightAnswerPosition);
 
-
+        // Get rnd INT in length of used Data Source
         let rnd = Math.floor(Math.random() * dataSource.length)
 
-        //console.log("WAS IS RANDOM ? :D" + rnd);
         //Get all Values
-
-        // Für alle Einträge der Liste "dataSource"
+        // Für alle Einträge der Liste "dataSource" in "allAnswersOfTopic" speichern
         for (let i = 0; i < dataSource.length; i++) {
+
             let obj = dataSource[i]
-            //console.log(category);
-            //console.log("ÖH" +i);
-            //console.log("Klappts???" +obj[category])
             allAnswersOfTopic[i] = obj[category]
         }
 
+
+        //console.log("#################### AA Lenght" + allAnswersOfTopic.length);
+        //console.log("#################### DA LENGHT" + dataSource.length);
+
+
+        // TODO: Vor dem zusammenbasteln der UltraArray packen :3
+        // Clean / gray / grey issue
+        // CLean Null or undefined parameter
+        /*        if (category === 'vehicles') {*/
+        for (let x = 0; x < dataSource.length; x++) {
+            console.log(allAnswersOfTopic[x]);
+
+
+            if (allAnswersOfTopic[x] === undefined) {
+                allAnswersOfTopic[x] = 'undefined';
+            }
+
+            if (allAnswersOfTopic[x].includes("gray")) {
+                allAnswersOfTopic[x].replace('gray', 'grey')
+            }
+
+        }
+        /*        }*/
+
+
         // Create QuestionObject
         let question = [];
-        // Pushing Question in Object for testing purpose
+        // Pushing Question Text to first index of Array
+
+        let isUnknown = false;
+
+
+        // Test dataSource of "unknown" Data and re-random it ? :D
+        if (dataSource[rnd].name === "unknown") {
+
+            isUnknown = true;
+            while (isUnknown) {
+                rnd = Math.floor(Math.random() * dataSource.length)
+                isUnknown = false;
+            }
+        }
+
+
         question.push(questionText + " " + dataSource[rnd].name + " ?")
+        // --> question[0] = "Fragetext"
+
 
         // Prepare answer Block
 
-        //console.log("RA POSI" + rightAnswerPosition);
-
-
-        // Get three Randomnumbers in the Range of the lenght of the Datasource
-        let rnd1 = getRandom(dataSource.length)
-        let rnd2 = getRandom(dataSource.length)
-        let rnd3 = getRandom(dataSource.length)
-
         let answers = [];
-        /*        for(let x = 0; x <= 3 ; x++)
-                {*/
-        /*    if(x === rightAnswerPosition) // RA position (1-4)
-            {*/
 
-        //console.log("richtige antwort" + allAnswersOfTopic[rnd]);
-        //answers.push(allAnswersOfTopic[rnd])
-        //console.log("HALLO JAMOIN MEINE FRAGE IS GLEICH RA" + rightAnswerPosition + x);
-        /*  }
-          else
-          {*/
 
         let bool = false;
 
+        // Allokiere zufällige Antwort aus Antwortpool
         let randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
-        console.log(randomAnswer + " FIRRRRST RND ANSW")
+        //console.log(randomAnswer + " FIRRRRST RND ANSW")
 
+
+        // Für 4 Antwortmöglichkeiten
         for (let u = 0; u <= 3; u++) {
+
+
             let rndAnswerPushed = false;
-            console.log("UHHHHHHHHHH" + u);
-            //console.log(answers[u] + "answers[u");
 
+            // Wenn U der selbe INT ist wie RA Position
             if (u === rightAnswerPosition) {
-                if (randomAnswer !== allAnswersOfTopic[rnd]) {
-                    console.log("richtige antwort" + allAnswersOfTopic[rnd]);
-                    answers.push(allAnswersOfTopic[rnd])
-                } else {
 
-
-                    console.log("AAAAAAAAAAAAAALAAAAAAAAAAAAAAAAAAAAAAAAAAAARMMM");
-                    let gotIt = false;
-
-                    while(!gotIt && randomAnswer === allAnswersOfTopic[rnd]){
-                        randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
-                        if(randomAnswer !== allAnswersOfTopic[rnd])
-                        {
-                            gotIt = true;
-                        }
-
-                    }
-                    if(gotIt)
-                    {
-                        answers.push(randomAnswer)
-                    }
-
-
-                }
+                answers.push(allAnswersOfTopic[rnd])
 
             } else {
 
 
                 if (answers.length === 0 && randomAnswer !== allAnswersOfTopic[rnd]) {
-                    console.log("########## RICHTIGE ANTWORT IST NICHT GLEICH STELLE U")
-                    console.log("KEINE ANTWORT VORHANDEN PUSHE RND ANTWORT " + randomAnswer)
                     answers.push(randomAnswer)
                 } else {
-
-
-                    console.log("-------- ANSWERS IST NICHT LEER --------  " + answers[0])
 
                     for (let t = 0; t <= u; t++) {
                         if (!rndAnswerPushed) {
 
-                            console.log(u + "   UHHHHHHHH GROSSE");
-
-                            while (randomAnswer === answers[0] ||randomAnswer === answers[1]  || randomAnswer === answers[2] || randomAnswer === allAnswersOfTopic[rnd] || bool === false) {
+                            while (randomAnswer === answers[0] || randomAnswer === answers[1] || randomAnswer === answers[2] || randomAnswer === allAnswersOfTopic[rnd] || bool === false) {
                                 randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
-                                console.log("EINE GENERIERTE ANTWROT" + randomAnswer);
+                                console.log("Neu generierte Antwort: " + randomAnswer);
 
                                 bool = true;
                             }
                             if (bool) {
 
-
-                                console.log("BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL US TRUE YAAAA")
                                 answers.push(randomAnswer)
                                 rndAnswerPushed = true;
                                 bool = false;
-                                console.log("ELLSE PUSH TEIL YOOO" + randomAnswer);
+
                             }
                         }
 
                     }
                 }
 
-
-                /*console.log("Unsere Fertige Random Answer die gepusht wird im WHILE TEIL: " + randomAnswer);
-                answers.push(randomAnswer)*/
             }
-            /*else
-            {
-                console.log("Unsere Fertige Random Answer die gepusht wird im ELSE TEIL: " + randomAnswer);
-                answers.push(randomAnswer)
-            }*/
 
         }
-
-        //console.log(randomAnswer);
-        //console.log("RANDOM answer" + randomAnswer + "q Answer" + question[z]);
-        //z++
-
-        //console.log("ZET " + z);
-        /*   }
-           while(!bool || randomAnswer === allAnswersOfTopic[rnd])
-*/
-
 
         console.log("Die Antwort die gepushed wird lautet : " + randomAnswer);
 
-
-        /*if(randomAnswer === question[x] || randomAnswer === allAnswersOfTopic[rnd])
-        {
-            randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
-            console.log("OHWEIA HIIILFE");
-            console.log(randomAnswer);
-        }
-        else
-        {
-            question.push(randomAnswer)
-        }*/
-
-        /* }*/
         question.push(answers);
         /* }*/
         question.push(rightAnswerPosition);
-        for (let y = 0; y < 6; y++) {
-            console.log("//");
-            console.log(question[y]);
-        }
 
 
-        //console.log("RIGHT ANSWER: " + dataSource[rnd].skin_colors )
+
+
+        /*question.push(a);
+
+        questionPool.push(question); // questionPool[0] = Frage 1...
+        a++;
+        console.log("\n\n" +questionPool[0] + "MEIN SCHEISS POOL MAN\n\n");
+        console.log("\n\n" +questionPool[1] + "MEIN SCHEISS POOL MAN\n\n");
+        console.log("\n\n" +questionPool[2] + "MEIN SCHEISS POOL MAN\n\n");*/
+
 
         resolve(question)
 
@@ -286,10 +267,14 @@ getValue = (dataSource, category, questionText) => {
 
 
 getData = (url, path, parameter, currentObjects) => {
+
     //console.log("Starting  get Call on Path [extern API] : " + url + path + parameter + "\n\n")
 
     //Return new Promise to guarantee right Process timing
     return new Promise((resolve, reject) => {
+
+
+
 
 
         if (currentObjects !== undefined) {
