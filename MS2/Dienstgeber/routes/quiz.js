@@ -4,6 +4,8 @@ const https = require('https');
 
 router.get('/',  (req, res, next) => {
 
+    let questionPool = getQuestionPoolData();
+
     console.log("Hallo hier kommen die Quizze hin :>");
     res.status(200).send("qwwert");
 });

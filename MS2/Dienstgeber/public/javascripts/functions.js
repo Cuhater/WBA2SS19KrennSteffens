@@ -1,14 +1,56 @@
 const express = require('express')
 const functions = express()
 const https = require('https');
+const fs = require('fs');
 let finalObject = [];
 let ultraArray = [];
 let a = 0;
-let questionPool = [];
+let questionPool = {};
+let categorySpacer = {};
+
+let topics = [];
+topics.push('species');
+topics.push('planets');
+topics.push('people');
+topics.push('vehicles');
+topics.push('starships');
+topics.push('films');
+//topics.push('custom');
+
+
+getSpecificTopic = (topicIndex) => {
+    let topic = topics[topicIndex];
+    return topic
+}
+
+
+getRandomTopic = () => {
+
+
+    let qText;
+    let tIndex;
+    let myTransferObject = [];
+
+
+
+    let rnd = getRandom(topics.length)
+    let rndTopic = topics[rnd]
+    // console.log("MY RND" + rnd);
+    // console.log("MY TOPIC " + rndTopic)
+
+    qText = getQuestionTemplate(rndTopic)
+    tIndex = rnd
+    myTransferObject.push(qText);
+    myTransferObject.push(tIndex);
+
+
+    return myTransferObject;
+
+}
 
 myFunction = async () => {
 
-  /*  //SETUP: BaseURL to get Data from
+    //SETUP: BaseURL to get Data from
     let baseURL = 'https://swapi.co/api'
     //INIT: Get all Data from API
 
@@ -37,10 +79,216 @@ myFunction = async () => {
 
     let films_all = await getData(baseURL, '/films/', '?page=1')
     ultraArray.push(films_all);
-    finalObject = []*/
+    finalObject = []
 
     console.log("\n\n### Finish init Routine ###")
     console.log("\n\n##### System is waiting for incoming Requests #####")
+
+    //console.log(ultraArray)
+    //console.log(JSON.stringify(ultraArray, null, 2))
+
+    let uuu = [];
+    for (let i = 0; i < ultraArray.length; i++) {
+        // 0,12345
+        let category = ultraArray[i];
+
+        // ??? 1 mille -> ultraArray[i][erstePosi]
+        // ultraarray[0] ---> array[[o1],[o2],[o3]... ---> array[1] ---->  2 Datensatz!
+        // [ <SPECIES| [ {aa} ] [ bb ] [ cc } |SPECIES>  <PEOPLE| [ {dd} ] [ ee ] [ ff } |PEOPLE> ]
+
+        let cat = [];
+
+        let categoryArray = [];
+
+
+        for (let j = 0; j < category.length; j++) {
+
+            //console.log(JSON.stringify(category[j],null,2) + "category")
+
+
+            let data = category[j];
+            //console.log(JSON.stringify(data,null,2) + "data")
+            //console.log(Object.values(data));
+
+            let keys = Array;
+            keys = Object.keys(data);
+            //console.log("KeEEEEEEEEEEEEEEEEEEEEEEEXXXXXXXXXXXXXXXYYYYYYYYYYYYYYYYYYYYYYY "+Object.keys(data));
+
+            let value = Array;
+            value = Object.values(data);
+            //console.log("VALUUUUEEETZ "+Object.values(data));
+
+            //console.log("########################################################" + value);
+
+
+            /*if(value.includes("gray")){
+                let testi = value.includes("gray");
+                console.log(testi + "B4 transform")
+
+                value.toString().replace('gray', 'grey')
+
+                let testi2 = value.includes("grey");
+                console.log(testi2 + "after transform")
+                console.log("alaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaarm")
+            }*/
+
+
+            let oioioi = {};
+            for (let k = 0; k < value.length; k++) {
+
+
+                let singleKey = keys[k];
+
+                if (value[k] === undefined || value[k] === null) {
+                    value[k] = 'undefined';
+                }
+
+                if(value[k].toString().includes("gray"))
+                {
+                    value[k] = value[k].toString().replace('gray', 'grey')
+                    //value[k] = "ICH RASTE AUS HIER AHHHH";
+
+                    console.log("ALARM BIS DER NOZAZ KOMMT HIER ! :O");
+                    console.log("changeed it :) -> " + value[k]);
+
+                }
+                oioioi[singleKey] = value[k]
+                //console.log(oioioi + "HILFE :D");
+                //console.log(oioioi[0] + "HILFE1 :D");
+                // --- console.log(JSON.stringify(oioioi,null,2) + "HILFE2 :D");
+            }
+
+            categoryArray.push(oioioi);
+
+
+
+
+
+
+            //console.log(data + "data 0")
+            //console.log(data[1] + "data 1")
+            //console.log(data[2] + "data 2")
+
+
+
+           /* if (ultraArray[x] === undefined) {
+                allAnswersOfTopic[x] = 'undefined';
+            }
+
+            if (allAnswersOfTopic[x].includes("gray")) {
+                allAnswersOfTopic[x].replace('gray', 'grey')
+            }*/
+
+        }
+        uuu.push(categoryArray)
+
+    }
+    console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
+    console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
+    console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
+    console.log(JSON.stringify(uuu, null,2));
+
+
+    ultraArray = uuu;
+
+
+   /* for (let x = 0; x < dataSource.length; x++) {
+        console.log(allAnswersOfTopic[x]);
+
+
+        if (allAnswersOfTopic[x] === undefined) {
+            allAnswersOfTopic[x] = 'undefined';
+        }
+
+        if (allAnswersOfTopic[x].includes("gray")) {
+            allAnswersOfTopic[x].replace('gray', 'grey')
+        }
+
+    }*/
+    // Question Pool aufbauen.
+
+    let myQuestionText;
+    myQuestionText = getQuestionTemplate("species");
+    let arrayindex;
+    let myRandomTopic;
+
+
+/*    for (let i = 0; i < 5 ; i++) {*/
+
+        for (let j = 0; j < topics.length ; j++) {
+
+            // Get specific Topic (species, people, starships...)
+            let specificTopic = getSpecificTopic(j)
+            categorySpacer[j] = [];
+
+            // Create 5 Question from specified Topic
+            for (let i = 0; i < 2 ; i++) {
+                myQuestionText = getQuestionTemplate(specificTopic)
+                arrayindex = j;
+                let myQuestion = await getValue(ultraArray[arrayindex], myQuestionText.cat, myQuestionText.text);
+
+                categorySpacer[j].push(myQuestion)
+            }
+        //console.log("BITTE FUNKTIONIERE :) -> " + JSON.stringify(categorySpacer, null,2));
+
+            //questionPool[j] = [];
+            //questionPool[j].push(categorySpacer)
+        }
+
+
+
+
+    fs.writeFile('questionPool.json', JSON.stringify(categorySpacer, null,2), (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+
+        // success case, the file was saved
+        console.log('Funzt :>!');
+    });
+
+
+       /* /!*myRandomTopic = getRandomTopic();
+        myQuestionText = getQuestionTemplate(myRandomTopic[0]);*!/
+
+
+        console.log("My Topic at [0]" + specificTopic[0]);
+        console.log("My Topic at [1]" + specificTopic[1]);
+
+        let qwe = specificTopic[0];
+        console.log("Komm schon! :)" + JSON.stringify(qwe, null,2));
+        console.log("Komm schon text! :)" + qwe.text);
+        console.log("Komm schon text! :)" + qwe.cat);
+
+        arrayindex = myRandomTopic[1];
+
+
+        let myQuestion = await getValue(ultraArray[arrayindex], qwe.cat, qwe.text);
+
+
+        questionPool[i] = [];
+
+        questionPool[i].push(myQuestion)
+
+/!*    }*!/
+    console.log("My Question \n " + JSON.stringify(questionPool) + "\n ####");
+
+    fs.writeFile('questionPool.json', JSON.stringify(questionPool, null,2), (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+
+        // success case, the file was saved
+        console.log('Funzt :>!');
+    });*/
+
+
+
+
+
+
+}
+
+getQuestionPoolData = () => {
+    return questionPool;
 }
 
 getAllData = () => {
@@ -84,9 +332,9 @@ getQuestionTemplate = (category) => {
     starshipText.push({text: "How Expensive (in Credits) is ", cat: "cost_in_credits"});
 
     // Sample QuestionText ## Films ##
-    filmsText.push({text: "Which episode got", cat: "episode_id"});
+    //filmsText.push({text: "Which episode got", cat: "episode_id"});
     filmsText.push({text: "Who is the Director of", cat: "director"});
-    filmsText.push({text: "When came out", cat: "realease_date"});
+    //filmsText.push({text: "When came out", cat: "realease_date"});
 
     if (category === "species") {
         let rnd = getRandom(speciesText.length);
@@ -146,7 +394,7 @@ getValue = (dataSource, category, questionText) => {
         // Clean / gray / grey issue
         // CLean Null or undefined parameter
         /*        if (category === 'vehicles') {*/
-        for (let x = 0; x < dataSource.length; x++) {
+        /*for (let x = 0; x < dataSource.length; x++) {
             console.log(allAnswersOfTopic[x]);
 
 
@@ -158,7 +406,7 @@ getValue = (dataSource, category, questionText) => {
                 allAnswersOfTopic[x].replace('gray', 'grey')
             }
 
-        }
+        }*/
         /*        }*/
 
 
