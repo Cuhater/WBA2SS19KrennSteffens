@@ -1,119 +1,41 @@
 [
   {
     "0": [
-      "Wer is ASDQWE wan sein Vadder?",
+      "Wer is 11111 sein 222222222?",
       {
         "a1": "Ford",
         "a2": "BMW",
         "a3": "Fiat",
         "a4": "Fiat"
       },
-      2,
-      1000000
+      3,
+      4
     ]
   },
   {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
+    "3": [
+      "Wer is s sein w?",
       {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
+        "a1": "gggggggg sein Zimmernachbar",
+        "a2": "hhhhhhh",
+        "a3": "jjjjjj",
+        "a4": "kkkkkkk"
       },
       2,
-      1
+      4
     ]
   },
   {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
+    "4": [
+      "Meine Neue Frage?",
       {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
+        "a1": "-1-----------",
+        "a2": "..2.......",
+        "a3": "###3##############",
+        "a4": "++++4++++++++++++++++++"
       },
-      2,
-      1
-    ]
-  },
-  {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
-      {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
-      },
-      2,
-      1
-    ]
-  },
-  {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
-      {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
-      },
-      2,
-      1
-    ]
-  },
-  {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
-      {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
-      },
-      2,
-      1
-    ]
-  },
-  {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
-      {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
-      },
-      2,
-      1
-    ]
-  },
-  {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
-      {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
-      },
-      2,
-      1
-    ]
-  },
-  {
-    "0": [
-      "Wer is Yoda sein Vadder11111111111111111111222?",
-      {
-        "a1": "Ford",
-        "a2": "BMW",
-        "a3": "Fiat",
-        "a4": "Fiat"
-      },
-      2,
-      1
+      3,
+      900
     ]
   }
 ]
