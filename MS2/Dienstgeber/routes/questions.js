@@ -36,19 +36,18 @@ router.get('/',async (req, res, next) => {
     if(req.query.type === undefined){
 
         // Potenzieller eq code
-        let randomTopic;
-        randomTopic = getRandomTopic();
+        /*let randomTopic = getRandomTopic();
 
         myQuestionText = getQuestionTemplate(randomTopic[0]);
         arrayindex = randomTopic[1];
+*/
 
-
-       /* let rnd = getRandom(topics.length)
+        let rnd = getRandom(topics.length)
         let rndTopic = topics[rnd]
        // console.log("MY RND" + rnd);
        // console.log("MY TOPIC " + rndTopic)
         myQuestionText = getQuestionTemplate(rndTopic);
-        arrayindex = rnd;*/
+        arrayindex = rnd;
     }
     else if(req.query.type === 'custom')
     {

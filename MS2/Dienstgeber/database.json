@@ -13,7 +13,7 @@
     ]
   },
   {
-    "3": [
+    "1": [
       "Wer is s sein w?",
       {
         "a1": "gggggggg sein Zimmernachbar",
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "4": [
+    "2": [
       "Meine Neue Frage?",
       {
         "a1": "-1-----------",
@@ -36,6 +36,19 @@
       },
       3,
       900
+    ]
+  },
+  {
+    "3": [
+      "Wer is Yoda sein ttttttttttttttttttttttttttttttttt?",
+      {
+        "a1": "Ford",
+        "a2": "BMW",
+        "a3": "Fiat",
+        "a4": "Fiat"
+      },
+      2,
+      1
     ]
   }
 ]

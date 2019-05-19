@@ -1,132 +1,132 @@
 {
   "0": [
     [
-      "Which average Lifespan got the species Rodian ?",
+      "Which average Lifespan got the species Pau'an ?",
       [
         "unknown",
-        "80",
-        "94",
-        "indefinite"
-      ],
-      0
-    ],
-    [
-      "Which Language(s) speak the species Wookiee ?",
-      [
-        "Galactic Basic",
-        "n/a",
-        "Togruti",
-        "Shyriiwook"
-      ],
-      3
-    ]
-  ],
-  "1": [
-    [
-      "Which Terrain got the Planet Skako ?",
-      [
-        "rainforests, rivers, mountains",
-        "urban, vines",
-        "deserts",
-        "jungles, forests, deserts"
+        "700",
+        "100",
+        "900"
       ],
       1
     ],
     [
-      "Which Terrain got the Planet Ojom ?",
+      "Which Skincolor(s) got the species Neimodian ?",
+      [
+        "grey, green",
+        "brown, purple, grey, red",
+        "grey",
+        "green, blue"
+      ],
+      0
+    ]
+  ],
+  "1": [
+    [
+      "Which population got the Planet Saleucami ?",
       [
         "unknown",
-        "plains, forests, hills, mountains",
-        "urban, vines",
-        "oceans, glaciers"
+        "1000",
+        "1400000000",
+        "1000000000000"
       ],
-      3
+      2
+    ],
+    [
+      "Which population got the Planet Dantooine ?",
+      [
+        "1000",
+        "500000000",
+        "1400000000",
+        "18500000000"
+      ],
+      0
     ]
   ],
   "2": [
     [
-      "Which Homeworld got Bail Prestor Organa ?",
-      [
-        "https://swapi.co/api/planets/28/",
-        "https://swapi.co/api/planets/60/",
-        "https://swapi.co/api/planets/53/",
-        "https://swapi.co/api/planets/2/"
-      ],
-      3
-    ],
-    [
-      "Which Haircolor got Zam Wesell ?",
+      "Which Haircolor got Poggle the Lesser ?",
       [
         "none",
         "black",
-        "blonde",
-        "white"
+        "brown",
+        "blond"
+      ],
+      0
+    ],
+    [
+      "Which Homeworld got Poe Dameron ?",
+      [
+        "https://swapi.co/api/planets/48/",
+        "https://swapi.co/api/planets/1/",
+        "https://swapi.co/api/planets/28/",
+        "https://swapi.co/api/planets/8/"
       ],
       2
     ]
   ],
   "3": [
     [
-      "How big have to be the Crew of Clone turbo tank ?",
+      "How big have to be the Crew of LAAT/i ?",
       [
-        "20",
-        "25",
         "2",
-        "1"
+        "1",
+        "6",
+        "4"
       ],
-      0
+      2
     ],
     [
-      "How big have to be the Crew of Geonosian starfighter ?",
+      "Which Lenght in (m) got T-16 skyhopper ?",
       [
-        "1",
-        "0",
-        "25",
-        "20"
+        "10.4",
+        "unknown",
+        "6.23",
+        "28.82"
       ],
       0
     ]
   ],
   "4": [
     [
-      "Which Starshipclass got Calamari Cruiser ?",
+      "How many Passengers can carry Imperial shuttle ?",
       [
-        "starfighter",
-        "assault ship",
-        "yacht",
-        "Star Cruiser"
+        "unknown",
+        "0",
+        "20",
+        "16"
       ],
-      3
+      2
     ],
     [
-      "How many Passengers can carry Naboo Royal Starship ?",
+      "How many Passengers can carry Republic Cruiser ?",
       [
-        "48247",
-        "600",
+        "3",
+        "16",
         "0",
-        "unknown"
+        "2000"
       ],
-      3
+      1
     ]
   ],
   "5": [
     [
       "Who is the Director of undefined ?",
       [
-        "J. J. Abrams",
-        "Richard Marquand",
         "Irvin Kershner",
-        "George Lucas"
+        "George Lucas",
+        "Richard Marquand",
+        "J. J. Abrams"
       ],
-      3
+      1
     ],
     [
       "Who is the Director of undefined ?",
       [
-        "Richard Marquand",
-        "George Lucas",
         "Irvin Kershner",
-        "J. J. Abrams"
+        "Richard Marquand",
+        "J. J. Abrams",
+        "George Lucas"
       ],
       2
     ]

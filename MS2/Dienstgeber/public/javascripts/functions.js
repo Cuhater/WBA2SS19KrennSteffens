@@ -18,6 +18,11 @@ topics.push('films');
 //topics.push('custom');
 
 
+getAllTopics = () => {
+    return topics;
+}
+
+
 getSpecificTopic = (topicIndex) => {
     let topic = topics[topicIndex];
     return topic
@@ -57,23 +62,23 @@ myFunction = async () => {
     let species_all;
     let planets_all;
 
-    species_all = await getData(baseURL, '/species/', '?page=4')
+    species_all = await getData(baseURL, '/species/', '?page=1')
     ultraArray.push(species_all); // 0
     finalObject = []
 
-    planets_all = await getData(baseURL, '/planets/', '?page=6')
+    planets_all = await getData(baseURL, '/planets/', '?page=1')
     ultraArray.push(planets_all); // 1
     finalObject = []
 
-    let people_all = await getData(baseURL, '/people/', '?page=7')
+    let people_all = await getData(baseURL, '/people/', '?page=1')
     ultraArray.push(people_all);
     finalObject = []
 
-    let vehicles_all = await getData(baseURL, '/vehicles/', '?page=4')
+    let vehicles_all = await getData(baseURL, '/vehicles/', '?page=1')
     ultraArray.push(vehicles_all);
     finalObject = []
 
-    let starships_all = await getData(baseURL, '/starships/', '?page=2')
+    let starships_all = await getData(baseURL, '/starships/', '?page=1')
     ultraArray.push(starships_all);
     finalObject = []
 
@@ -183,10 +188,10 @@ myFunction = async () => {
         uuu.push(categoryArray)
 
     }
+/*    console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
     console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
     console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
-    console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU INCOMING :OOO");
-    console.log(JSON.stringify(uuu, null,2));
+    console.log(JSON.stringify(uuu, null,2));*/
 
 
     ultraArray = uuu;
@@ -288,7 +293,17 @@ myFunction = async () => {
 }
 
 getQuestionPoolData = () => {
-    return questionPool;
+    return new Promise((resolve, reject) => {
+    fs.readFile('questionPool.json', (err, data) => {
+        if (err) throw err;
+        let dbPool = JSON.parse(data);
+
+
+        console.log('This is after the read call');
+        resolve(dbPool)
+
+    });
+    })
 }
 
 getAllData = () => {
@@ -436,7 +451,7 @@ getValue = (dataSource, category, questionText) => {
 
         let answers = [];
 
-
+        let alarm = false;
         let bool = false;
 
         // Allokiere zufällige Antwort aus Antwortpool
@@ -465,17 +480,38 @@ getValue = (dataSource, category, questionText) => {
                     for (let t = 0; t <= u; t++) {
                         if (!rndAnswerPushed) {
 
-                            while (randomAnswer === answers[0] || randomAnswer === answers[1] || randomAnswer === answers[2] || randomAnswer === allAnswersOfTopic[rnd] || bool === false) {
+                            let i = 0;
+
+                            while (randomAnswer === answers[0] && !alarm || randomAnswer === answers[1] && !alarm || randomAnswer === answers[2] && !alarm || randomAnswer === allAnswersOfTopic[rnd] || bool === false) {
                                 randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
                                 console.log("Neu generierte Antwort: " + randomAnswer);
-
+                                /*i++;
+                                if(i <=1000){
+                                    alarm = true;
+                                    //console.log("############################## EEEERRRROOOOORRRR")
+                                }*/
                                 bool = true;
                             }
                             if (bool) {
 
-                                answers.push(randomAnswer)
-                                rndAnswerPushed = true;
-                                bool = false;
+                             /*  if(alarm)
+                                {
+
+                                        answers.push("Error please check your Datasource")
+                                        //console.log("############################## EEEERRRROOOOORRRR")
+                                        rndAnswerPushed = true;
+                                        bool = false;
+                                        alarm = false
+                                        i = 0;
+
+
+                                }
+                                else{*/
+                                    answers.push(randomAnswer)
+                                    rndAnswerPushed = true;
+                                    bool = false;
+                               /* }
+*/
 
                             }
                         }
