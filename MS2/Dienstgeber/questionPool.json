@@ -1,110 +1,110 @@
 {
   "0": [
     [
-      "Which average Lifespan got the species Pau'an ?",
+      "Which average Lifespan got the species Toong ?",
       [
+        "1000",
         "unknown",
-        "700",
-        "100",
-        "900"
+        "80",
+        "indefinite"
       ],
       1
     ],
     [
-      "Which Skincolor(s) got the species Neimodian ?",
+      "Which average Lifespan got the species Wookiee ?",
       [
-        "grey, green",
-        "brown, purple, grey, red",
-        "grey",
-        "green, blue"
+        "80",
+        "400",
+        "900",
+        "unknown"
       ],
-      0
+      1
     ]
   ],
   "1": [
     [
-      "Which population got the Planet Saleucami ?",
+      "Which Clima got the Planet Endor ?",
       [
+        "superheated",
         "unknown",
-        "1000",
-        "1400000000",
-        "1000000000000"
+        "temperate",
+        "temperate, tropical"
       ],
       2
     ],
     [
-      "Which population got the Planet Dantooine ?",
+      "Which Clima got the Planet Cerea ?",
       [
-        "1000",
-        "500000000",
-        "1400000000",
-        "18500000000"
+        "unknown",
+        "temperate",
+        "temperate, moist",
+        "arid"
       ],
-      0
+      1
     ]
   ],
   "2": [
     [
-      "Which Haircolor got Poggle the Lesser ?",
+      "Which Homeworld got Owen Lars ?",
       [
-        "none",
-        "black",
-        "brown",
-        "blond"
+        "https://swapi.co/api/planets/8/",
+        "https://swapi.co/api/planets/7/",
+        "https://swapi.co/api/planets/28/",
+        "https://swapi.co/api/planets/1/"
       ],
-      0
+      3
     ],
     [
-      "Which Homeworld got Poe Dameron ?",
+      "Which Haircolor got Han Solo ?",
       [
-        "https://swapi.co/api/planets/48/",
-        "https://swapi.co/api/planets/1/",
-        "https://swapi.co/api/planets/28/",
-        "https://swapi.co/api/planets/8/"
+        "none",
+        "n/a",
+        "brown",
+        "black"
       ],
       2
     ]
   ],
   "3": [
     [
-      "How big have to be the Crew of LAAT/i ?",
+      "Which Vehicleclass got Single Trooper Aerial Platform ?",
       [
-        "2",
-        "1",
-        "6",
-        "4"
-      ],
-      2
-    ],
-    [
-      "Which Lenght in (m) got T-16 skyhopper ?",
-      [
-        "10.4",
-        "unknown",
-        "6.23",
-        "28.82"
+        "repulsorcraft",
+        "airspeeder",
+        "droid tank",
+        "submarine"
       ],
       0
+    ],
+    [
+      "How big have to be the Crew of XJ-6 airspeeder ?",
+      [
+        "5",
+        "2",
+        "1",
+        "20"
+      ],
+      2
     ]
   ],
   "4": [
     [
-      "How many Passengers can carry Imperial shuttle ?",
+      "Which Starshipclass got Sentinel-class landing craft ?",
       [
-        "unknown",
-        "0",
-        "20",
-        "16"
+        "landing craft",
+        "starfighter",
+        "Starfighter",
+        "freighter"
       ],
-      2
+      0
     ],
     [
-      "How many Passengers can carry Republic Cruiser ?",
+      "How Expensive (in Credits) is  Naboo Royal Starship ?",
       [
-        "3",
-        "16",
-        "0",
-        "2000"
+        "3500000",
+        "unknown",
+        "57000000",
+        "149999"
       ],
       1
     ]
@@ -113,22 +113,22 @@
     [
       "Who is the Director of undefined ?",
       [
-        "Irvin Kershner",
-        "George Lucas",
+        "J. J. Abrams",
         "Richard Marquand",
-        "J. J. Abrams"
+        "George Lucas",
+        "Irvin Kershner"
       ],
-      1
+      2
     ],
     [
       "Who is the Director of undefined ?",
       [
-        "Irvin Kershner",
-        "Richard Marquand",
         "J. J. Abrams",
+        "Richard Marquand",
+        "Irvin Kershner",
         "George Lucas"
       ],
-      2
+      3
     ]
   ]
 }

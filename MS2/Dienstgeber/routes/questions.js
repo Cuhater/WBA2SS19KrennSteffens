@@ -8,6 +8,8 @@ const functions = require('../public/javascripts/functions')
 let myEditetObject = {}
 var postedContent = {} // empty Object
 let newArray = []
+let answerArray = [];
+let baseURL = 'https://swapi.co/api';
 
 
 const fs = require('fs');
@@ -54,37 +56,38 @@ router.get('/',async (req, res, next) => {
 
         // TODO: GET custom Question from Database
         myQuestionText = getQuestionTemplate("custom");
+
         arrayindex = 6;
     }
     else if(req.query.type === 'species')
     {
         myQuestionText = getQuestionTemplate("species");
-        arrayindex = 0;
+        answerArray = await getData(baseURL, '/species/', '?page=1')
     }
     else if(req.query.type === 'planets')
     {
         myQuestionText = getQuestionTemplate("planets");
-        arrayindex = 1;
+        answerArray = await getData(baseURL, '/planets/', '?page=1')
     }
     else if(req.query.type === 'people')
     {
         myQuestionText = getQuestionTemplate("people");
-        arrayindex = 2;
+        answerArray = await getData(baseURL, '/people/', '?page=1')
     }
     else if(req.query.type === 'vehicles')
     {
         myQuestionText = getQuestionTemplate("vehicles");
-        arrayindex = 3;
+        answerArray = await getData(baseURL, '/vehicles/', '?page=1')
     }
     else if(req.query.type === 'starships')
     {
         myQuestionText = getQuestionTemplate("starships");
-        arrayindex = 4;
+        answerArray = await getData(baseURL, '/starships/', '?page=1')
     }
     else if(req.query.type === 'films')
     {
         myQuestionText = getQuestionTemplate("films");
-        arrayindex = 5;
+        answerArray = await getData(baseURL, '/films/', '?page=1')
     }
     else
     {
@@ -102,7 +105,8 @@ router.get('/',async (req, res, next) => {
 
 
     //console.log("------------------------MY GET VALUE SHIIIED" + myArray[arrayindex[0]]);
-    let myQuestion = await getValue(myArray[arrayindex], myQuestionText.cat, myQuestionText.text);
+    let myQuestion = await getValue(answerArray, myQuestionText.cat, myQuestionText.text);
+    answerArray = [];
 
     res.status(200).send(myQuestion);
 
