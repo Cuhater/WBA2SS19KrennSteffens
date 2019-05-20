@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require('body-parser');
 const functions = require('./public/javascripts/functions')
 var indexRouter = require('./routes/index');
 var questionsRouter = require('./routes/questions');
@@ -43,9 +42,6 @@ app.use(function(err, req, res, next) {
 
 // Starting init Routine
 app.listen(async function () {
-
-  await myFunction();
-
-
+  await init();
 });
 module.exports = app;

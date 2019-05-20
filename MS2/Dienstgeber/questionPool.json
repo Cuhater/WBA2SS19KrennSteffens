@@ -1,110 +1,110 @@
 {
   "0": [
     [
-      "Which average Lifespan got the species Toong ?",
+      "Which average Lifespan got the species Mirialan ?",
       [
-        "1000",
-        "unknown",
-        "80",
-        "indefinite"
+        "900",
+        "400",
+        "70",
+        "unknown"
       ],
-      1
+      3
     ],
     [
-      "Which average Lifespan got the species Wookiee ?",
+      "Which Language(s) speak the species Geonosian ?",
       [
-        "80",
-        "400",
-        "900",
-        "unknown"
+        "Twi'leki",
+        "Geonosian",
+        "Iktotchese",
+        "besalisk"
       ],
       1
     ]
   ],
   "1": [
     [
-      "Which Clima got the Planet Endor ?",
+      "Which population got the Planet Eriadu ?",
       [
-        "superheated",
-        "unknown",
-        "temperate",
-        "temperate, tropical"
+        "200000",
+        "500000000",
+        "22000000000",
+        "4000000000"
       ],
       2
     ],
     [
-      "Which Clima got the Planet Cerea ?",
+      "Which population got the Planet Sullust ?",
       [
+        "18500000000",
         "unknown",
-        "temperate",
-        "temperate, moist",
-        "arid"
+        "4000000000",
+        "11000000"
       ],
-      1
+      0
     ]
   ],
   "2": [
     [
-      "Which Homeworld got Owen Lars ?",
+      "Which Haircolor got Yoda ?",
       [
-        "https://swapi.co/api/planets/8/",
-        "https://swapi.co/api/planets/7/",
-        "https://swapi.co/api/planets/28/",
-        "https://swapi.co/api/planets/1/"
+        "white",
+        "brown",
+        "black",
+        "none"
       ],
-      3
+      0
     ],
     [
-      "Which Haircolor got Han Solo ?",
+      "Which Haircolor got Tion Medon ?",
       [
+        "black",
         "none",
-        "n/a",
-        "brown",
-        "black"
+        "brown, grey",
+        "auburn, grey"
       ],
-      2
+      1
     ]
   ],
   "3": [
     [
-      "Which Vehicleclass got Single Trooper Aerial Platform ?",
+      "Which Lenght in (m) got Tsmeu-6 personal wheel bike ?",
       [
-        "repulsorcraft",
-        "airspeeder",
-        "droid tank",
-        "submarine"
-      ],
-      0
-    ],
-    [
-      "How big have to be the Crew of XJ-6 airspeeder ?",
-      [
-        "5",
         "2",
-        "1",
+        "3.5",
+        "36.8",
         "20"
       ],
-      2
+      1
+    ],
+    [
+      "How big have to be the Crew of Sith speeder ?",
+      [
+        "1",
+        "0",
+        "46",
+        "2"
+      ],
+      0
     ]
   ],
   "4": [
     [
-      "Which Starshipclass got Sentinel-class landing craft ?",
+      "How Expensive (in Credits) is  Scimitar ?",
       [
-        "landing craft",
-        "starfighter",
-        "Starfighter",
-        "freighter"
+        "55000000",
+        "1000000",
+        "1000000000000",
+        "unknown"
       ],
       0
     ],
     [
-      "How Expensive (in Credits) is  Naboo Royal Starship ?",
+      "How many Passengers can carry H-type Nubian yacht ?",
       [
-        "3500000",
+        "0",
         "unknown",
-        "57000000",
-        "149999"
+        "139000",
+        "600"
       ],
       1
     ]
@@ -113,9 +113,9 @@
     [
       "Who is the Director of undefined ?",
       [
-        "J. J. Abrams",
         "Richard Marquand",
         "George Lucas",
+        "J. J. Abrams",
         "Irvin Kershner"
       ],
       2
@@ -123,12 +123,12 @@
     [
       "Who is the Director of undefined ?",
       [
+        "George Lucas",
         "J. J. Abrams",
-        "Richard Marquand",
         "Irvin Kershner",
-        "George Lucas"
+        "Richard Marquand"
       ],
-      3
+      1
     ]
   ]
 }
