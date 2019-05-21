@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 const https = require('https');
 
-router.get('/', async (req, res, next) => {
-
-
+router.get('/', async (req, res) => {
 
 
     let questionPool = await getQuestionPoolData();
@@ -19,8 +17,7 @@ router.get('/', async (req, res, next) => {
     let topics = getAllTopics();
 
 
-
-    if(req.query.type === 'custom'){
+    if (req.query.type === 'custom') {
         isCustom = true;
 
         let customDataArray = await getDBData()
@@ -28,9 +25,7 @@ router.get('/', async (req, res, next) => {
         //console.log("customDataArray" + customDataEntries);
 
 
-
-
-        for (let j = 0; j < quizSize ; j++){
+        for (let j = 0; j < quizSize; j++) {
 
             let rnd = getRandom(customDataEntries.length)
             myQuiz.push(customDataEntries[rnd])
@@ -38,18 +33,16 @@ router.get('/', async (req, res, next) => {
         res.status(200).send(myQuiz)
     }
 
-    for (let i = 0; i < topics.length; i++) {
+    for (let i = 0; i < topics.length - 1; i++) {
 
         //console.log(topics[i]);
 
 
-        if (req.query.type === topics[i] && !isCustom)
-        {
+        if (req.query.type === topics[i] && !isCustom) {
             let topicData = questionPool[i]
 
 
-
-            for (let j = 0; j < quizSize ; j++) { // Sagen wir 5 Fragen im Q
+            for (let j = 0; j < quizSize; j++) { // Sagen wir 5 Fragen im Q
 
                 let rnd = getRandom(topicData.length);
                 myQuiz.push(topicData[rnd])
@@ -59,8 +52,7 @@ router.get('/', async (req, res, next) => {
     }
 
 
-    if(req.query.type === undefined){
-
+    if (req.query.type === undefined) {
 
 
         console.log("hallo");
@@ -76,7 +68,7 @@ router.get('/', async (req, res, next) => {
 
 
     console.log("Hallo hier kommen die Quizze hin :>");
-    if(!isCustom){
+    if (!isCustom) {
         res.status(200).send(myQuiz);
     }
 

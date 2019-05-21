@@ -357,7 +357,7 @@ getValue = (dataSource, category, questionText) => {
 
                             while (randomAnswer === answers[0] && !alarm || randomAnswer === answers[1] && !alarm || randomAnswer === answers[2] && !alarm || randomAnswer === allAnswersOfTopic[rnd] || bool === false) {
                                 randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
-                                console.log("Neu generierte Antwort: " + randomAnswer);
+                                //console.log("Neu generierte Antwort: " + randomAnswer);
                                 bool = true;
                                 if(randomAnswer === null)
                                 {

@@ -9,6 +9,60 @@ let myEditetObject = {};
 let answerArray = [];
 const fs = require('fs');
 
+let topics = getAllTopics();
+
+
+router.get('/:questionID', async (req, res) => {
+    let topicData;
+    let qPoolData = await getQuestionPoolData();
+    let questionID = req.params["questionID"]
+    let requestMatch = false;
+
+    if (req.query.type === 'custom') {
+
+        let myDBData = await getDBData();
+        if (myDBData.length === 0) {
+            res.contentType("text/plain");
+            res.status(404).send("There are no custom questions saved")
+        }
+
+        for (let i = 0; i < myDBData.length; i++) {
+
+            let innerKeys = Object.keys(myDBData);
+            let innerValues = Object.values(myDBData)
+
+            if (questionID === innerKeys[i]) {
+
+                res.status(200).send(innerValues[i])
+            }
+        }
+    }
+
+    for (let i = 0; i < topics.length - 1; i++) {
+        if (req.query.type === topics[i]) {
+            topicData = qPoolData[i];
+            requestMatch = true;
+        }
+    }
+
+    if (requestMatch) {
+        res.status(200).send(topicData[questionID])
+    }
+
+    if(req.query.type === undefined) {
+        console.log("An DEA STEHLLE sollte etwas passieren");
+        let rnd = getRandom(topics.length - 1);
+
+        topicData = qPoolData[rnd];
+
+        console.log(questionID);
+
+        console.log(topicData[questionID]);
+        res.status(200).send(topicData[questionID])
+
+    }
+
+});
 
 router.get('/', async (req, res) => {
 
@@ -20,13 +74,13 @@ router.get('/', async (req, res) => {
     let myCustomQuestionArray;
     let myCustomQuestion;
 
-/*    topics.push('species');
-    topics.push('planets');
-    topics.push('people');
-    topics.push('vehicles');
-    topics.push('starships');
-    topics.push('films');
-    topics.push('custom');*/
+    /*    topics.push('species');
+        topics.push('planets');
+        topics.push('people');
+        topics.push('vehicles');
+        topics.push('starships');
+        topics.push('films');
+        topics.push('custom');*/
 
     if (req.query.type === undefined) {
         let rnd = getRandom(topics.length);
@@ -38,8 +92,7 @@ router.get('/', async (req, res) => {
         // TODO: GET custom Question from Database
         myCustomQuestionArray = await getDBData();
 
-        if(myCustomQuestionArray.length === 0)
-        {
+        if (myCustomQuestionArray.length === 0) {
             res.status(404).send("There are no custom questions saved")
         }
 
@@ -50,15 +103,13 @@ router.get('/', async (req, res) => {
 
     } else for (let i = 0; i < topics.length; i++) {
 
-        if (req.query.type === topics[i]){
+        if (req.query.type === topics[i]) {
 
             arrayindex = i;
             // AN der stelle Daten überschreiben
-            try{
-                topicArray = await getData(baseURL, '/'+topics[i]+'/', '?page=1')
-            }
-            catch(err)
-            {
+            try {
+                topicArray = await getData(baseURL, '/' + topics[i] + '/', '?page=1')
+            } catch (err) {
                 res.status(500).send(err + "500 Internal Error")
             }
 
@@ -115,8 +166,7 @@ router.get('/', async (req, res) => {
     }*/
 
 
-    if(arrayindex !== 6)
-    {
+    if (arrayindex !== 6) {
         await cleanUpData();
         myArray = getAllData();
         //console.log("MY ARRAY YOOOO \n" + JSON.stringify(myArray[arrayindex],null,2));
@@ -126,15 +176,12 @@ router.get('/', async (req, res) => {
 
         res.status(200).send(myQuestion);
 
-    }
-    else
-    {
+    } else {
 
         res.status(200).send(myCustomQuestion)
     }
 
 });
-
 
 
 router.put('/', async (req, res) => {
@@ -161,8 +208,8 @@ router.put('/', async (req, res) => {
 
             let x = innerObject[0];
 
-/*            console.log("\n UserID: " + x[3]);
-            console.log("req.body: " + req.body.userID);*/
+            /*            console.log("\n UserID: " + x[3]);
+                        console.log("req.body: " + req.body.userID);*/
 
 
             // USER ID MATCHES
@@ -171,9 +218,9 @@ router.put('/', async (req, res) => {
 
                 // CHECK IF QUESTION ID MATCH
                 if (innerKeys[i] === req.body.qID) {
-/*                      console.log("inner keys" + innerKeys[i]);
-                        console.log("DB DATA I " + x + "\n");*/
-/*                      console.log("DB DATA 1 " + x[1] + "\n");*/
+                    /*                      console.log("inner keys" + innerKeys[i]);
+                                            console.log("DB DATA I " + x + "\n");*/
+                    /*                      console.log("DB DATA 1 " + x[1] + "\n");*/
                     let currentAnswersArray = x[1];
                     console.log(currentAnswersArray);
 
@@ -224,9 +271,7 @@ router.put('/', async (req, res) => {
                         console.log('The Question were updated!');
                     });
                 }
-            }
-            else
-            {
+            } else {
                 res.contentType("text/plain");
                 res.status(401).send("Your are not authorized to apply changes")
             }
@@ -288,26 +333,24 @@ router.post('/', async (req, res, next) => {
     res.status(200).send(JSON.stringify(yourData, null, 2));
 
 
-
-
-/*    fs.readFile('database.json', (err, data) => {
-        if (err) throw err;
-        let dbData = JSON.parse(data);
-        console.log(dbData);
-
-        let b = [];
-
-        b.push(postedContent);
-        myData = dbData.concat(b);
-
-
-        fs.writeFile('database.json', JSON.stringify(myData, null, 2), (err) => {
+    /*    fs.readFile('database.json', (err, data) => {
             if (err) throw err;
-            console.log('The Database were updated!');
-        });
+            let dbData = JSON.parse(data);
+            console.log(dbData);
 
-        res.status(200).send(JSON.stringify(myData, null, 2));
-    });*/
+            let b = [];
+
+            b.push(postedContent);
+            myData = dbData.concat(b);
+
+
+            fs.writeFile('database.json', JSON.stringify(myData, null, 2), (err) => {
+                if (err) throw err;
+                console.log('The Database were updated!');
+            });
+
+            res.status(200).send(JSON.stringify(myData, null, 2));
+        });*/
 
 });
 
@@ -318,14 +361,11 @@ router.delete('/:questionID', async (req, res) => {
 
     let myDBData = await getDBData();
     let gotEntry = false;
-    if(myDBData.length === 0)
-    {
+    if (myDBData.length === 0) {
         res.contentType("text/plain");
         res.status(404).send("There are no custom questions saved")
     }
     //Check if userID match
-
-
 
 
     for (let i = 0; i < myDBData.length; i++) {
@@ -355,10 +395,10 @@ router.delete('/:questionID', async (req, res) => {
             });
 
         }
-/*        else
-        {
+        /*        else
+                {
 
-        }*/
+                }*/
         // Testing purpose check whats inside object
         /*let innerObject = Object.values(myDBData[i]);
         let x = innerObject[0];
@@ -366,7 +406,7 @@ router.delete('/:questionID', async (req, res) => {
         console.log("\n UserID: " + x[3]);
         console.log("req.body: " + req.body.userID)*/
     }
-    if(!gotEntry){
+    if (!gotEntry) {
         res.contentType("text/plain");
         res.status(404).send("Question with QuestionID : " + req.params["questionID"] + " was not found")
     }

@@ -1,134 +1,134 @@
 {
   "0": [
     [
-      "Which average Lifespan got the species Dug ?",
+      "Which Language(s) speak the species Togruta ?",
       [
-        "100",
-        "79",
-        "400",
-        "unknown"
+        "Xextese",
+        "Iktotchese",
+        "Togruti",
+        "Neimoidia"
       ],
-      3
+      2
     ],
     [
-      "Which average Lifespan got the species Aleena ?",
+      "Which Language(s) speak the species Iktotchi ?",
       [
-        "indefinite",
-        "80",
-        "700",
-        "79"
-      ],
-      3
-    ]
-  ],
-  "1": [
-    [
-      "Which population got the Planet Serenno ?",
-      [
-        "10000000",
-        "unknown",
-        "5200",
-        "500000000000"
-      ],
-      1
-    ],
-    [
-      "Which Clima got the Planet Concord Dawn ?",
-      [
-        "unknown",
-        "temperate",
-        "artificial temperate ",
-        "hot, humid"
+        "Iktotchese",
+        "Skakoan",
+        "Toydarian",
+        "Ewokese"
       ],
       0
     ]
   ],
-  "2": [
+  "1": [
     [
-      "Which Haircolor got Nute Gunray ?",
+      "Which population got the Planet Kalee ?",
       [
-        "white",
-        "none",
-        "black",
-        "brown"
+        "4000000000",
+        "19000000",
+        "22000000000",
+        "1000"
       ],
-      1
+      0
     ],
     [
-      "Which Homeworld got Sly Moore ?",
+      "Which Clima got the Planet Eriadu ?",
       [
-        "https://swapi.co/api/planets/14/",
-        "https://swapi.co/api/planets/1/",
-        "https://swapi.co/api/planets/26/",
-        "https://swapi.co/api/planets/60/"
+        "temperate",
+        "unknown",
+        "temperate, artic",
+        "polluted"
+      ],
+      3
+    ]
+  ],
+  "2": [
+    [
+      "Which Haircolor got Sebulba ?",
+      [
+        "none",
+        "black",
+        "brown",
+        "auburn, white"
+      ],
+      0
+    ],
+    [
+      "Which Homeworld got Wat Tambor ?",
+      [
+        "https://swapi.co/api/planets/7/",
+        "https://swapi.co/api/planets/44/",
+        "https://swapi.co/api/planets/55/",
+        "https://swapi.co/api/planets/56/"
       ],
       3
     ]
   ],
   "3": [
     [
-      "Which Lenght in (m) got TIE bomber ?",
+      "Which Lenght in (m) got Tribubble bongo ?",
       [
-        "9.8",
-        "7.8",
-        "140",
-        "28.82"
+        "15",
+        "9.5",
+        "unknown",
+        "20"
       ],
-      1
+      0
     ],
     [
-      "Which Lenght in (m) got SPHA ?",
+      "Which Lenght in (m) got LAAT/c ?",
       [
-        "20",
-        "4.5",
-        "3",
-        "140"
+        "3.4",
+        "28.82",
+        "6.23",
+        "31"
       ],
-      3
+      1
     ]
   ],
   "4": [
     [
-      "How many Passengers can carry Star Destroyer ?",
+      "Which Starshipclass got Death Star ?",
       [
-        "75",
-        "16000",
-        "0",
-        "48247"
+        "Droid control ship",
+        "starfighter",
+        "fighter",
+        "Deep Space Mobile Battlestation"
       ],
-      2
+      3
     ],
     [
-      "How Expensive (in Credits) is  Imperial shuttle ?",
+      "How Expensive (in Credits) is  X-wing ?",
       [
-        "134999",
-        "1143350000",
-        "240000",
-        "35700"
+        "200000",
+        "149999",
+        "unknown",
+        "220000"
       ],
-      2
+      1
     ]
   ],
   "5": [
     [
-      "Who is the Director of Return of the Jedi ?",
+      "Who is the Director of Attack of the Clones ?",
       [
-        "Irvin Kershner",
         "George Lucas",
-        "Richard Marquand",
-        "J. J. Abrams"
+        "Irvin Kershner",
+        "J. J. Abrams",
+        "Richard Marquand"
       ],
-      2
+      0
     ],
     [
-      "Who is the Director of The Phantom Menace ?",
+      "Who is the Director of Revenge of the Sith ?",
       [
-        "Richard Marquand",
-        "George Lucas",
         "Irvin Kershner",
-        "J. J. Abrams"
+        "Richard Marquand",
+        "J. J. Abrams",
+        "George Lucas"
       ],
-      1
+      3
     ]
   ]
 }
