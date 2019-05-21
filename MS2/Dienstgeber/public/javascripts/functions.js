@@ -283,7 +283,15 @@ getValue = (dataSource, category, questionText) => {
             }
         }
 
-        question.push(questionText + " " + dataSource[rnd].name + " ?");
+        // Check if Data is from Film
+        if (category === 'director' || category === 'episode_id' || category === 'release_date')
+        {
+            question.push(questionText + " " + dataSource[rnd].title + " ?");
+        } else {
+            question.push(questionText + " " + dataSource[rnd].name + " ?");
+
+        }
+
 
         // Prepare answer Block
         let answers = [];

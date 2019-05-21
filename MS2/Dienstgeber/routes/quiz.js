@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 
     for (let i = 0; i < topics.length; i++) {
 
-        console.log(topics[i]);
+        //console.log(topics[i]);
 
         if(req.query.type === topics[i])
         {

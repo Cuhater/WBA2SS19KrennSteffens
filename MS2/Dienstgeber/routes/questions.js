@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const functions = require('../public/javascripts/functions');
 
+let baseURL = 'https://swapi.co/api';
+
 let myEditetObject = {};
 let postedContent = {};
 let answerArray = [];
@@ -24,9 +26,40 @@ router.get('/', async (req, res) => {
     topics.push('films');
     //topics.push('custom');
 
+    if (req.query.type === undefined) {
+        let rnd = getRandom(topics.length);
+        let rndTopic = topics[rnd];
+        myQuestionText = getQuestionTemplate(rndTopic);
+        arrayindex = rnd;
+    } else if (req.query.type === 'custom') {
+
+        // TODO: GET custom Question from Database
+        myQuestionText = getQuestionTemplate("custom");
+        arrayindex = 6;
+
+    } else for (let i = 0; i < topics.length; i++) {
+
+        if (req.query.type === topics[i]){
+
+            arrayindex = i;
+            // AN der stelle Daten überschreiben
+            try{
+                topicArray = await getData(baseURL, '/'+topics[i]+'/', '?page=1')
+            }
+            catch(err)
+            {
+                res.status(500).send(err + "500 Internal Error")
+            }
+
+            myArray = overwriteData(topicArray, arrayindex);
+            myQuestionText = getQuestionTemplate(topics[i]);
+
+        }
+
+    }
 
     // Check query for specific response
-    if (req.query.type === undefined) {
+    /*if (req.query.type === undefined) {
         let rnd = getRandom(topics.length);
         let rndTopic = topics[rnd];
         myQuestionText = getQuestionTemplate(rndTopic);
@@ -69,7 +102,7 @@ router.get('/', async (req, res) => {
     } else if (req.query.type === 'films') {
         myQuestionText = getQuestionTemplate("films");
         arrayindex = 5;
-    }
+    }*/
 
     cleanUpData();
     myArray = getAllData();

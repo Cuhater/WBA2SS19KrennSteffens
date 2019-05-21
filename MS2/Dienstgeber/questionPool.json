@@ -1,127 +1,127 @@
 {
   "0": [
     [
-      "Which average Lifespan got the species Mirialan ?",
+      "Which Skincolor(s) got the species Kaminoan ?",
       [
-        "900",
-        "400",
-        "70",
-        "unknown"
+        "green, brown",
+        "brown, green",
+        "green, blue",
+        "grey, blue"
       ],
       3
     ],
     [
-      "Which Language(s) speak the species Geonosian ?",
+      "Which average Lifespan got the species Droid ?",
       [
-        "Twi'leki",
-        "Geonosian",
-        "Iktotchese",
-        "besalisk"
+        "unknown",
+        "70",
+        "120",
+        "indefinite"
       ],
-      1
+      3
     ]
   ],
   "1": [
     [
-      "Which population got the Planet Eriadu ?",
+      "Which Clima got the Planet Trandosha ?",
       [
-        "200000",
-        "500000000",
-        "22000000000",
-        "4000000000"
+        "temperate",
+        "temperate, arid, windy",
+        "arid",
+        "unknown"
       ],
       2
     ],
     [
-      "Which population got the Planet Sullust ?",
+      "Which population got the Planet Concord Dawn ?",
       [
-        "18500000000",
-        "unknown",
-        "4000000000",
-        "11000000"
+        "1000000",
+        "500000000",
+        "300000000",
+        "unknown"
       ],
-      0
+      3
     ]
   ],
   "2": [
     [
-      "Which Haircolor got Yoda ?",
+      "Which Homeworld got San Hill ?",
       [
-        "white",
-        "brown",
-        "black",
-        "none"
+        "https://swapi.co/api/planets/18/",
+        "https://swapi.co/api/planets/28/",
+        "https://swapi.co/api/planets/37/",
+        "https://swapi.co/api/planets/57/"
       ],
-      0
+      3
     ],
     [
-      "Which Haircolor got Tion Medon ?",
+      "Which Haircolor got Beru Whitesun lars ?",
       [
-        "black",
+        "auburn",
         "none",
-        "brown, grey",
-        "auburn, grey"
+        "brown",
+        "n/a"
       ],
-      1
+      2
     ]
   ],
   "3": [
     [
-      "Which Lenght in (m) got Tsmeu-6 personal wheel bike ?",
+      "How big have to be the Crew of Bantha-II cargo skiff ?",
       [
         "2",
-        "3.5",
-        "36.8",
-        "20"
+        "5",
+        "1",
+        "26"
       ],
       1
     ],
     [
-      "How big have to be the Crew of Sith speeder ?",
+      "Which Vehicleclass got TIE bomber ?",
       [
-        "1",
-        "0",
-        "46",
-        "2"
+        "submarine",
+        "airspeeder",
+        "space/planetary bomber",
+        "walker"
       ],
-      0
+      2
     ]
   ],
   "4": [
     [
-      "How Expensive (in Credits) is  Scimitar ?",
+      "How many Passengers can carry Republic Assault ship ?",
       [
-        "55000000",
-        "1000000",
-        "1000000000000",
-        "unknown"
-      ],
-      0
-    ],
-    [
-      "How many Passengers can carry H-type Nubian yacht ?",
-      [
-        "0",
         "unknown",
         "139000",
-        "600"
-      ],
-      1
-    ]
-  ],
-  "5": [
-    [
-      "Who is the Director of undefined ?",
-      [
-        "Richard Marquand",
-        "George Lucas",
-        "J. J. Abrams",
-        "Irvin Kershner"
+        "16000",
+        "20"
       ],
       2
     ],
     [
-      "Who is the Director of undefined ?",
+      "How many Passengers can carry A-wing ?",
+      [
+        "0",
+        "unknown",
+        "6",
+        "600"
+      ],
+      0
+    ]
+  ],
+  "5": [
+    [
+      "Who is the Director of The Phantom Menace ?",
+      [
+        "Irvin Kershner",
+        "Richard Marquand",
+        "J. J. Abrams",
+        "George Lucas"
+      ],
+      3
+    ],
+    [
+      "Who is the Director of The Force Awakens ?",
       [
         "George Lucas",
         "J. J. Abrams",
