@@ -1,132 +1,132 @@
 {
   "0": [
     [
-      "Which Skincolor(s) got the species Kaminoan ?",
+      "Which average Lifespan got the species Dug ?",
       [
-        "green, brown",
-        "brown, green",
-        "green, blue",
-        "grey, blue"
+        "100",
+        "79",
+        "400",
+        "unknown"
       ],
       3
     ],
     [
-      "Which average Lifespan got the species Droid ?",
+      "Which average Lifespan got the species Aleena ?",
       [
-        "unknown",
-        "70",
-        "120",
-        "indefinite"
+        "indefinite",
+        "80",
+        "700",
+        "79"
       ],
       3
     ]
   ],
   "1": [
     [
-      "Which Clima got the Planet Trandosha ?",
+      "Which population got the Planet Serenno ?",
       [
-        "temperate",
-        "temperate, arid, windy",
-        "arid",
-        "unknown"
-      ],
-      2
-    ],
-    [
-      "Which population got the Planet Concord Dawn ?",
-      [
-        "1000000",
-        "500000000",
-        "300000000",
-        "unknown"
-      ],
-      3
-    ]
-  ],
-  "2": [
-    [
-      "Which Homeworld got San Hill ?",
-      [
-        "https://swapi.co/api/planets/18/",
-        "https://swapi.co/api/planets/28/",
-        "https://swapi.co/api/planets/37/",
-        "https://swapi.co/api/planets/57/"
-      ],
-      3
-    ],
-    [
-      "Which Haircolor got Beru Whitesun lars ?",
-      [
-        "auburn",
-        "none",
-        "brown",
-        "n/a"
-      ],
-      2
-    ]
-  ],
-  "3": [
-    [
-      "How big have to be the Crew of Bantha-II cargo skiff ?",
-      [
-        "2",
-        "5",
-        "1",
-        "26"
+        "10000000",
+        "unknown",
+        "5200",
+        "500000000000"
       ],
       1
     ],
     [
-      "Which Vehicleclass got TIE bomber ?",
-      [
-        "submarine",
-        "airspeeder",
-        "space/planetary bomber",
-        "walker"
-      ],
-      2
-    ]
-  ],
-  "4": [
-    [
-      "How many Passengers can carry Republic Assault ship ?",
+      "Which Clima got the Planet Concord Dawn ?",
       [
         "unknown",
-        "139000",
-        "16000",
-        "20"
-      ],
-      2
-    ],
-    [
-      "How many Passengers can carry A-wing ?",
-      [
-        "0",
-        "unknown",
-        "6",
-        "600"
+        "temperate",
+        "artificial temperate ",
+        "hot, humid"
       ],
       0
     ]
   ],
+  "2": [
+    [
+      "Which Haircolor got Nute Gunray ?",
+      [
+        "white",
+        "none",
+        "black",
+        "brown"
+      ],
+      1
+    ],
+    [
+      "Which Homeworld got Sly Moore ?",
+      [
+        "https://swapi.co/api/planets/14/",
+        "https://swapi.co/api/planets/1/",
+        "https://swapi.co/api/planets/26/",
+        "https://swapi.co/api/planets/60/"
+      ],
+      3
+    ]
+  ],
+  "3": [
+    [
+      "Which Lenght in (m) got TIE bomber ?",
+      [
+        "9.8",
+        "7.8",
+        "140",
+        "28.82"
+      ],
+      1
+    ],
+    [
+      "Which Lenght in (m) got SPHA ?",
+      [
+        "20",
+        "4.5",
+        "3",
+        "140"
+      ],
+      3
+    ]
+  ],
+  "4": [
+    [
+      "How many Passengers can carry Star Destroyer ?",
+      [
+        "75",
+        "16000",
+        "0",
+        "48247"
+      ],
+      2
+    ],
+    [
+      "How Expensive (in Credits) is  Imperial shuttle ?",
+      [
+        "134999",
+        "1143350000",
+        "240000",
+        "35700"
+      ],
+      2
+    ]
+  ],
   "5": [
+    [
+      "Who is the Director of Return of the Jedi ?",
+      [
+        "Irvin Kershner",
+        "George Lucas",
+        "Richard Marquand",
+        "J. J. Abrams"
+      ],
+      2
+    ],
     [
       "Who is the Director of The Phantom Menace ?",
       [
-        "Irvin Kershner",
         "Richard Marquand",
-        "J. J. Abrams",
-        "George Lucas"
-      ],
-      3
-    ],
-    [
-      "Who is the Director of The Force Awakens ?",
-      [
         "George Lucas",
-        "J. J. Abrams",
         "Irvin Kershner",
-        "Richard Marquand"
+        "J. J. Abrams"
       ],
       1
     ]

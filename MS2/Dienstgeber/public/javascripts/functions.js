@@ -15,12 +15,12 @@ topics.push('people');
 topics.push('vehicles');
 topics.push('starships');
 topics.push('films');
-//topics.push('custom');
+topics.push('custom');
 
 init = async () => {
 
 
-    for (let i = 0; i < topics.length; i++) {
+    for (let i = 0; i < topics.length -1; i++) {
         let currentTopic = await getData(baseURL, "/"+ topics[i]+"/", '?page=1');
         ultraArray.push(currentTopic);
         // apiData leeren
@@ -58,13 +58,13 @@ init = async () => {
     console.log("\n\n##### System is waiting for incoming Requests #####");
 
     // Cleanup local Data | spelling (grey, gray) or undefined attributes
-    cleanUpData();
+    await cleanUpData();
 
     // Question Pool aufbauen.
     let myQuestionText;
     let arrayindex;
 
-        for (let j = 0; j < topics.length ; j++) {
+        for (let j = 0; j < topics.length - 1 ; j++) {
 
             // Get specific Topic (species, people, starships...)
             let specificTopic = getSpecificTopic(j);
@@ -123,6 +123,7 @@ getRandomTopic = () => {
 };
 
 cleanUpData = () => {
+    return new Promise((resolve, reject) => {
     let cleanArray = [];
     for (let i = 0; i < ultraArray.length; i++) {
         // 0,12345
@@ -146,6 +147,10 @@ cleanUpData = () => {
 
                 let singleKey = keys[k];
 
+                if (value[k] === null)
+                {
+                    console.log("NULL DATA WARNING");
+                }
                 if (value[k] === undefined || value[k] === null) {
                     value[k] = 'undefined';
                 }
@@ -161,8 +166,37 @@ cleanUpData = () => {
         cleanArray.push(categoryArray)
 
     }
-     ultraArray = cleanArray;
+     ultraArray = cleanArray
+     resolve(ultraArray);
+    });
 };
+
+
+getDBData = () => {
+    let counter = 0;
+    return new Promise((resolve, reject) => {
+        fs.readFile('database.json', (err, data) => {
+
+            if (err) throw err;
+            let isThereData = JSON.parse(data);
+            counter = isThereData.length;
+            resolve(isThereData)
+        })
+    })
+};
+saveDBData = (dataToSave) => {
+    //let counter = 0;
+    return new Promise((resolve, reject) => {
+        fs.writeFile('database.json', JSON.stringify(dataToSave, null, 2), (err, data) => {
+
+            if (err) throw err;
+            //let isThereData = JSON.parse(data);
+            //counter = isThereData.length;
+            resolve("Void?")
+        })
+    })
+};
+
 
 
 // QuestionPool für Quiz bereitstellen
@@ -205,9 +239,9 @@ getQuestionTemplate = (category) => {
     planetsText.push({text: "Which population got the Planet", cat: "population"});
 
     // Sample QuestionText ## Vehicles ##
-    vehicleText.push({text: "Which Vehicleclass got", cat: "vehicle_class"});
+    //vehicleText.push({text: "Which Vehicleclass got", cat: "vehicle_class"});
     vehicleText.push({text: "Which Lenght in (m) got", cat: "length"});
-    vehicleText.push({text: "How big have to be the Crew of", cat: "crew"});
+    //vehicleText.push({text: "How big have to be the Crew of", cat: "crew"});
 
     // Sample QuestionText ## Starships ##
     starshipText.push({text: "Which Starshipclass got", cat: "starship_class"});
@@ -325,6 +359,10 @@ getValue = (dataSource, category, questionText) => {
                                 randomAnswer = allAnswersOfTopic[getRandom(dataSource.length)];
                                 console.log("Neu generierte Antwort: " + randomAnswer);
                                 bool = true;
+                                if(randomAnswer === null)
+                                {
+                                    bool = false;
+                                }
                             }
                             if (bool) {
 

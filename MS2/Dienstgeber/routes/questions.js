@@ -5,7 +5,7 @@ const functions = require('../public/javascripts/functions');
 let baseURL = 'https://swapi.co/api';
 
 let myEditetObject = {};
-let postedContent = {};
+
 let answerArray = [];
 const fs = require('fs');
 
@@ -15,16 +15,18 @@ router.get('/', async (req, res) => {
     let myArray;
     let arrayindex;
     let myQuestionText;
-    let topics = [];
+    let topics = getAllTopics();
     let topicArray;
+    let myCustomQuestionArray;
+    let myCustomQuestion;
 
-    topics.push('species');
+/*    topics.push('species');
     topics.push('planets');
     topics.push('people');
     topics.push('vehicles');
     topics.push('starships');
     topics.push('films');
-    //topics.push('custom');
+    topics.push('custom');*/
 
     if (req.query.type === undefined) {
         let rnd = getRandom(topics.length);
@@ -34,7 +36,16 @@ router.get('/', async (req, res) => {
     } else if (req.query.type === 'custom') {
 
         // TODO: GET custom Question from Database
-        myQuestionText = getQuestionTemplate("custom");
+        myCustomQuestionArray = await getDBData();
+
+        if(myCustomQuestionArray.length === 0)
+        {
+            res.status(404).send("There are no custom questions saved")
+        }
+
+        let rnd = getRandom(myCustomQuestionArray.length)
+        myCustomQuestion = myCustomQuestionArray[rnd];
+
         arrayindex = 6;
 
     } else for (let i = 0; i < topics.length; i++) {
@@ -66,7 +77,6 @@ router.get('/', async (req, res) => {
         arrayindex = rnd;
     } else if (req.query.type === 'custom') {
 
-        // TODO: GET custom Question from Database
         myQuestionText = getQuestionTemplate("custom");
         arrayindex = 6;
 
@@ -104,28 +114,27 @@ router.get('/', async (req, res) => {
         arrayindex = 5;
     }*/
 
-    cleanUpData();
-    myArray = getAllData();
 
-    let myQuestion = await getValue(myArray[arrayindex], myQuestionText.cat, myQuestionText.text);
-    answerArray = [];
+    if(arrayindex !== 6)
+    {
+        await cleanUpData();
+        myArray = getAllData();
+        //console.log("MY ARRAY YOOOO \n" + JSON.stringify(myArray[arrayindex],null,2));
 
-    res.status(200).send(myQuestion);
+        let myQuestion = await getValue(myArray[arrayindex], myQuestionText.cat, myQuestionText.text);
+        answerArray = [];
+
+        res.status(200).send(myQuestion);
+
+    }
+    else
+    {
+
+        res.status(200).send(myCustomQuestion)
+    }
 
 });
 
-getDBData = () => {
-    let counter = 0;
-    return new Promise((resolve, reject) => {
-        fs.readFile('database.json', (err, data) => {
-
-            if (err) throw err;
-            let isThereData = JSON.parse(data);
-            counter = isThereData.length;
-            resolve(isThereData)
-        })
-    })
-};
 
 
 router.put('/', async (req, res) => {
@@ -216,6 +225,11 @@ router.put('/', async (req, res) => {
                     });
                 }
             }
+            else
+            {
+                res.contentType("text/plain");
+                res.status(401).send("Your are not authorized to apply changes")
+            }
         }
         res.status(200).send(stockData);
     }
@@ -223,6 +237,7 @@ router.put('/', async (req, res) => {
 });
 
 router.post('/', async (req, res, next) => {
+    let postedContent = {};
     let counterr = await getDBData();
     let counter = counterr.length;
 
@@ -253,7 +268,29 @@ router.post('/', async (req, res, next) => {
 
     let myData = [];
 
-    fs.readFile('database.json', (err, data) => {
+
+    let yourData = [];
+
+    let dbData = [];
+    dbData = await getDBData();
+
+    let postedContentArray = [];
+
+    postedContentArray.push(postedContent);
+
+    // TRICKY TRICKY
+
+    console.log("hilfe" + JSON.stringify(dbData, null, 2))
+    console.log("auch hilfe" + JSON.stringify(postedContentArray, null, 2))
+    yourData = dbData.concat(postedContentArray)
+
+    await saveDBData(yourData);
+    res.status(200).send(JSON.stringify(yourData, null, 2));
+
+
+
+
+/*    fs.readFile('database.json', (err, data) => {
         if (err) throw err;
         let dbData = JSON.parse(data);
         console.log(dbData);
@@ -270,22 +307,45 @@ router.post('/', async (req, res, next) => {
         });
 
         res.status(200).send(JSON.stringify(myData, null, 2));
-    });
+    });*/
 
 });
 
-router.delete('/:questionID', async (req, res, next) => {
+router.delete('/:questionID', async (req, res) => {
 
 
     console.log(req.params);
 
     let myDBData = await getDBData();
-
+    let gotEntry = false;
+    if(myDBData.length === 0)
+    {
+        res.contentType("text/plain");
+        res.status(404).send("There are no custom questions saved")
+    }
     //Check if userID match
+
+
+
+
     for (let i = 0; i < myDBData.length; i++) {
 
         let innerKeys = Object.keys(myDBData);
+
+        console.log("HIIILFEEE SOS" + innerKeys[i] + "\n\n");
         if (req.params["questionID"] === innerKeys[i]) {
+            gotEntry = true;
+            /*let innerObject = Object.values(innerKeys[i]);
+
+            let x = innerObject[0];
+
+            if (x[3] === req.body.userID) {
+                console.log("Stimmt!!!");
+            }
+            else
+            {
+                console.log("niete");
+            }*/
 
             myDBData.splice(i, 1);
 
@@ -295,12 +355,20 @@ router.delete('/:questionID', async (req, res, next) => {
             });
 
         }
+/*        else
+        {
+
+        }*/
         // Testing purpose check whats inside object
         /*let innerObject = Object.values(myDBData[i]);
         let x = innerObject[0];
         //console.log("x2" +x[2])
         console.log("\n UserID: " + x[3]);
         console.log("req.body: " + req.body.userID)*/
+    }
+    if(!gotEntry){
+        res.contentType("text/plain");
+        res.status(404).send("Question with QuestionID : " + req.params["questionID"] + " was not found")
     }
     res.status(200).send(myDBData);
 });

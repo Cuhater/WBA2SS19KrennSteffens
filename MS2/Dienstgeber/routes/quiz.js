@@ -11,21 +11,39 @@ router.get('/', async (req, res, next) => {
     console.log('This is after gettin data in quiz.js');
     console.log(questionPool)
     let myQuiz = [];
-
+    let isCustom = false;
+    let customDataEntries;
     let quizSize = 5;
 
 
     let topics = getAllTopics();
 
-    if(req.query.type === undefined){
 
+
+    if(req.query.type === 'custom'){
+        isCustom = true;
+
+        let customDataArray = await getDBData()
+        customDataEntries = Object.values(customDataArray);
+        //console.log("customDataArray" + customDataEntries);
+
+
+
+
+        for (let j = 0; j < quizSize ; j++){
+
+            let rnd = getRandom(customDataEntries.length)
+            myQuiz.push(customDataEntries[rnd])
+        }
+        res.status(200).send(myQuiz)
     }
 
     for (let i = 0; i < topics.length; i++) {
 
         //console.log(topics[i]);
 
-        if(req.query.type === topics[i])
+
+        if (req.query.type === topics[i] && !isCustom)
         {
             let topicData = questionPool[i]
 
@@ -42,12 +60,11 @@ router.get('/', async (req, res, next) => {
 
 
     if(req.query.type === undefined){
-        // TODO : Shakker randomtopicQuiz? :D
+
 
 
         console.log("hallo");
-        let rndTopic = getRandom(topics.length)
-
+        let rndTopic = getRandom(topics.length - 1)
         let rndTopicData = questionPool[rndTopic]
 
         for (let i = 0; i < quizSize; i++) {
@@ -59,7 +76,11 @@ router.get('/', async (req, res, next) => {
 
 
     console.log("Hallo hier kommen die Quizze hin :>");
-    res.status(200).send(myQuiz);
+    if(!isCustom){
+        res.status(200).send(myQuiz);
+    }
+
+
 });
 
 
