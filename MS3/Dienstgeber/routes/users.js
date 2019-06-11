@@ -21,26 +21,26 @@ router.post('/', function(req, res){
 
     // TODO : ISSUE ! NEDSTED ARRAY :(++
     //console.log(req.body);
-    let mytesti = req.body;
+    let requestedObject = req.body;
 
-    console.log(mytesti);
+    console.log(requestedObject);
 
 /*    console.log(mytesti['users'][0] + " KOMM SCHON");
     console.log(mytesti['users'] + " KOMM SCHON");
 
 
     console.log(mytesti[0]);*/
-
+/*
 
     console.log(mytesti.users[0].id);
     console.log(mytesti.users[1].score);
     console.log(mytesti.users[2].id);
-    console.log(mytesti.users[3].score);
-    let dst = JSON.stringify(req.body,null,2);
+    console.log(mytesti.users[3].score);*/
+    /*//let dst = JSON.stringify(req.body,null,2);
     console.log("DST - " + dst);
-    console.log("DST lengt- " + dst.length);
+    //console.log("DST lengt- " + dst.length);
     console.log("DST 0- " + dst[0]);
-    console.log("DST users- " + dst["users"]);
+    console.log("DST users- " + dst["users"]);*/
 
 
   /*  for (let i = 0; i < dst.length; i++) {
@@ -108,6 +108,9 @@ router.post('/', function(req, res){
     userArray.push(userObject);*/
     //let newData = setUserData(myTestiii);
     //console.log("WASCHDALOS?" + req.body.users);
+    setUserData(requestedObject)
+
+
     res.status(200).send("POST WURDE AUFEGRUDEN")
 });
 

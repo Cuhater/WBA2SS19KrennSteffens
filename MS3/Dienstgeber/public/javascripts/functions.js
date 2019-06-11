@@ -476,12 +476,14 @@ getUserData = () => {
 
 }
 setUserData = (dataToSave) => {
-
+    return new Promise((resolve, reject) => {
     fs.writeFile('userDB.json', JSON.stringify(dataToSave, null,2), (err) => {
-        if (err) throw err;
+        if (err) throw reject(err);
         // success case, the file was saved
         console.log('User was created');
+        resolve(dataToSave)
     });
+    })
     // TODO: add user?
 }
 updateUserData = () => {

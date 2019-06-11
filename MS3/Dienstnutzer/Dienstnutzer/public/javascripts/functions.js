@@ -2,8 +2,10 @@ const express = require('express');
 const functions = express();
 const http = require('http');
 http.post = require('http-post');
+const request = require('request');
+
 let currentUser;
-let currentScore;
+let currentScore = 0;
 
 
 getSingleQuestion = () => {
@@ -11,41 +13,7 @@ getSingleQuestion = () => {
     alert("HALLOOOO")
 }
 
-checkAnswer = (givenAnswer, correctAnswer) => {
-    console.log("HILLLLLLLLLLLLLLLLLLFE");
-    let myDOM;
-    let count = 1;
-    let correct = false;
-    console.log(givenAnswer);
-    console.log(correctAnswer);
-    if (givenAnswer === correctAnswer) {
 
-        //setPlayerScore(count, 10)
-        //testi();
-
-        console.log("DIE ANTWORT IST KORREKT");
-        //this.style.backgroundColor ="green";
-        correct = true;
-        myDOM = document.getElementsByClassName("answers");
-        myDOM[0].children[correctAnswer].style.backgroundColor = "green";
-
-    } else {
-        console.log("HILLLLLLLLLLLLLLLLLLFE");
-        //setPlayerScore(count, -10)
-        myDOM = document.getElementsByClassName("answers");
-        let childrenLength = document.getElementsByClassName("answers");
-
-        console.log("NÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖÖT" + childrenLength);
-        correct = false;
-
-        for (let i = 0; i < 4; i++) {
-            myDOM[0].children[i].style.backgroundColor = "red";
-        }
-        myDOM[0].children[correctAnswer].style.backgroundColor = "green";
-    }
-
-
-}
 testi = () => {
     console.log("SOS")
 }
@@ -176,11 +144,13 @@ postUsers = (dataToSave) => {
 
     let anotherTest = dataToSave;
 
+
+
+
     const options = {
         hostname: 'localhost',
         port: 3000,
         path: '/users',
-        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
            // 'Content-Length': Buffer.byteLength(testObject)
@@ -217,6 +187,9 @@ postUsers = (dataToSave) => {
         ]
     }
 
+    // TODO : HTTP POST CODE
+/*
+
     console.log("testobjekt was übergeben wird im post" + myObj)
     return new Promise((resolve, reject) => {
 
@@ -233,6 +206,31 @@ postUsers = (dataToSave) => {
             })
         })
     })
+*/
+
+    // TODO : REQUEST POST CODE
+
+    return new Promise((resolve, reject) => {
+
+        request.post('http://localhost:3000/users', {
+            json: dataToSave
+        }, (error, res, body) => {
+            if (error) {
+                console.error(error)
+                reject(error)
+                return
+            }
+            console.log(`statusCode: ${res.statusCode}`)
+            console.log(body)
+            resolve(body)
+        })
+
+    })
+
+
+
+
+
 
 }
 
@@ -270,15 +268,45 @@ updatePlayerScore = (userID, userScore) => {
     let updated = true;
     return updated
 }
-getPlayerScore = () => {
-    /*    let dbScore;
-        if(currentScore === undefined)
-        {
-            dbScore = getSpecificPlayerScore(currentUser);
-            currentScore = dbScore
-        }*/
 
+getPlayerScoree = () => {
     return currentScore
+}
+
+getPlayerScore = async (userID) => {
+
+    if(currentScore !== 0)
+    {
+        let userData = await getUsers();
+
+        let users = userData["users"]
+
+        console.log("userData " + userData);
+        console.log("userData uu" + userData["users"]);
+        console.log("userData length " + userData.length);
+
+        for (let i = 0; i < users.length; i++) {
+
+            if(users[i].id === userID)
+            {
+                console.log()
+                currentScore = users[i].score;
+            }
+        }
+        /*    let dbScore;
+            if(currentScore === undefined)
+            {
+                dbScore = getSpecificPlayerScore(currentUser);
+                currentScore = dbScore
+            }*/
+
+        return currentScore
+    }
+    else
+    {
+        return 0;
+    }
+
 }
 
 getSpecificPlayerScore = (userID) => {

@@ -33,10 +33,13 @@ router.get('/', async function(req, res, next) {
 
         let status = await postUsers(myTest);
         console.log("hat geklappt?" + status)
+        let testscore = await getPlayerScore(userIDreq.userID);
+        console.log(testscore + " testi scori")
     }
     else
     {
         console.log("User is defined : " + userID);
+
     }
 
 
