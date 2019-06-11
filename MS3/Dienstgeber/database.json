@@ -1,0 +1,67 @@
+[
+  {
+    "0": [
+      "Wer war Darth Vader im früheren Leben?",
+      {
+        "a1": "Luke Skywalker",
+        "a2": "Obi-Wan Kenobi",
+        "a3": "Anakin Skywalker",
+        "a4": "Jar-Jar Binks"
+      },
+      2,
+      2323
+    ]
+  },
+  {
+    "1": [
+      "Wie heißt Imperator Palpatine mit seinem Sith-Namen?",
+      {
+        "a1": "Darth Vader",
+        "a2": "Dath Tyranus",
+        "a3": "Darth Sidious",
+        "a4": "Darth Maul"
+      },
+      2,
+      70
+    ]
+  },
+  {
+    "2": [
+      "Wie heißt Meister Kenobi mit vollem Namen?",
+      {
+        "a1": "Obi Kenoben",
+        "a2": "Obi-Ben Kenobi",
+        "a3": "Obi-Wan Ben Kenobi",
+        "a4": "Obi-Wan Kenobi"
+      },
+      3,
+      12
+    ]
+  },
+  {
+    "3": [
+      "Welche Farbe hat Kit Fistos Laserschwert?",
+      {
+        "a1": "Gelb",
+        "a2": "Lila",
+        "a3": "Blau",
+        "a4": "Grün"
+      },
+      3,
+      5
+    ]
+  },
+  {
+    "4": [
+      "Über welchen Planeten baute das I Galaktische Imperium den 2 Todesstern?",
+      {
+        "a1": "Fondor",
+        "a2": "Endor",
+        "a3": "Bendor",
+        "a4": "Grendor"
+      },
+      1,
+      32
+    ]
+  }
+]

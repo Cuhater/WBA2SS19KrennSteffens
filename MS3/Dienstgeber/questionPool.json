@@ -1,0 +1,134 @@
+{
+  "0": [
+    [
+      "Which average Lifespan got the species Xexto ?",
+      [
+        "unknown",
+        "400",
+        "700",
+        "100"
+      ],
+      0
+    ],
+    [
+      "Which Skincolor(s) got the species Sullustan ?",
+      [
+        "pale, brown, red, orange, yellow",
+        "blue, grey",
+        "green, yellow",
+        "pale"
+      ],
+      3
+    ]
+  ],
+  "1": [
+    [
+      "Which Terrain got the Planet Tholoth ?",
+      [
+        "unknown",
+        "rainforests, rivers, mountains",
+        "plains, urban, hills, forests",
+        "plains, forests, hills, mountains"
+      ],
+      0
+    ],
+    [
+      "Which Terrain got the Planet Corellia ?",
+      [
+        "swamps, lakes",
+        "mountains, fields, forests, rock arches",
+        "barren, ash",
+        "plains, urban, hills, forests"
+      ],
+      3
+    ]
+  ],
+  "2": [
+    [
+      "Which Haircolor got Darth Maul ?",
+      [
+        "black",
+        "none",
+        "unknown",
+        "blond"
+      ],
+      1
+    ],
+    [
+      "Which Homeworld got Mon Mothma ?",
+      [
+        "https://swapi.co/api/planets/49/",
+        "https://swapi.co/api/planets/44/",
+        "https://swapi.co/api/planets/32/",
+        "https://swapi.co/api/planets/1/"
+      ],
+      2
+    ]
+  ],
+  "3": [
+    [
+      "Which Lenght in (m) got AT-TE ?",
+      [
+        "17.4",
+        "3.4",
+        "20",
+        "13.2"
+      ],
+      3
+    ],
+    [
+      "Which Lenght in (m) got TIE/IN interceptor ?",
+      [
+        "7",
+        "3.68",
+        "9.6",
+        "unknown"
+      ],
+      2
+    ]
+  ],
+  "4": [
+    [
+      "How many Passengers can carry J-type diplomatic barge ?",
+      [
+        "16",
+        "0",
+        "unknown",
+        "10"
+      ],
+      3
+    ],
+    [
+      "How Expensive (in Credits) is  Naboo star skiff ?",
+      [
+        "104000000",
+        "unknown",
+        "1000000",
+        "175000"
+      ],
+      1
+    ]
+  ],
+  "5": [
+    [
+      "Who is the Director of The Empire Strikes Back ?",
+      [
+        "George Lucas",
+        "Irvin Kershner",
+        "Richard Marquand",
+        "J. J. Abrams"
+      ],
+      1
+    ],
+    [
+      "Who is the Director of Revenge of the Sith ?",
+      [
+        "Irvin Kershner",
+        "Richard Marquand",
+        "George Lucas",
+        "J. J. Abrams"
+      ],
+      2
+    ]
+  ]
+}

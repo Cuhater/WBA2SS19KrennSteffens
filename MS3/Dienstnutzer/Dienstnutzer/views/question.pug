@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    // Setup Nav
+    ul
+        li
+            a(href='/') Login
+        li
+            a(href='/dashboard') Dashboard
+        li
+            a.active(href='/question') question
+        li
+            a(href='/quiz') quiz
+        li
+            a(href='/profile') Settings
+
+
+
+
+
+    .maincontent
+        h2 Choose your Answer
+        br
+        | #{qText}
+        .answers
+
+            button(onclick='checkAnswer(' + '"' + 0 + '"' + ',' + '"' + ra + '"' + ')') #{qAnswer0}
+            button(onclick='checkAnswer(' + '"' + 1 + '"' + ',' + '"' + ra + '"' + ')') #{qAnswer1}
+            button(onclick='checkAnswer(' + '"' + 2 + '"' + ',' + '"' + ra + '"' + ')') #{qAnswer2}
+            button(onclick='checkAnswer(' + '"' + 3 + '"' + ',' + '"' + ra + '"' + ')') #{qAnswer3}
+
+
+            | #{ra}
+
+
+
+

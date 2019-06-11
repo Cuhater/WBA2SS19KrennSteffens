@@ -1,0 +1,193 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  /*
+  background: #BA8B02;  !* fallback for old browsers *!
+  background: -webkit-linear-gradient(to bottom, #181818, #BA8B02);  !* Chrome 10-25, Safari 5.1-6 *!
+  background: linear-gradient(to bottom, #181818, #BA8B02); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!
+  */
+
+}
+
+@font-face {
+  font-family: "Starjedi";
+  src: url("../fonts/Starjedi.ttf");
+  src: url("../fonts/Starjedi.ttf") format("ttf"),
+
+}
+
+
+.container{
+  height:200px;
+  padding: 3vh 10vw;
+  padding-left:250px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
+  background: rgb(69,72,77); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+
+
+
+}
+.text-container{
+  padding-left:0%;
+
+}
+
+.info{
+  position:absolute;
+  top:11.5vh;
+  left:16px;
+  color:white;
+  font-size:1.1rem;
+}
+
+html {
+  background: rgb(186, 43, 43);
+  background: linear-gradient(90deg, rgba(186, 43, 43, 1) 0%, rgba(88, 9, 9, 1) 20%, rgba(0, 0, 0, 1) 50%, rgba(9, 19, 94, 1) 80%, rgba(46, 91, 180, 1) 100%);
+  font-family: "Starjedi";
+}
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+h2{
+  font-size:2.5rem;
+  color:white;
+
+}
+*{
+  margin:0;
+  font-family: "Starjedi";
+}
+p{
+  padding-top:1rem;
+  font-size:1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+a {
+  color: #00B7FF;
+}
+
+.center {
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.maincontent{
+  padding:25px;
+  font-size:1.3rem;
+  font-family: 'Orbitron', sans-serif;
+  color:white;
+  margin-left: 250px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  min-height: calc(60vh - 50px);
+  background: rgb(69,72,77); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(69,72,77,0.8) 0%, rgba(0,0,0,0.2) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(69,72,77,0.8) 0%,rgba(0,0,0,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(69,72,77,0.8) 0%,rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+ ul {
+
+   font-size:1.5rem;
+   list-style-type: none;
+   top:calc(200px + 6vh);
+   padding: 0;
+   width: 200px;
+   background-color: rgba(242, 242, 242, 0.95);
+   height: 100%; /* Full height */
+   position: fixed; /* Make it stick, even on scroll */
+   overflow: auto;
+
+ }
+
+ li:first-child{
+  /*   padding-bottom:45px;
+     font-size:7rem;*/
+   text-align: center;
+ }
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  color: white;
+  background-color: #dcbe00;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+
+.answers button {
+  margin-top:1rem;
+  margin-left: 1rem;
+  background-color: grey;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  min-width: 40vw;
+  color:white;
+  font-size:1.5rem;
+}
+.answers button:hover {
+  background-color: #555;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  min-height:350px;
+}

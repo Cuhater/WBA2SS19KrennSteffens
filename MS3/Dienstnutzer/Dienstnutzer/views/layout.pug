@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    - userID = getSessionUserID()
+    - score = getPlayerScore()
+    title= title
+    link(rel='stylesheet', type="text/css", href='/stylesheets/style.css')
+    script(type='text/javascript', src='/javascripts/functions.js')
+    link(href='https://fonts.googleapis.com/css?family=Orbitron&display=swap', rel='stylesheet')
+  body
+
+    // Setup PlayerScore
+    .info
+        | Player Nr : #{userID}
+        br
+        | Playerscore :
+        br
+        | #{score}
+
+    .container
+      .text-container
+        h2 #{title}
+        p
+          | Welcome to the Dashboard of Quiz-Wars.
+          br
+          |     Feel free to try one of the Options listed below.
+          br
+          |     More detailed informaionen will displayed if the option is selected
+
+
+    block content

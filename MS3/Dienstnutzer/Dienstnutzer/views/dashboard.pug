@@ -1,0 +1,48 @@
+extends layout
+
+block content
+
+    // Setup Nav
+    ul
+        li
+            a(href='/') Login
+        li
+            a.active(href='/dashboard') Dashboard
+        li
+            a(href='/question') question
+        li
+            a(href='/quiz') quiz
+        li
+            a(href='/profile') Settings
+
+
+
+    .maincontent
+
+        .tab
+            button.tablinks(onclick="openCity(event, 'Random')") Random
+            |
+            button.tablinks(onclick="openCity(event, 'Paris')") Specific Category
+            |
+            button.tablinks(onclick="openCity(event, 'Tokyo')") Custom Question
+        // Tab content
+        #Random.tabcontent
+            h3 Random
+            |
+            p
+                | Eine Random Frage kann aus allen Kategorien und allen Schwierigkeitsgraden bestehen.
+                br
+                | Um eine Frage anzufordern den untenliegenden Button drücken
+
+            button(onclick="getSingleQuestion()") Get Random question
+        #Paris.tabcontent
+            h3 Paris
+            |
+            p Paris is the capital of France.
+        #Tokyo.tabcontent
+            h3 Tokyo
+            |
+            p Tokyo is the capital of Japan.
+
+
+

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+  ul
+    li
+      a.active(href='/') Login
+    li
+      a(href='/dashboard') Dashboard
+    li
+      a(href='/question') question
+    li
+      a(href='/quiz') quiz
+    li
+      a(href='/profile') Settings
+
+
+
+  .maincontent
+    h1 Login
+    p Welcome to #{title}
+    form(method='GET' action='/dashboard')
+      div.form-group
+        label(for='name') user iD:
+        input#name.form-control(type='text', placeholder='user iD' name='userID')
+      button.btn.btn-primary(type='submit') Login
