@@ -114,11 +114,54 @@ router.post('/', function(req, res){
     res.status(200).send("POST WURDE AUFEGRUDEN")
 });
 
-router.put('/', function(req, res){
+router.put('/', async function(req, res){
 
     // TODO : Change UserScore in Database
 
-    res.send('respond with a resource');
+    let requestedObject = req.body;
+
+    console.log(req.body.length);
+    console.log(req.body.score);
+    console.log(req.body.id);
+    console.log(JSON.stringify(req.body,null,2));
+
+
+    console.log(requestedObject + " RO");
+
+
+    // TODO : LOAD USER DATA
+    // PUT VALUE IN ID
+
+    let userDBData = await getUserData();
+    let testi
+    console.log("userDB " + userDBData['users']);
+
+    let userData = userDBData['users'];
+
+    for (let i = 0; i < userDBData['users'].length ; i++) {
+        if(userDBData['users'][i].id === req.body.id)
+        {
+            testi = userDBData['users'][i].score + parseInt(req.body.score);
+            console.log(testi + "TESTI :>")
+            userDBData['users'][i].score = testi;
+
+        }
+        console.log("score wurde auf " + userDBData['users'][i].score + " gesetzt");
+    }
+
+    //console.log("CURR USER DADA" + userDBData)
+    setUserData(userDBData)
+
+
+
+
+
+    // TODO : SAVE USER DATA
+    // respond with ka? :D
+
+
+
+    res.sendStatus(200).send(testi);
 });
 
 router.delete('/', function(req, res){

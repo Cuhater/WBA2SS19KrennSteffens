@@ -1,7 +1,10 @@
 extends layout
 
+
 block content
+
     // Setup Nav
+
     ul
         li
             a(href='/') Login
@@ -17,8 +20,17 @@ block content
 
 
 
+    .start
+        button(onclick='startTimer('+ '"' + ra + '"' + ')') Start question
+    .questionContent
+        .counter-text Time to Answer:
+        #counter 20
+        .qstatus
+            #aRight $
+            #aWrong #
+            #points 0
 
-    .maincontent
+
         h2 Choose your Answer
         br
         | #{qText}

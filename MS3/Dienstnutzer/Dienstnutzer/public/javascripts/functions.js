@@ -7,16 +7,16 @@ const request = require('request');
 let currentUser;
 let currentScore = 0;
 
+testii = (score) => {
+    currentScore = score;
+}
+
 
 getSingleQuestion = () => {
     console.log("HILFE");
     alert("HALLOOOO")
 }
 
-
-testi = () => {
-    console.log("SOS")
-}
 
 setSessionUser = (userID) => {
     currentUser = userID
@@ -29,7 +29,7 @@ setUserID = async (userID) => {
     console.log("---------------------------------------------------------------------------")
 
     console.log("EXISTING" + JSON.stringify(existingUsers, null, 2))
-    console.log("EXISTING" + existingUsers["users"].length)
+    console.log("EXISTING" + existingUsers)
 
     return new Promise((resolve, reject) => {
         currentUser = userID
@@ -234,7 +234,7 @@ postUsers = (dataToSave) => {
 
 }
 
-setPlayerScore = (count, difficulty) => {
+/*setPlayerScore = (count, difficulty) => {
 
 
     console.log("get Playerscore INIT");
@@ -257,19 +257,60 @@ setPlayerScore = (count, difficulty) => {
     }
 
 
-}
+}*/
 
-updatePlayerScore = (userID, userScore) => {
-    currentUser = userID;
+updatePlayerScore = (userScore) => {
+    //currentUser = userID;
     currentScore = userScore;
 
     console.log("Score for player " + currentUser + " has been updated for " + currentScore)
 
-    let updated = true;
-    return updated
+
+    let jsonObject = {};
+
+    jsonObject.id = currentUser;
+    jsonObject.score = userScore;
+
+
+    console.log ("PUT AUFRUFEN!!!");
+
+    return new Promise((resolve, reject) => {
+
+    request.put('http://localhost:3000/users', {
+            json: jsonObject
+        }, (error, res, body) => {
+            if (error) {
+                console.error(error)
+                reject(error)
+                return
+            }
+            resolve(res.statusCode)
+            console.log(`statusCode: ${res.statusCode}`)
+
+        })
+    })
+
+
+
 }
 
-getPlayerScoree = () => {
+updateSessionPlayerScore = (score) => {
+
+    console.log("\n\n HALLLOOO ETSSSST  \n\n" + score)
+
+    if(score === -10)
+    {
+        console.log("MINUTZ");
+    }
+    if(score === 10)
+    {
+        console.log("PLUS");
+    }
+
+    currentScore = score;
+}
+
+getSessionPlayerScore = () => {
     return currentScore
 }
 
@@ -327,23 +368,3 @@ getSpecificPlayerScore = (userID) => {
 }
 
 
-function openCity(evt, cityName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}

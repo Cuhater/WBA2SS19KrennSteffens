@@ -8,8 +8,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dashRouter = require('./routes/dashboard');
 var questionRouter = require('./routes/question');
-var requirejs = require('requirejs')
+var expressBrowserify = require('express-browserify');
 var app = express();
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

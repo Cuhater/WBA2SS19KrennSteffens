@@ -2,10 +2,9 @@ doctype html
 html
   head
     - userID = getSessionUserID()
-    - score = getPlayerScoree()
+    - score = getSessionPlayerScore()
     title= title
     link(rel='stylesheet', type="text/css", href='/stylesheets/style.css')
-    script(type='text/javascript', src='/javascripts/functions.js')
     script(type='text/javascript', src='/javascripts/clientsideJS.js')
     link(href='https://fonts.googleapis.com/css?family=Orbitron&display=swap', rel='stylesheet')
   body

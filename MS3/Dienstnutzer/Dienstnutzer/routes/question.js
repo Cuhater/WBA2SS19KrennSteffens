@@ -6,7 +6,6 @@ const https = require('https');
 router.get('/', async function(req, res, next) {
     let data = '';
 
-
     await https.get('https://quiz-wars.herokuapp.com/questions', (resp) => {
 
 

@@ -20,11 +20,11 @@ block content
     .maincontent
 
         .tab
-            button.tablinks(onclick="openCity(event, 'Random')") Random
+            button#defaultOpen.tablinks(onclick="openCity(event, 'Random')") Random question
             |
             button.tablinks(onclick="openCity(event, 'Paris')") Specific Category
             |
-            button.tablinks(onclick="openCity(event, 'Tokyo')") Custom Question
+            button.tablinks(onclick="openCity(event, 'Tokyo')") Custom question
         // Tab content
         #Random.tabcontent
             h3 Random

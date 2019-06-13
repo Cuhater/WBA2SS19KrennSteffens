@@ -43,12 +43,14 @@ body {
   left:16px;
   color:white;
   font-size:1.1rem;
+  letter-spacing: normal;
 }
 
 html {
   background: rgb(186, 43, 43);
   background: linear-gradient(90deg, rgba(186, 43, 43, 1) 0%, rgba(88, 9, 9, 1) 20%, rgba(0, 0, 0, 1) 50%, rgba(9, 19, 94, 1) 80%, rgba(46, 91, 180, 1) 100%);
   font-family: "Starjedi";
+
 }
 
 html {
@@ -66,12 +68,14 @@ h2{
 *{
   margin:0;
   font-family: "Starjedi";
+  letter-spacing: 0.1em;
 }
 p{
   padding-top:1rem;
   font-size:1.2rem;
   font-family: 'Orbitron', sans-serif;
   color: white;
+  letter-spacing: normal;
 }
 a {
   color: #00B7FF;
@@ -83,7 +87,76 @@ a {
   padding: 10px;
 }
 
+.qstatus{
+  position: absolute;
+  padding-top: 5%;
+  right: 14vw;
+  font-size: 10rem;
+}
+
+#aRight{
+  padding-left:1rem;
+  color: greenyellow;
+  display: none;
+}
+#aWrong{
+  padding-left:1rem;
+  color: red;
+  display: none;
+}
+#points{
+  font-size:5rem;
+  display: none;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#counter{
+  display:block;
+  position: absolute;
+  right:9%;
+  font-size:3rem;
+  margin-top: -9px;
+}
+.counter-text{
+  display:block;
+  position: absolute;
+  padding-top: 1.4rem;
+  right:15%;
+
+}
+.start{
+  padding:25px;
+  margin-left: 250px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+}
+.start button{
+  font-size:2rem;
+  padding: 25px 50px 25px 50px;
+}
+
+.questionContent{
+  display:none;
+  padding:25px;
+  font-size:1.3rem;
+  font-family: 'Orbitron', sans-serif;
+  color:white;
+  margin-left: 250px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  min-height: calc(60vh - 50px);
+  background: rgb(69,72,77); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(69,72,77,0.8) 0%, rgba(0,0,0,0.2) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(69,72,77,0.8) 0%,rgba(0,0,0,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(69,72,77,0.8) 0%,rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+
 .maincontent{
+
   padding:25px;
   font-size:1.3rem;
   font-family: 'Orbitron', sans-serif;
@@ -117,13 +190,14 @@ a {
  li:first-child{
   /*   padding-bottom:45px;
      font-size:7rem;*/
-   text-align: center;
+
  }
 li a {
   display: block;
   color: #000;
   padding: 8px 16px;
   text-decoration: none;
+
 }
 
 li a.active {
@@ -148,6 +222,7 @@ li a:hover:not(.active) {
   padding: 14px 16px;
   transition: 0.3s;
   min-width: 40vw;
+  width: 50vw;
   color:white;
   font-size:1.5rem;
 }
@@ -190,4 +265,8 @@ li a:hover:not(.active) {
   border: 1px solid #ccc;
   border-top: none;
   min-height:350px;
+}
+.maincontent:nth-child(1){
+  display:block;
+  color:pink;
 }
