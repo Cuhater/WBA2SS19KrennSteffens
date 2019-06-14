@@ -1,4 +1,38 @@
-document.getElementById("defaultOpen").click();
+if (window.location.href.match('dashboard') != null) {
+
+    setTimeout(function () {
+        if (document.readyState === "complete") {
+            let mainContent = document.getElementsByClassName("tabcontent");
+            mainContent[0].style.display = "block";
+        } else {
+            console.log("RISS");
+            alert("aaaaaaaa")
+        }
+    }, 500); // 5 seconds
+}
+
+
+testit = () =>{
+
+}
+
+startLoading = () => {
+    let loadingObject = document.getElementsByClassName("loading")
+    loadingObject[0].style.display = "block";
+}
+
+stopLoading = () => {
+    let loadingObject = document.getElementsByClassName("loading")
+    loadingObject[0].style.display = "none";
+}
+
+getSingleQuestion = (query) => {
+    startLoading();
+    let myLocation = '/question ${query}'
+    console.log('/questions' + query + "\n\n\n SHIIIIIIIIIIIIIIIED")
+    window.location.href = '/question?type=' + query;
+}
+
 
 startTimer = (correctAnswer) => {
 
@@ -9,26 +43,31 @@ startTimer = (correctAnswer) => {
     let startButton = startButtonClass[0];
     startButton.style.display = "none";
 
-    let timerId = setTimeout ( function tick() {
+    let timerId = setTimeout(function tick() {
         let counter = parseInt(document.getElementById("counter").textContent);
         document.getElementById("counter").textContent = counter - 1;
         if (counter > 1)
             timerId = setTimeout(tick, 1000);
-            console.log("MYTEST :O " + counter)
-            if(counter === 1)
-            {
-                console.log("RASTE AUS TIMER OVER");
-                wrongAnswer(correctAnswer);
-            }
+        console.log("MYTEST :O " + counter)
+        if (counter === 1) {
+            console.log("RASTE AUS TIMER OVER");
+            wrongAnswer(correctAnswer);
+        }
     }, 1000);
 }
 
-checkAnswer = (givenAnswer, correctAnswer) => {
+
+checkAnswer = (givenAnswer, correctAnswer, count) => {
+
+    let quizScore = 0;
+
     let myDOM;
-    let count = 1;
     let correct = false;
     console.log(givenAnswer);
     console.log(correctAnswer);
+    alert('COUNT OLD' + count)
+    count ++;
+    alert('COUNT NEW' + count)
     if (givenAnswer === correctAnswer) {
 
         //setPlayerScore(count, 10)
@@ -42,12 +81,22 @@ checkAnswer = (givenAnswer, correctAnswer) => {
 
         document.getElementById('aRight').style.display = "block";
         document.getElementById('points').style.display = "block";
-        document.getElementById('points').innerHTML="+ 10 ";
+        document.getElementById('points').innerHTML = "+ 10 ";
 
+        if (window.location.href.match('quiz') != null) {
+            quizScore += 10;
+            setTimeout(function () {
+            window.location.href =  '/quiz?question=' + count;
+            }, 3000); // 5 seconds
 
-        setTimeout(function () {
-            window.location.href = "/dashboard?score=10";
-        },3000); // 5 seconds
+        }
+        else
+        {
+            setTimeout(function () {
+                window.location.href = "/dashboard?score=10";
+            }, 3000); // 5 seconds
+        }
+
         /*  WORKAROUND HREF TO NODE JS AND CALL METHOD */
 
 
@@ -60,9 +109,10 @@ checkAnswer = (givenAnswer, correctAnswer) => {
 
 }
 
-
-wrongAnswer = (correctAnswer) =>
-{
+getDashboard = () => {
+    window.location.href = "/dashboard?score=100";
+}
+wrongAnswer = (correctAnswer) => {
     let myDOM = document.getElementsByClassName("answers");
     let childrenLength = document.getElementsByClassName("answers");
     let correct = false;
@@ -74,10 +124,10 @@ wrongAnswer = (correctAnswer) =>
 
     document.getElementById('aWrong').style.display = "block";
     document.getElementById('points').style.display = "block";
-    document.getElementById('points').innerHTML="- 10 ";
+    document.getElementById('points').innerHTML = "- 10 ";
     setTimeout(function () {
-    window.location.href = "/dashboard?score=-10";
-    },3000); // 5 seconds
+        window.location.href = "/dashboard?score=-10";
+    }, 3000); // 5 seconds
     //updatePlayerScore(-10);
 }
 

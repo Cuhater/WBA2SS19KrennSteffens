@@ -3,6 +3,8 @@ extends layout
 block content
 
     // Setup Nav
+
+
     ul
         li
             a(href='/') Login
@@ -18,31 +20,41 @@ block content
 
 
     .maincontent
-
+        .spacer questions
         .tab
-            button#defaultOpen.tablinks(onclick="openCity(event, 'Random')") Random question
+            button.tablinks(onclick="openCity(event, 'Random')") Random question
             |
-            button.tablinks(onclick="openCity(event, 'Paris')") Specific Category
+            button.tablinks(onclick="openCity(event, 'SC')") Specific Category
             |
-            button.tablinks(onclick="openCity(event, 'Tokyo')") Custom question
+            button.tablinks(onclick="openCity(event, 'CQ')") Custom question
         // Tab content
         #Random.tabcontent
-            h3 Random
+            h3 Random question
             |
             p
-                | Eine Random Frage kann aus allen Kategorien und allen Schwierigkeitsgraden bestehen.
+                | A random question can consist of all categories and all levels of difficulty.
                 br
-                | Um eine Frage anzufordern den untenliegenden Button drücken
+                | To request a question press the button below
 
-            button(onclick="getSingleQuestion()") Get Random question
-        #Paris.tabcontent
-            h3 Paris
+            button.btn.btn-primary(onclick="getSingleQuestion()") Get Random question
+        #SC.tabcontent
+            h3 Specific question
             |
-            p Paris is the capital of France.
-        #Tokyo.tabcontent
-            h3 Tokyo
+            p
+                | Select a category from the options below to start a specific question
+                br
+                | meh
+            button.btn.btn-primary(onclick="getSingleQuestion('species')") Species
+            button.btn.btn-primary(onclick="getSingleQuestion('planets')") Planets
+            button.btn.btn-primary(onclick="getSingleQuestion('people')") People
+            button.btn.btn-primary(onclick="getSingleQuestion('vehicles')") vehicles
+            button.btn.btn-primary(onclick="getSingleQuestion('starships')") Starships
+            button.btn.btn-primary(onclick="getSingleQuestion('films')") Films
+        #CQ.tabcontent
+            h3 Custom question
             |
-            p Tokyo is the capital of Japan.
-
-
-
+            p
+                | Get ready to answer a question created by the community
+                br
+                | meh
+            button.btn.btn-primary(onclick="getSingleQuestion()") Get Custom question

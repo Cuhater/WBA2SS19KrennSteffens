@@ -47,6 +47,6 @@ app.use(function(err, req, res, next) {
 
 // Starting init Routine
 app.listen(async function () {
-  //await init();
+  await init();
 });
 module.exports = app;

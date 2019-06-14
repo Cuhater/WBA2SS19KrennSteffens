@@ -179,7 +179,7 @@ a {
    list-style-type: none;
    top:calc(200px + 6vh);
    padding: 0;
-   width: 200px;
+   width: auto;
    background-color: rgba(242, 242, 242, 0.95);
    height: 100%; /* Full height */
    position: fixed; /* Make it stick, even on scroll */
@@ -265,8 +265,69 @@ li a:hover:not(.active) {
   border: 1px solid #ccc;
   border-top: none;
   min-height:350px;
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
-.maincontent:nth-child(1){
-  display:block;
-  color:pink;
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.btn.btn-primary{
+  font-size:1.5rem;
+  padding: 10px 40px 10px 40px;
+  margin-top:2rem;
+  margin-right:2rem;
+}
+.spacer{
+  padding-bottom:30px;
+  font-size:2rem;
+}
+.loading {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
+  background: rgb(69,72,77); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(69,72,77,1) 0%, rgba(0,0,0,0.2) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(69,72,77,1) 0%,rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+  width: 82vw;
+  height: 46vh;
+  position: fixed;
+  top: 43.7%;
+  left: 14.5%;
+  z-index: 99;
+
+  text-align:center;
+  padding-top:1rem;
+  font-size:2rem;
+  color: white;
+  display:none;
+}
+
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position:fixed;
+  top:55%;
+  left:50%;
+  z-index:9999;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

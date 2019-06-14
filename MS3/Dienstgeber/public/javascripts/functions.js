@@ -19,7 +19,6 @@ topics.push('custom');
 
 init = async () => {
 
-/*
 
     for (let i = 0; i < topics.length -1; i++) {
         let currentTopic = await getData(baseURL, "/"+ topics[i]+"/", '?page=1');
@@ -27,7 +26,6 @@ init = async () => {
         // apiData leeren
         apiData = [];
     }
-*/
 
     /*
         // Get all Data from API (Species, Planets, People, Starships, Films)
@@ -72,8 +70,8 @@ init = async () => {
             let specificTopic = getSpecificTopic(j);
             categorySpacer[j] = [];
 
-            // Create 2 Question from specified Topic
-            for (let i = 0; i < 2 ; i++) {
+            // Create 5 Question from specified Topic
+            for (let i = 0; i < 5 ; i++) {
                 myQuestionText = getQuestionTemplate(specificTopic);
                 arrayindex = j;
                 let myQuestion = await getValue(ultraArray[arrayindex], myQuestionText.cat, myQuestionText.text);
@@ -152,6 +150,10 @@ cleanUpData = () => {
                 if (value[k] === null)
                 {
                     console.log("NULL DATA WARNING");
+
+                    value[k] = 'undefined';
+                    console.log("NULL DATA WARNING but fixxed?" + value[k]);
+
                 }
                 if (value[k] === undefined || value[k] === null) {
                     value[k] = 'undefined';

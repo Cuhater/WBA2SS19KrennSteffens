@@ -1,17 +1,70 @@
 var express = require('express');
 var router = express.Router();
 const https = require('https');
+const http = require('http');
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
     let data = '';
+    let myQuery = '';
 
-    await https.get('https://quiz-wars.herokuapp.com/questions', (resp) => {
+    if (req.query !== {})
+    {
+
+    }
+    if (req.query.type === 'species')
+    {
+        console.log("SPECIES AUFGERUFEN")
+        myQuery = '?type=species'
+        console.log(myQuery)
+    }
+    if (req.query.type === 'planets')
+    {
+        console.log("PLANETS AUFGERUFEN")
+        myQuery = '?type=planets'
+        console.log(myQuery)
+    }
+    if (req.query.type === 'people')
+    {
+        console.log("PEOPLE AUFGERUFEN")
+        myQuery = '?type=people'
+        console.log(myQuery)
+    }
+    if (req.query.type === 'vehicles')
+    {
+        console.log("VEHICLES AUFGERUFEN")
+        myQuery = '?type=vehicles'
+        console.log(myQuery)
+    }
+    if (req.query.type === 'starships')
+    {
+        console.log("STARSHIPS AUFGERUFEN")
+        myQuery = '?type=starships'
+        console.log(myQuery)
+    }
+    if (req.query.type === 'films')
+    {
+        console.log("FILMS AUFGERUFEN")
+        myQuery = '?type=films'
+        console.log(myQuery)
+    }
+    if (req.query.type === 'custom')
+    {
+        console.log("CUSTOM AUFGERUFEN")
+        myQuery = '?type=custom'
+        console.log(myQuery)
+    }
+
+
+    console.log("b4 AWAIT :O")
+
+    await http.get('http://localhost:3000/questions' + myQuery, (resp) => {
 
 
         // A chunk of data has been recieved.
         resp.on('data', (chunk) => {
             data += chunk;
+            console.log("I GOT DATA")
         });
 
         // The whole response has been received. Print out the result.

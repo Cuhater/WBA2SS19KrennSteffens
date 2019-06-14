@@ -29,7 +29,7 @@ router.get('/', async function(req, res, next) {
 
 
         console.log("\n\n" + currentScore + "\n\n wasgeht");
-        res.render('dashboard', { title: 'Dashboard'});
+        //res.render('dashboard', { title: 'Dashboard'});
     }
     else if (req.query.userID !== undefined)
     {
@@ -67,6 +67,10 @@ router.get('/', async function(req, res, next) {
 
         }
     }
+        else if (req.query.type !== undefined)
+        {
+            console.log("JOA IS MIT tYPE NE")
+        }
 
 
         //console.log(userID)

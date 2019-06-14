@@ -1,0 +1,49 @@
+extends layout
+
+
+block content
+
+    // Setup Nav
+
+    ul
+        li
+            a(href='/') Login
+        li
+            a(href='/dashboard') Dashboard
+        li
+            a(href='/question') question
+        li
+            a.active(href='/quiz') quiz
+        li
+            a(href='/profile') Settings
+
+
+
+
+    .start
+        button(onclick='startTimer('+ '"' + ra + '"' + ')') #{buttonText}
+    .questionContent
+        .counter-text Time to Answer:
+        #counter 20
+        .qstatus
+            #aRight $
+            #aWrong #
+            #points 0
+
+
+        h2 Choose your Answer
+        br
+        | #{qText}
+        .answers
+
+            button(onclick='checkAnswer(' + '"' + 0 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer0}
+            button(onclick='checkAnswer(' + '"' + 1 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer1}
+            button(onclick='checkAnswer(' + '"' + 2 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer2}
+            button(onclick='checkAnswer(' + '"' + 3 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer3}
+
+
+            | #{ra}
+
+
+
+

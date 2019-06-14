@@ -6,16 +6,12 @@ const request = require('request');
 
 let currentUser;
 let currentScore = 0;
+let locaQuizArray;
 
 testii = (score) => {
     currentScore = score;
 }
 
-
-getSingleQuestion = () => {
-    console.log("HILFE");
-    alert("HALLOOOO")
-}
 
 
 setSessionUser = (userID) => {
@@ -368,3 +364,37 @@ getSpecificPlayerScore = (userID) => {
 }
 
 
+getQuizData = () => {
+
+    return new Promise((resolve, reject) => {
+        http.get('http://localhost:3000/quiz', (resp) => {
+            let data = '';
+
+            // A chunk of data has been recieved.
+            resp.on('data', (chunk) => {
+                data += chunk;
+                console.log("I GOT DATA")
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                //console.log(JSON.parse(data));
+                let recievedQuestionArray = JSON.parse(data);
+
+
+                resolve(recievedQuestionArray)
+            });
+
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+            resolve(err.message)
+        });
+    });
+}
+
+setLocalQuizArray = (array) => {
+    locaQuizArray = array;
+}
+getLocalQuizArray = () => {
+    return locaQuizArray;
+}
