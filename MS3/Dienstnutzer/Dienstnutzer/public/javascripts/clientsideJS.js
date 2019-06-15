@@ -65,9 +65,9 @@ checkAnswer = (givenAnswer, correctAnswer, count) => {
     let correct = false;
     console.log(givenAnswer);
     console.log(correctAnswer);
-    alert('COUNT OLD' + count)
+    //alert('COUNT OLD' + count)
     count ++;
-    alert('COUNT NEW' + count)
+    //alert('COUNT NEW' + count)
     if (givenAnswer === correctAnswer) {
 
         //setPlayerScore(count, 10)
