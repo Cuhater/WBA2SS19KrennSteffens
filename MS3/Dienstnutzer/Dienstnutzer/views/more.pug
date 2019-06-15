@@ -1,0 +1,115 @@
+extends layout
+
+block content
+
+    // Setup Nav
+    script(type='text/javascript').
+        console.log(!{JSON.stringify(users['users'])})
+        let testi = !{JSON.stringify(users['users'])}
+        console.log("TESTI" + testi);
+        console.log(testi[0]);
+
+        setTimeout(function () {
+        let myDom = document.getElementById("Scoreboard")
+        alert(myDom)
+        for (let i = 0; i < testi.length; i++) {
+            console.log(testi[i].id)
+            console.log(testi[i].score)
+            let div = document.createElement("div");
+            div.style.width =  "calc(30% - 4rem)";
+            div.style.padding = "1rem";
+            div.style.marginLeft = "1rem";
+            div.style.marginTop = "1rem";
+            div.style.height = "2rem";
+            div.style.background = "#ccc";
+            div.style.color = "black";
+            div.innerHTML = "id: " + testi[i].id + " Score : " + testi[i].score;
+            myDom.appendChild(div);
+        }
+        }, 500); // 5 seconds
+
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        function myFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("nav").className = "slideUp";
+
+            }
+            else
+            {
+                document.getElementById("nav").className = "";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    ul#nav
+        li
+            a(href='/') Login
+        li
+            a(href='/dashboard') Dashboard
+        li
+            a(href='/question') question
+        li
+            a(href='/quiz') quiz
+        li
+            a.active(href='/more') More
+
+
+
+    .maincontent
+        .spacer More
+        .tab
+            button.tablinks(onclick="openCity(event, 'Scoreboard')") Show Scoreboard
+            |
+            button.tablinks(onclick="openCity(event, 'AC')") Add Custom question
+            |
+            button.tablinks(onclick="openCity(event, 'UC')") update Custom question
+            |
+            button.tablinks(onclick="openCity(event, 'DC')") Delete Custom question
+        // Tab content
+        #Scoreboard.tabcontent
+            h3 Scoreboard
+            |
+            p
+                | Below you can find the scoreboard with the players of the community
+                br
+                | Get points by answering individual questions or test your knowledge in a quiz
+
+        #AC.tabcontent
+            h3 Add Custom question
+            |
+            p
+                | Fill in all the fields below to submit your individual question
+                br
+                form(method='GET' action='/dashboard')
+                    div.form-group
+                        label(for='name') user iD:
+                        input#name.form-control(type='text', placeholder='user iD' name='userID')
+                    button.btn.btn-primary(type='submit') Login
+        #UC.tabcontent
+            h3 update Custom question
+            |
+            p
+                | Edit the entries of the fields to change one of your created questions
+                br
+                | meh
+            button.btn.btn-primary(onclick="getSingleQuestion('custom')") Update Custom question
+
+        #DC.tabcontent
+            h3 Delete Custom question
+            |
+            p
+                | Delete one of your created questions from the database
+                br
+                | meh
+            button.btn.btn-primary(onclick="getSingleQuestion('custom')") Delete Custom question

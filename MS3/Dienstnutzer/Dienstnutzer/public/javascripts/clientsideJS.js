@@ -1,4 +1,4 @@
-if (window.location.href.match('dashboard') != null) {
+if (window.location.href.match('dashboard') != null || window.location.href.match('more') != null ) {
 
     setTimeout(function () {
         if (document.readyState === "complete") {

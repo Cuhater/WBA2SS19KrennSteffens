@@ -307,6 +307,16 @@ li a:hover:not(.active) {
 }
 
 
+
+.scoreboardPlayer{
+  height: 2rem;
+  width: calc(50% - 4rem);
+  padding: 1rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  background-color: #ccc;
+  color: white;
+}
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
@@ -330,4 +340,36 @@ li a:hover:not(.active) {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.slideUp {
+  top:0;
+  animation: slideUp 1s; /
+/*  animation-name: slideUp;
+  -webkit-animation-name: slideUp;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;*/
+  visibility: visible;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(30%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(70%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }
 }

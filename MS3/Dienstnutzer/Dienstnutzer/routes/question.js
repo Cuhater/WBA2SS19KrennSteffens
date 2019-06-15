@@ -74,6 +74,7 @@ router.get('/', async function (req, res, next) {
             let jsonData = JSON.parse(data);
 
             //let innerKey = Object.keys(data)
+
             if (req.query.type !== 'custom') {
                 console.log(jsonData.length)
                 console.log(jsonData[0])

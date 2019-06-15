@@ -1,314 +1,314 @@
 {
   "0": [
     [
-      "Which Skincolor(s) got the species Nautolan ?",
+      "Which average Lifespan got the species Neimodian ?",
       [
-        "pink",
-        "blue, grey",
-        "grey, yellow, purple",
-        "green, blue, brown, red"
+        "70",
+        "unknown",
+        "1000",
+        "94"
+      ],
+      1
+    ],
+    [
+      "Which average Lifespan got the species Muun ?",
+      [
+        "700",
+        "unknown",
+        "100",
+        "indefinite"
+      ],
+      2
+    ],
+    [
+      "Which average Lifespan got the species Chagrian ?",
+      [
+        "80",
+        "70",
+        "unknown",
+        "75"
+      ],
+      2
+    ],
+    [
+      "Which Language(s) speak the species Togruta ?",
+      [
+        "Utapese",
+        "Clawdite",
+        "vulpterish",
+        "Togruti"
       ],
       3
     ],
     [
-      "Which Skincolor(s) got the species Ewok ?",
+      "Which Skincolor(s) got the species Mirialan ?",
       [
-        "brown",
-        "blue, green, grey",
-        "brown, green",
-        "white"
-      ],
-      0
-    ],
-    [
-      "Which Skincolor(s) got the species Besalisk ?",
-      [
-        "brown",
-        "n/a",
         "peach, orange, red",
-        "green, brown, tan"
-      ],
-      0
-    ],
-    [
-      "Which average Lifespan got the species Wookiee ?",
-      [
-        "400",
-        "86",
-        "unknown",
-        "70"
-      ],
-      0
-    ],
-    [
-      "Which average Lifespan got the species Dug ?",
-      [
-        "80",
-        "70",
-        "900",
-        "unknown"
+        "white",
+        "green, brown, tan",
+        "yellow, green"
       ],
       3
     ]
   ],
   "1": [
     [
-      "Which population got the Planet Endor ?",
+      "Which Clima got the Planet Sullust ?",
       [
-        "18500000000",
-        "30000000",
-        "unknown",
-        "45000000"
-      ],
-      1
-    ],
-    [
-      "Which population got the Planet Kashyyyk ?",
-      [
-        "500000000",
-        "45000000",
-        "1200000000",
-        "30000000"
-      ],
-      1
-    ],
-    [
-      "Which Clima got the Planet Mygeeto ?",
-      [
-        "unknown",
-        "frigid",
+        "arid",
         "temperate",
-        "hot"
+        "temperate, moist",
+        "superheated"
+      ],
+      3
+    ],
+    [
+      "Which Clima got the Planet Cato Neimoidia ?",
+      [
+        "arid, rocky, windy",
+        "temperate, moist",
+        "temperate",
+        "unknown"
       ],
       1
     ],
     [
-      "Which Terrain got the Planet Champala ?",
+      "Which population got the Planet Hoth ?",
       [
-        "oceans, rainforests, plateaus",
-        "swamps, lakes",
-        "tundra, ice caves, mountain ranges",
-        "plains, forests"
+        "1000000",
+        "3000000000",
+        "1000",
+        "unknown"
+      ],
+      3
+    ],
+    [
+      "Which population got the Planet Eriadu ?",
+      [
+        "unknown",
+        "22000000000",
+        "30000000",
+        "8500000"
+      ],
+      1
+    ],
+    [
+      "Which population got the Planet Haruun Kal ?",
+      [
+        "705300",
+        "4500000000",
+        "unknown",
+        "42000000"
       ],
       0
-    ],
-    [
-      "Which population got the Planet Kamino ?",
-      [
-        "unknown",
-        "3500000000",
-        "1000000000",
-        "2000000000"
-      ],
-      2
     ]
   ],
   "2": [
     [
-      "Which Haircolor got Quarsh Panaka ?",
+      "Which Homeworld got Ric Olié ?",
       [
-        "blonde",
-        "black",
-        "grey",
-        "none"
-      ],
-      1
-    ],
-    [
-      "Which Haircolor got San Hill ?",
-      [
-        "black",
-        "none",
-        "n/a",
-        "blonde"
-      ],
-      1
-    ],
-    [
-      "Which Haircolor got Captain Phasma ?",
-      [
-        "none",
-        "brown",
-        "unknown",
-        "n/a"
+        "https://swapi.co/api/planets/28/",
+        "https://swapi.co/api/planets/14/",
+        "https://swapi.co/api/planets/8/",
+        "https://swapi.co/api/planets/30/"
       ],
       2
     ],
     [
-      "Which Haircolor got Nien Nunb ?",
+      "Which Homeworld got Rey ?",
+      [
+        "https://swapi.co/api/planets/9/",
+        "https://swapi.co/api/planets/30/",
+        "https://swapi.co/api/planets/28/",
+        "https://swapi.co/api/planets/41/"
+      ],
+      2
+    ],
+    [
+      "Which Haircolor got IG-88 ?",
       [
         "brown",
+        "white",
+        "none",
+        "black"
+      ],
+      2
+    ],
+    [
+      "Which Haircolor got Boba Fett ?",
+      [
         "none",
         "black",
-        "blond"
+        "brown",
+        "n/a"
       ],
       1
     ],
     [
-      "Which Haircolor got Kit Fisto ?",
+      "Which Haircolor got Beru Whitesun lars ?",
       [
-        "none",
-        "blonde",
+        "black",
         "brown",
-        "black"
+        "none",
+        "grey"
       ],
-      0
+      1
     ]
   ],
   "3": [
     [
-      "Which Lenght in (m) got AT-RT ?",
-      [
-        "20",
-        "2",
-        "10.96",
-        "3.2"
-      ],
-      3
-    ],
-    [
-      "Which Lenght in (m) got Armored Assault Tank ?",
+      "Which Lenght in (m) got Bantha-II cargo skiff ?",
       [
         "4.5",
-        "28.82",
-        "9.75",
-        "5.4"
+        "9.5",
+        "3",
+        "2"
+      ],
+      1
+    ],
+    [
+      "Which Lenght in (m) got Geonosian starfighter ?",
+      [
+        "2",
+        "36.8",
+        "9.8",
+        "9.75"
       ],
       2
     ],
     [
-      "Which Lenght in (m) got LAAT/c ?",
+      "Which Lenght in (m) got Storm IV Twin-Pod cloud car ?",
       [
-        "1.5",
-        "7.8",
-        "140",
-        "28.82"
-      ],
-      3
-    ],
-    [
-      "Which Lenght in (m) got XJ-6 airspeeder ?",
-      [
-        "1.5",
-        "6.23",
-        "28.82",
-        "7"
-      ],
-      1
-    ],
-    [
-      "Which Lenght in (m) got Tsmeu-6 personal wheel bike ?",
-      [
-        "49.4",
-        "3.5",
-        "28.82",
-        "4.5"
-      ],
-      1
-    ]
-  ],
-  "4": [
-    [
-      "How Expensive (in Credits) is  Naboo Royal Starship ?",
-      [
-        "220000",
-        "1143350000",
         "unknown",
-        "59000000"
+        "140",
+        "7",
+        "2"
       ],
       2
     ],
     [
-      "How many Passengers can carry AA-9 Coruscant freighter ?",
+      "Which Lenght in (m) got Sail barge ?",
       [
-        "30000",
-        "1200",
-        "10",
-        "16"
+        "30",
+        "6.4",
+        "3.68",
+        "5.4"
       ],
       0
     ],
     [
-      "Which Starshipclass got Calamari Cruiser ?",
+      "Which Lenght in (m) got Emergency Firespeeder ?",
       [
-        "Patrol craft",
-        "Light freighter",
-        "assault starfighter",
-        "Star Cruiser"
-      ],
-      3
-    ],
-    [
-      "How many Passengers can carry Millennium Falcon ?",
-      [
-        "11",
+        "15",
+        "7",
         "unknown",
-        "0",
-        "6"
+        "17.4"
       ],
-      3
-    ],
-    [
-      "How Expensive (in Credits) is  Jedi starfighter ?",
-      [
-        "unknown",
-        "200000",
-        "150000000",
-        "180000"
-      ],
-      3
+      2
     ]
   ],
-  "5": [
+  "4": [
     [
-      "Who is the Director of Revenge of the Sith ?",
+      "How many Passengers can carry Rebel transport ?",
       [
-        "Richard Marquand",
-        "George Lucas",
-        "J. J. Abrams",
-        "Irvin Kershner"
-      ],
-      1
-    ],
-    [
-      "Who is the Director of Return of the Jedi ?",
-      [
-        "George Lucas",
-        "J. J. Abrams",
-        "Irvin Kershner",
-        "Richard Marquand"
+        "unknown",
+        "75",
+        "30000",
+        "90"
       ],
       3
     ],
     [
-      "Who is the Director of Return of the Jedi ?",
+      "Which Starshipclass got Naboo fighter ?",
       [
-        "George Lucas",
-        "J. J. Abrams",
-        "Richard Marquand",
-        "Irvin Kershner"
+        "Diplomatic barge",
+        "starfighter",
+        "Starfighter",
+        "yacht"
       ],
       2
     ],
     [
-      "Who is the Director of A New Hope ?",
+      "How Expensive (in Credits) is  arc-170 ?",
+      [
+        "240000",
+        "149999",
+        "155000",
+        "102500"
+      ],
+      2
+    ],
+    [
+      "How Expensive (in Credits) is  Theta-class T-2c shuttle ?",
+      [
+        "240000",
+        "100000",
+        "3500000",
+        "1000000"
+      ],
+      3
+    ],
+    [
+      "Which Starshipclass got Rebel transport ?",
+      [
+        "Medium transport",
+        "starfighter",
+        "Escort ship",
+        "Starfighter"
+      ],
+      0
+    ]
+  ],
+  "5": [
+    [
+      "Who is the Director of Attack of the Clones ?",
       [
         "Richard Marquand",
-        "Irvin Kershner",
         "J. J. Abrams",
+        "Irvin Kershner",
         "George Lucas"
       ],
       3
     ],
     [
-      "Who is the Director of Return of the Jedi ?",
+      "Who is the Director of Revenge of the Sith ?",
+      [
+        "Richard Marquand",
+        "George Lucas",
+        "Irvin Kershner",
+        "J. J. Abrams"
+      ],
+      1
+    ],
+    [
+      "Who is the Director of The Empire Strikes Back ?",
+      [
+        "J. J. Abrams",
+        "George Lucas",
+        "Richard Marquand",
+        "Irvin Kershner"
+      ],
+      3
+    ],
+    [
+      "Who is the Director of A New Hope ?",
       [
         "George Lucas",
         "Richard Marquand",
         "J. J. Abrams",
         "Irvin Kershner"
       ],
-      1
+      0
+    ],
+    [
+      "Who is the Director of The Force Awakens ?",
+      [
+        "George Lucas",
+        "Irvin Kershner",
+        "J. J. Abrams",
+        "Richard Marquand"
+      ],
+      2
     ]
   ]
 }
