@@ -398,3 +398,22 @@ setLocalQuizArray = (array) => {
 getLocalQuizArray = () => {
     return locaQuizArray;
 }
+
+postCustomQuestion = (dataToSave) => {
+    return new Promise((resolve, reject) => {
+
+        request.post('http://localhost:3000/questions', {
+            json: dataToSave
+        }, (error, res, body) => {
+            if (error) {
+                console.error(error)
+                reject(error)
+                return
+            }
+            console.log(`statusCode: ${res.statusCode}`)
+            console.log(body)
+            resolve(body)
+        })
+
+    })
+}

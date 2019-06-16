@@ -4,29 +4,37 @@ block content
 
     // Setup Nav
     script(type='text/javascript').
-        console.log(!{JSON.stringify(users['users'])})
-        let testi = !{JSON.stringify(users['users'])}
-        console.log("TESTI" + testi);
-        console.log(testi[0]);
 
-        setTimeout(function () {
-        let myDom = document.getElementById("Scoreboard")
-        alert(myDom)
-        for (let i = 0; i < testi.length; i++) {
-            console.log(testi[i].id)
-            console.log(testi[i].score)
-            let div = document.createElement("div");
-            div.style.width =  "calc(30% - 4rem)";
-            div.style.padding = "1rem";
-            div.style.marginLeft = "1rem";
-            div.style.marginTop = "1rem";
-            div.style.height = "2rem";
-            div.style.background = "#ccc";
-            div.style.color = "black";
-            div.innerHTML = "id: " + testi[i].id + " Score : " + testi[i].score;
-            myDom.appendChild(div);
+        {
+            console.log(!{JSON.stringify(users['users'])})
+            let testi = !{JSON.stringify(users['users'])}
+            console.log("TESTI" + testi);
+            console.log(testi[0]);
+
+            setTimeout(function () {
+                let myDom = document.getElementById("Scoreboard")
+                //alert(myDom)=
+
+
+                for (let i = 0; i < testi.length; i++) {
+                    console.log(testi[i].id)
+                    console.log(testi[i].score)
+                    let div = document.createElement("div");
+                    div.style.width = "calc(30% - 4rem)";
+                    div.style.padding = "1rem";
+                    div.style.marginLeft = "1rem";
+                    div.style.marginTop = "1rem";
+                    div.style.marginBottom = "1rem";
+                    div.style.height = "2rem";
+                    div.style.background = "#ccc";
+                    div.style.color = "black";
+                    div.innerHTML = "id: " + testi[i].id + " Score : " + testi[i].score;
+                    myDom.appendChild(div);
+                }
+            }, 500); // 5 seconds
         }
-        }, 500); // 5 seconds
+
+
 
         window.onscroll = function () {
             myFunction()
@@ -91,11 +99,35 @@ block content
             p
                 | Fill in all the fields below to submit your individual question
                 br
-                form(method='GET' action='/dashboard')
+
+                form(method='GET' action='/more/addquestion')
                     div.form-group
-                        label(for='name') user iD:
-                        input#name.form-control(type='text', placeholder='user iD' name='userID')
-                    button.btn.btn-primary(type='submit') Login
+                        label(for='qText') questiontext:
+                        br
+                        input#qText.form-control(type='text', placeholder='questiontext' name='qText')
+                        br
+                        br
+                        label(for='a0') Answer 1:
+                        br
+                        input#a0.form-control(type='text', placeholder='Answertext' name='a0')
+                        br
+                        label(for='a1') Answer 2:
+                        br
+                        input#a1.form-control(type='text', placeholder='Answertext' name='a1')
+                        br
+                        label(for='a2') Answer 3:
+                        br
+                        input#a2.form-control(type='text', placeholder='Answertext' name='a2')
+                        br
+                        label(for='a3') Answer 4:
+                        br
+                        input#a3.form-control(type='text', placeholder='Answertext' name='a3')
+                        br
+                        br
+                        label(for='ra') Right Answer:
+                        br
+                        input#ra.form-control(type='text', placeholder='Right Answer Number (1-4)' name='ra')
+                    button.btn.btn-primary(type='submit') Create custom question
         #UC.tabcontent
             h3 update Custom question
             |

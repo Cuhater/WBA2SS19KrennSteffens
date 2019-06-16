@@ -192,6 +192,7 @@ router.put('/', async (req, res) => {
 
     let error = false;
     let stockData = await getDBData();
+    let match = false;
 
 
     if (!req.body.userID || !req.body.qID) {
@@ -213,7 +214,81 @@ router.put('/', async (req, res) => {
 
 
             // USER ID MATCHES
+            console.log("DB DATA " + dbData)
+            console.log("DBA Lenght" + dbData.length)
+
+            console.log("x  3 " + x[3])
+            console.log("x  req user id " + req.body.userID)
+
             if (x[3] === req.body.userID) {
+
+
+                console.log(x[3] + " \nCHECK match\n\n " + req.body.userID)
+                match = true;
+
+
+                console.log("INNER KEYS I BRAUCE FOR???  " +innerKeys[i])
+                console.log("INNER REQ ID I BRAUCE FOR???  " + req.body.qID)
+
+                for (let j = 0; j < innerKeys.length; j++) {
+                    if (innerKeys[j] === req.body.qID) {
+
+                        let currentAnswersArray = x[1];
+                        console.log(currentAnswersArray);
+
+                        let currentAnswers = Object.values(currentAnswersArray);
+
+                        // Test console log Data
+                        /*console.log("x[0] -> Fragetext :  " + x[0] + "\n");
+                        console.log("Antwort 0 : " + currentAnswers[0]);
+                        console.log("Antwort 1 : " + currentAnswers[1]);
+                        console.log("Antwort 2 : " + currentAnswers[2]);
+                        console.log("Antwort 3 : " + currentAnswers[3]);
+                        console.log("Richtige Stelle : " + x[2] + "\n");
+                        console.log("\n\n --");
+                        console.log(req.body.answers.a1);
+                        console.log(req.body.answers.a2);
+                        console.log(req.body.answers.a3);
+                        console.log(req.body.answers.a4);*/
+
+                        // Daten im jsonObjeect mit Daten des Requests überschreiben
+                        let jsonObject = {};
+                        jsonObject["a1"] = req.body.answers.a1;
+                        jsonObject["a2"] = req.body.answers.a2;
+                        jsonObject["a3"] = req.body.answers.a3;
+                        jsonObject["a4"] = req.body.answers.a4;
+                        x[0] = req.body.text;
+                        currentAnswers[0] = req.body.answers.a1;
+                        currentAnswers[1] = req.body.answers.a2;
+                        currentAnswers[2] = req.body.answers.a3;
+                        currentAnswers[3] = req.body.answers.a4;
+                        x[2] = req.body.right;
+
+                        let questionID = req.body.qID;
+
+                        // Object mit Daten füllen
+                        myEditetObject[questionID] = [];
+                        myEditetObject[questionID].push(x[0]);
+                        myEditetObject[questionID].push(jsonObject);
+                        myEditetObject[questionID].push(x[2]);
+                        myEditetObject[questionID].push(req.body.userID);
+
+                        //splice starting at postition i and remove 1 element
+                        stockData.splice(i, 1);
+                        // push new Data
+                        stockData.push(myEditetObject);
+
+                        fs.writeFile('database.json', JSON.stringify(stockData, null, 2), (err) => {
+                            if (err) throw err;
+                            console.log('The Question were updated!');
+                        });
+
+                    }
+                    else
+                    {
+                        console.log("ALERM 1 " + innerKeys[j])
+                    }
+                }
 
 
                 // CHECK IF QUESTION ID MATCH
@@ -221,62 +296,21 @@ router.put('/', async (req, res) => {
                     /*                      console.log("inner keys" + innerKeys[i]);
                                             console.log("DB DATA I " + x + "\n");*/
                     /*                      console.log("DB DATA 1 " + x[1] + "\n");*/
-                    let currentAnswersArray = x[1];
-                    console.log(currentAnswersArray);
 
-                    let currentAnswers = Object.values(currentAnswersArray);
-
-                    // Test console log Data
-                    /*console.log("x[0] -> Fragetext :  " + x[0] + "\n");
-                    console.log("Antwort 0 : " + currentAnswers[0]);
-                    console.log("Antwort 1 : " + currentAnswers[1]);
-                    console.log("Antwort 2 : " + currentAnswers[2]);
-                    console.log("Antwort 3 : " + currentAnswers[3]);
-                    console.log("Richtige Stelle : " + x[2] + "\n");
-                    console.log("\n\n --");
-                    console.log(req.body.answers.a1);
-                    console.log(req.body.answers.a2);
-                    console.log(req.body.answers.a3);
-                    console.log(req.body.answers.a4);*/
-
-                    // Daten im jsonObjeect mit Daten des Requests überschreiben
-                    let jsonObject = {};
-                    jsonObject["a1"] = req.body.answers.a1;
-                    jsonObject["a2"] = req.body.answers.a2;
-                    jsonObject["a3"] = req.body.answers.a3;
-                    jsonObject["a4"] = req.body.answers.a4;
-                    x[0] = req.body.text;
-                    currentAnswers[0] = req.body.answers.a1;
-                    currentAnswers[1] = req.body.answers.a2;
-                    currentAnswers[2] = req.body.answers.a3;
-                    currentAnswers[3] = req.body.answers.a4;
-                    x[2] = req.body.right;
-
-                    let questionID = req.body.qID;
-
-                    // Object mit Daten füllen
-                    myEditetObject[questionID] = [];
-                    myEditetObject[questionID].push(x[0]);
-                    myEditetObject[questionID].push(jsonObject);
-                    myEditetObject[questionID].push(x[2]);
-                    myEditetObject[questionID].push(req.body.userID);
-
-                    //splice starting at postition i and remove 1 element
-                    stockData.splice(i, 1);
-                    // push new Data
-                    stockData.push(myEditetObject);
-
-                    fs.writeFile('database.json', JSON.stringify(stockData, null, 2), (err) => {
-                        if (err) throw err;
-                        console.log('The Question were updated!');
-                    });
                 }
-            } else {
-                res.contentType("text/plain");
-                res.status(401).send("Your are not authorized to apply changes")
             }
         }
-        res.status(200).send(stockData);
+        if(!match)
+        {
+            res.contentType("text/plain");
+            res.status(401).send("Your are not authorized to apply changes")
+        }
+        else
+        {
+            res.status(200).send(stockData);
+        }
+
+
     }
 
 });

@@ -1,4 +1,4 @@
-if (window.location.href.match('dashboard') != null || window.location.href.match('more') != null ) {
+if (window.location.href.match('dashboard') != null ||  window.location.href.match('more') != null ) {
 
     setTimeout(function () {
         if (document.readyState === "complete") {
@@ -12,8 +12,21 @@ if (window.location.href.match('dashboard') != null || window.location.href.matc
 }
 
 
-testit = () =>{
 
+
+
+goToDashboard = () =>{
+    window.location.href = '/more';
+}
+
+showEditEntry = () =>
+{
+    let entry = document.getElementById("customStatus")
+    entry.style.display = "block";
+}
+
+testit = () =>{
+    startLoading();
 }
 
 startLoading = () => {

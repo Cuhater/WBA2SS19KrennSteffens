@@ -280,10 +280,36 @@ li a:hover:not(.active) {
   margin-top:2rem;
   margin-right:2rem;
 }
+.btn.btn-primaryWP{
+  font-size:1.5rem;
+  padding: 10px 40px 10px 40px;
+}
 .spacer{
   padding-bottom:30px;
   font-size:2rem;
 }
+
+#customStatus{
+  background: rgb(69,72,77); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(69,72,77,1) 20%, rgba(0,0,0,0.2) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 20%,rgba(0,0,0,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(69,72,77,1) 20%,rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+  width: 82vw;
+  height: 46vh;
+  position: fixed;
+  top: 43.7%;
+  left: 14.5%;
+  z-index: 99;
+
+  text-align:center;
+  padding-top:1rem;
+  font-size:2rem;
+  color: white;
+  display:none;
+}
+
 .loading {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
   background: rgb(69,72,77); /* Old browsers */
@@ -307,7 +333,9 @@ li a:hover:not(.active) {
 }
 
 
-
+#userInput{
+  font-size:1.5rem;
+}
 .scoreboardPlayer{
   height: 2rem;
   width: calc(50% - 4rem);
@@ -372,4 +400,9 @@ li a:hover:not(.active) {
     opacity: 1;
     -webkit-transform: translateY(0%);
   }
+}
+
+.myform form input[type='text']{
+  width:25vw;
+  height: 3rem
 }
