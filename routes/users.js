@@ -150,7 +150,7 @@ router.put('/', async function(req, res){
     }
 
     //console.log("CURR USER DADA" + userDBData)
-    setUserData(userDBData)
+    await setUserData(userDBData)
 
 
 
@@ -161,7 +161,7 @@ router.put('/', async function(req, res){
 
 
 
-    res.sendStatus(200).send(testi);
+    res.status(200).send(testi);
 });
 
 router.delete('/', function(req, res){
