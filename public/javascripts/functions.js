@@ -155,6 +155,14 @@ cleanUpData = () => {
                     console.log("NULL DATA WARNING but fixxed?" + value[k]);
 
                 }
+                if (value[k] === '')
+                {
+                    console.log("NULL DATA WARNING");
+
+                    value[k] = 'undefined';
+                    console.log("NULL DATA WARNING but fixxed?" + value[k]);
+
+                }
                 if (value[k] === undefined || value[k] === null) {
                     value[k] = 'undefined';
                 }
@@ -233,28 +241,30 @@ getQuestionTemplate = (category) => {
     speciesText.push({text: "Which average Lifespan got the species", cat: "average_lifespan", difficulty: "hard"});
 
     // Sample QuestionText ## People ##
-    peopleText.push({text: "Which Haircolor got", cat: "hair_color", difficulty: "normal"});
-    peopleText.push({text: "Which Homeworld got", cat: "homeworld", difficulty: "normal"});
-    peopleText.push({text: "Which gender got", cat: "gender", difficulty: "normal"});
+    peopleText.push({text: "Which Haircolor got", cat: "hair_color", difficulty: "easy"});
+    //peopleText.push({text: "Which Homeworld got", cat: "homeworld", difficulty: "normal"});
+    peopleText.push({text: "Which gender got", cat: "gender", difficulty: "easy"});
+    peopleText.push({text: "Which eyecolor got", cat: "eye_color", difficulty: "easy"});
 
     // Sample QuestionText ## Planets ##
     planetsText.push({text: "Which Clima got the Planet", cat: "climate", difficulty: "normal"});
     planetsText.push({text: "Which Terrain got the Planet", cat: "terrain", difficulty: "normal"});
-    planetsText.push({text: "Which population got the Planet", cat: "population", difficulty: "normal"});
+    planetsText.push({text: "How many diameters got the Planet", cat: "diameter", difficulty: "hard"});
 
     // Sample QuestionText ## Vehicles ##
-    //vehicleText.push({text: "Which Vehicleclass got", cat: "vehicle_class"});
-    vehicleText.push({text: "Which Lenght in (m) got", cat: "length", difficulty: "normal"});
-    vehicleText.push({text: "How big have to be the Crew of", cat: "crew", difficulty: "normal"});
+    vehicleText.push({text: "Which Vehicleclass got", cat: "vehicle_class", difficulty: "normal"});
+    vehicleText.push({text: "Which Lenght in (m) got", cat: "length", difficulty: "hard"});
+    vehicleText.push({text: "How big have to be the Crew of", cat: "crew", difficulty: "hard"});
 
     // Sample QuestionText ## Starships ##
     starshipText.push({text: "Which Starshipclass got", cat: "starship_class", difficulty: "normal"});
-    starshipText.push({text: "How many Passengers can carry", cat: "passengers", difficulty: "normal"});
-    starshipText.push({text: "How Expensive (in Credits) is ", cat: "cost_in_credits", difficulty: "normal"});
+    starshipText.push({text: "How many Passengers can carry", cat: "passengers", difficulty: "hard"});
+    starshipText.push({text: "How Expensive (in Credits) is ", cat: "cost_in_credits", difficulty: "hard"});
 
     // Sample QuestionText ## Films ##
     //filmsText.push({text: "Which episode got", cat: "episode_id", difficulty: "normal"});
-    filmsText.push({text: "Who is the Director of", cat: "director", difficulty: "normal"});
+    filmsText.push({text: "Who is the Director of", cat: "director", difficulty: "easy"});
+    filmsText.push({text: "Who is the Producer of", cat: "producer", difficulty: "easy"});
     //filmsText.push({text: "When came out", cat: "realease_date", difficulty: "normal"});
 
     if (category === "species") {
