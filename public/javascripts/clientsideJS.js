@@ -155,8 +155,13 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
         document.getElementById('aRight').style.display = "block";
         document.getElementById('points').style.display = "block";
 
+        // Normale Frage - Erhöhe playerscore um 10
+        if (window.location.href.match('question') != null){
 
-
+            setTimeout(function () {
+                window.location.href = "/dashboard?score=" + baseScore;
+            }, 3000); // 5 seconds
+        }
         // Wenn es sich um eine Quizfrage handelt
         if (window.location.href.match('quiz') != null) {
             let qScore = parseInt(quizScore);
@@ -165,13 +170,9 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
                 window.location.href = '/quiz?question=' + count + "&score=" + qScore;
             }, 3000); // 5 seconds
         }
-        // Normale Frage - Erhöhe playerscore um 10
-        else if (window.location.href.match('question') != null){
 
-            setTimeout(function () {
-                window.location.href = "/dashboard?score=" + baseScore;
-            }, 3000); // 5 seconds
-        }
+
+
 
     } else {
         console.log("DIE ANTWORT IST NICHT KORREKT");
