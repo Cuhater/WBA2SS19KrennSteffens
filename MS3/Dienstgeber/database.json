@@ -1,20 +1,20 @@
 [
   {
     "0": [
-      "Wer war Darth Vader im früheren Leben?",
+      "Wer war Darth Vader im früheren Leben?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       {
         "a1": "Luke Skywalker",
         "a2": "Obi-Wan Kenobi",
         "a3": "Anakin Skywalker",
         "a4": "Jar-Jar Binks"
       },
-      2,
-      2323
+      3,
+      3
     ]
   },
   {
     "1": [
-      "Wie heißt Imperator Palpatine mit seinem Sith-Namen?",
+      "Wie heißt Imperator Palpatine mit seinem Sith-Namen?bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
       {
         "a1": "Darth Vader",
         "a2": "Dath Tyranus",
@@ -22,7 +22,7 @@
         "a4": "Darth Maul"
       },
       2,
-      70
+      3
     ]
   },
   {
@@ -40,38 +40,12 @@
   },
   {
     "3": [
-      "Welche Farbe hat Kit Fistos Laserschwert?",
-      {
-        "a1": "Gelb",
-        "a2": "Lila",
-        "a3": "Blau",
-        "a4": "Grün"
-      },
-      3,
-      5
-    ]
-  },
-  {
-    "4": [
       "Über welchen Planeten baute das I Galaktische Imperium den 2 Todesstern?",
       {
         "a1": "Fondor",
         "a2": "Endor",
         "a3": "Bendor",
         "a4": "Grendor"
-      },
-      1,
-      32
-    ]
-  },
-  {
-    "5": [
-      "Wann zocken wir aRENA?",
-      {
-        "a1": "Jetz?",
-        "a2": "gleich?",
-        "a3": "später?",
-        "a4": "CLEANSE NoW"
       },
       1,
       3

@@ -1,7 +1,7 @@
 extends layout
 
-
 block content
+
 
     // Setup Nav
 
@@ -20,6 +20,7 @@ block content
 
 
 
+
     .start
         button(onclick='startTimer('+ '"' + ra + '"' + ')') Start question
     .questionContent
@@ -32,6 +33,9 @@ block content
 
 
         h2 Choose your Answer
+        br
+        | Difficulty:
+        span#difficulty #{df}
         br
         | #{qText}
         .answers

@@ -8,6 +8,22 @@ router.get('/', async function (req, res, next) {
     let data = '';
     let myQuery = '';
 
+    let myTopics = await getServerTopics();
+/*    console.log(myTopics)
+    console.log(myTopics[0])
+    console.log(myTopics[1])
+    console.log(myTopics[2])
+    console.log(myTopics[3])*/
+
+    for (let i = 0; i < myTopics.length ; i++) {
+        if (req.query.type === myTopics[i]) {
+            console.log(myTopics[i] + " AUFGERUFEN")
+            myQuery = '?type=' + myTopics[i]
+            console.log(myQuery)
+        }
+    }
+/*
+
     if (req.query !== {}) {
 
     }
@@ -47,6 +63,7 @@ router.get('/', async function (req, res, next) {
         console.log(myQuery)
     }
 
+*/
 
     console.log("b4 AWAIT :O")
 
@@ -59,6 +76,7 @@ router.get('/', async function (req, res, next) {
         let a3 = '';
         let qText = '';
         let ra = '';
+        let df = '';
 
 
         // A chunk of data has been recieved.
@@ -89,6 +107,7 @@ router.get('/', async function (req, res, next) {
 
                 qText = jsonData[0];
                 ra = jsonData[2];
+                df = jsonData[3];
 
 
             } else if (req.query.type === 'custom') {
@@ -155,7 +174,8 @@ router.get('/', async function (req, res, next) {
                 qAnswer2: a2,
                 qAnswer3: a3,
                 ra: ra,
-                title: "Random question"
+                title: "Random question",
+                df: df
             });
         });
 

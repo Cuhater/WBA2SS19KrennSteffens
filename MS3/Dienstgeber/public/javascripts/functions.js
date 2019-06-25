@@ -74,7 +74,7 @@ init = async () => {
             for (let i = 0; i < 5 ; i++) {
                 myQuestionText = getQuestionTemplate(specificTopic);
                 arrayindex = j;
-                let myQuestion = await getValue(ultraArray[arrayindex], myQuestionText.cat, myQuestionText.text);
+                let myQuestion = await getValue(ultraArray[arrayindex], myQuestionText.cat, myQuestionText.text, myQuestionText.difficulty);
                 categorySpacer[j].push(myQuestion)
             }
         }
@@ -228,34 +228,34 @@ getQuestionTemplate = (category) => {
     let filmsText = [];
 
     // Sample QuestionText ## Species ##
-    speciesText.push({text: "Which Skincolor(s) got the species", cat: "skin_colors"});
-    speciesText.push({text: "Which Language(s) speak the species", cat: "language"});
-    speciesText.push({text: "Which average Lifespan got the species", cat: "average_lifespan"});
+    speciesText.push({text: "Which Skincolor(s) got the species", cat: "skin_colors", difficulty: "normal"});
+    speciesText.push({text: "Which Language(s) speak the species", cat: "language", difficulty: "easy"});
+    speciesText.push({text: "Which average Lifespan got the species", cat: "average_lifespan", difficulty: "hard"});
 
     // Sample QuestionText ## People ##
-    peopleText.push({text: "Which Haircolor got", cat: "hair_color"});
-    peopleText.push({text: "Which Homeworld got", cat: "homeworld"});
-    //peopleText.push({text: "Which gender got", cat: "gender"});
+    peopleText.push({text: "Which Haircolor got", cat: "hair_color", difficulty: "normal"});
+    peopleText.push({text: "Which Homeworld got", cat: "homeworld", difficulty: "normal"});
+    peopleText.push({text: "Which gender got", cat: "gender", difficulty: "normal"});
 
     // Sample QuestionText ## Planets ##
-    planetsText.push({text: "Which Clima got the Planet", cat: "climate"});
-    planetsText.push({text: "Which Terrain got the Planet", cat: "terrain"});
-    planetsText.push({text: "Which population got the Planet", cat: "population"});
+    planetsText.push({text: "Which Clima got the Planet", cat: "climate", difficulty: "normal"});
+    planetsText.push({text: "Which Terrain got the Planet", cat: "terrain", difficulty: "normal"});
+    planetsText.push({text: "Which population got the Planet", cat: "population", difficulty: "normal"});
 
     // Sample QuestionText ## Vehicles ##
     //vehicleText.push({text: "Which Vehicleclass got", cat: "vehicle_class"});
-    vehicleText.push({text: "Which Lenght in (m) got", cat: "length"});
-    //vehicleText.push({text: "How big have to be the Crew of", cat: "crew"});
+    vehicleText.push({text: "Which Lenght in (m) got", cat: "length", difficulty: "normal"});
+    vehicleText.push({text: "How big have to be the Crew of", cat: "crew", difficulty: "normal"});
 
     // Sample QuestionText ## Starships ##
-    starshipText.push({text: "Which Starshipclass got", cat: "starship_class"});
-    starshipText.push({text: "How many Passengers can carry", cat: "passengers"});
-    starshipText.push({text: "How Expensive (in Credits) is ", cat: "cost_in_credits"});
+    starshipText.push({text: "Which Starshipclass got", cat: "starship_class", difficulty: "normal"});
+    starshipText.push({text: "How many Passengers can carry", cat: "passengers", difficulty: "normal"});
+    starshipText.push({text: "How Expensive (in Credits) is ", cat: "cost_in_credits", difficulty: "normal"});
 
     // Sample QuestionText ## Films ##
-    //filmsText.push({text: "Which episode got", cat: "episode_id"});
-    filmsText.push({text: "Who is the Director of", cat: "director"});
-    //filmsText.push({text: "When came out", cat: "realease_date"});
+    //filmsText.push({text: "Which episode got", cat: "episode_id", difficulty: "normal"});
+    filmsText.push({text: "Who is the Director of", cat: "director", difficulty: "normal"});
+    //filmsText.push({text: "When came out", cat: "realease_date", difficulty: "normal"});
 
     if (category === "species") {
         let rnd = getRandom(speciesText.length);
@@ -284,10 +284,10 @@ getRandom = (range) => {
     return Math.floor(Math.random() * range)
 };
 
-getValue = (dataSource, category, questionText) => {
+getValue = (dataSource, category, questionText, difficulty) => {
     return new Promise((resolve, reject) => {
 
-        // Prepare Array to gather all possible Answers
+        // Prepare Array to gather all possible AnswersF
         let allAnswersOfTopic = [];
 
         // Get INT 0-3 for the Position of the right Answer
@@ -397,6 +397,7 @@ getValue = (dataSource, category, questionText) => {
         question.push(answers);
         /* }*/
         question.push(rightAnswerPosition);
+        question.push(difficulty)
 
         resolve(question);
 

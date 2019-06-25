@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+
+    ul
+        li
+            a.active(href='/') Login
+        li
+            a(href='/dashboard') Dashboard
+        li
+            a(href='/question') question
+        li
+            a(href='/quiz') quiz
+        li
+            a(href='/more') More
+
+
+
+    .maincontent
+
+
+
+        p.big user was created with iD #{newID}
+        br
+        br
+        button.btn.btn-primary(onclick="showDashboard()") ok, got it!

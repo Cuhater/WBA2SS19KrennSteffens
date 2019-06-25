@@ -12,6 +12,14 @@ const fs = require('fs');
 let topics = getAllTopics();
 
 
+router.get('/allCustom', async (req, res) => {
+
+    let customQuestionData = await getDBData();
+    res.status(200).send(customQuestionData)
+});
+
+
+
 router.get('/:questionID', async (req, res) => {
     let topicData;
     let qPoolData = await getQuestionPoolData();
@@ -83,10 +91,12 @@ router.get('/', async (req, res) => {
         topics.push('custom');*/
 
     if (req.query.type === undefined) {
-        let rnd = getRandom(topics.length);
+        // because kick out custom Topic
+        let rnd = getRandom(topics.length - 1);
         let rndTopic = topics[rnd];
         myQuestionText = getQuestionTemplate(rndTopic);
         arrayindex = rnd;
+        console.log("HILFE TEST? :D")
     } else if (req.query.type === 'custom') {
 
         // TODO: GET custom Question from Database
@@ -167,11 +177,17 @@ router.get('/', async (req, res) => {
 
 
     if (arrayindex !== 6) {
+        console.log("TESTI 1")
+
         await cleanUpData();
+        console.log("TESTI 2")
         myArray = getAllData();
+        console.log("TESTI 3")
         //console.log("MY ARRAY YOOOO \n" + JSON.stringify(myArray[arrayindex],null,2));
 
-        let myQuestion = await getValue(myArray[arrayindex], myQuestionText.cat, myQuestionText.text);
+        console.log("TESTI 4")
+        let myQuestion = await getValue(myArray[arrayindex], myQuestionText.cat, myQuestionText.text, myQuestionText.difficulty);
+        console.log("TESTI III ");
         answerArray = [];
 
         res.status(200).send(myQuestion);
@@ -189,7 +205,8 @@ router.put('/', async (req, res) => {
     let dbData = await getDBData();
     let innerObject;
     let innerKeys;
-
+    // Clear Editet OBject
+    myEditetObject = {};
     let error = false;
     let stockData = await getDBData();
     let match = false;
@@ -201,37 +218,95 @@ router.put('/', async (req, res) => {
         res.status(400).send("| -- Error 400 -- |\n| -- Bad request -- | \n\nINFO: Please adhere to the correct format!\n\nFor further information take a look at the wiki.\nhttps://github.com/Cuhater/WBA2SS19SchuerheckKrennSteffens/wiki/3.-Rest-Modellierung")
     }
 
-    if (!error) {
-        innerKeys = Object.keys(dbData);
+    if (!error && !match) {
+        innerKeys = Object.keys(stockData);
+        let test = Object.values(stockData);
+        console.log(JSON.stringify(test) + " TEST :O")
 
-        for (let i = 0; i < dbData.length; i++) {
-            innerObject = Object.values(dbData[i]);
+        //for (let i = 0; i < dbData.length; i++) {
 
-            let x = innerObject[0];
+
+            for (let j = 0; j < stockData.length; j++) {
+                innerObject = Object.values(stockData[j]);
+                let x = innerObject[0];
+                console.log("InnerKEys? " + innerKeys)
+                if (innerKeys[j] === req.body.qID && !match) {
+                    console.log(stockData[j])
+                    console.log(" MATCHALARM == TRUEE JAA  + j : "  + j)
+                    match = true;
+                    let jsonObject = {};
+                    let currentAnswersArray = x[1];
+                    let currentAnswers = Object.values(currentAnswersArray);
+
+                    jsonObject["a1"] = req.body.answers.a1;
+                    jsonObject["a2"] = req.body.answers.a2;
+                    jsonObject["a3"] = req.body.answers.a3;
+                    jsonObject["a4"] = req.body.answers.a4;
+                    x[0] = req.body.text;
+                    currentAnswers[0] = req.body.answers.a1;
+                    currentAnswers[1] = req.body.answers.a2;
+                    currentAnswers[2] = req.body.answers.a3;
+                    currentAnswers[3] = req.body.answers.a4;
+                    x[2] = req.body.right;
+
+                    let questionID = req.body.qID;
+
+                    // Object mit Daten füllen
+                    myEditetObject[questionID] = [];
+                    myEditetObject[questionID].push(x[0]);
+                    myEditetObject[questionID].push(jsonObject);
+                    myEditetObject[questionID].push(x[2]);
+                    myEditetObject[questionID].push(req.body.userID);
+
+                    //splice starting at postition i and remove 1 element
+
+                    console.log("stockdata b4 splice \n" + stockData)
+
+                    stockData.splice(j, 1, myEditetObject);
+                    console.log("stockdata AFTER splice \n" + stockData)
+                    // push new Data
+                    //stockData.push(myEditetObject);
+
+                    fs.writeFile('database.json', JSON.stringify(stockData, null, 2), (err) => {
+                        if (err) throw err;
+                        console.log('The Question were updated!');
+
+                    });
+                }
+                else
+                {
+                    console.log(innerKeys[j] + " ÖH " + req.body.qID)
+                    console.log(" NO Q WITH DAT ID WAS FOUND")
+                }
+            }
 
             /*            console.log("\n UserID: " + x[3]);
                         console.log("req.body: " + req.body.userID);*/
 
 
             // USER ID MATCHES
-            console.log("DB DATA " + dbData)
+          /*  console.log("MEIN i " + i)
             console.log("DBA Lenght" + dbData.length)
 
-            console.log("x  3 " + x[3])
-            console.log("x  req user id " + req.body.userID)
+            console.log("x3 === " + x[3])
+            console.log("x  req user id " + req.body.userID)*/
 
-            if (x[3] === req.body.userID) {
+/*            if (x[3] === req.body.userID) {
 
 
                 console.log(x[3] + " \nCHECK match\n\n " + req.body.userID)
                 match = true;
+                console.log("mein I : " + i)
 
 
-                console.log("INNER KEYS I BRAUCE FOR???  " +innerKeys[i])
-                console.log("INNER REQ ID I BRAUCE FOR???  " + req.body.qID)
+ /!*               console.log("INNER KEYS I BRAUCE FOR???  " +innerKeys[i])
+                console.log("INNER REQ ID I BRAUCE FOR???  " + req.body.qID)*!/
 
                 for (let j = 0; j < innerKeys.length; j++) {
+                    console.log("\n \n"+ innerKeys[j]+ "WAS GEHT HIER AB" + req.body.qID+"\n \n \n")
+                    console.log("mein J : " + j)
                     if (innerKeys[j] === req.body.qID) {
+
 
                         let currentAnswersArray = x[1];
                         console.log(currentAnswersArray);
@@ -239,7 +314,7 @@ router.put('/', async (req, res) => {
                         let currentAnswers = Object.values(currentAnswersArray);
 
                         // Test console log Data
-                        /*console.log("x[0] -> Fragetext :  " + x[0] + "\n");
+                        /!*console.log("x[0] -> Fragetext :  " + x[0] + "\n");
                         console.log("Antwort 0 : " + currentAnswers[0]);
                         console.log("Antwort 1 : " + currentAnswers[1]);
                         console.log("Antwort 2 : " + currentAnswers[2]);
@@ -249,7 +324,7 @@ router.put('/', async (req, res) => {
                         console.log(req.body.answers.a1);
                         console.log(req.body.answers.a2);
                         console.log(req.body.answers.a3);
-                        console.log(req.body.answers.a4);*/
+                        console.log(req.body.answers.a4);*!/
 
                         // Daten im jsonObjeect mit Daten des Requests überschreiben
                         let jsonObject = {};
@@ -274,14 +349,18 @@ router.put('/', async (req, res) => {
                         myEditetObject[questionID].push(req.body.userID);
 
                         //splice starting at postition i and remove 1 element
+
                         stockData.splice(i, 1);
+
                         // push new Data
                         stockData.push(myEditetObject);
 
                         fs.writeFile('database.json', JSON.stringify(stockData, null, 2), (err) => {
                             if (err) throw err;
                             console.log('The Question were updated!');
+
                         });
+                        console.log("AAAAAAAAAAAAAAAA" +stockData);
 
                     }
                     else
@@ -293,13 +372,13 @@ router.put('/', async (req, res) => {
 
                 // CHECK IF QUESTION ID MATCH
                 if (innerKeys[i] === req.body.qID) {
-                    /*                      console.log("inner keys" + innerKeys[i]);
-                                            console.log("DB DATA I " + x + "\n");*/
-                    /*                      console.log("DB DATA 1 " + x[1] + "\n");*/
+                    /!*                      console.log("inner keys" + innerKeys[i]);
+                                            console.log("DB DATA I " + x + "\n");*!/
+                    /!*                      console.log("DB DATA 1 " + x[1] + "\n");*!/
 
                 }
-            }
-        }
+            }*/
+        //}
         if(!match)
         {
             res.contentType("text/plain");
@@ -407,7 +486,7 @@ router.delete('/:questionID', async (req, res) => {
         let innerKeys = Object.keys(myDBData);
 
         console.log("HIIILFEEE SOS" + innerKeys[i] + "\n\n");
-        if (req.params["questionID"] === innerKeys[i]) {
+        if (req.params["questionID"] === innerKeys[i]&& !gotEntry) {
             gotEntry = true;
             /*let innerObject = Object.values(innerKeys[i]);
 

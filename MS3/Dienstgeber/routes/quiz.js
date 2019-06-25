@@ -56,10 +56,11 @@ router.get('/', async (req, res) => {
 
 
         console.log("hallo");
-        let rndTopic = getRandom(topics.length - 1)
-        let rndTopicData = questionPool[rndTopic]
+
 
         for (let i = 0; i < quizSize; i++) {
+            let rndTopic = getRandom(topics.length - 1)
+            let rndTopicData = questionPool[rndTopic]
             let rnd = getRandom(rndTopicData.length);
             myQuiz.push(rndTopicData[rnd])
         }

@@ -33,13 +33,16 @@ block content
 
         h2 Choose your Answer
         br
+        | Difficulty:
+        span#difficulty #{df}
+        br
         | #{qText}
         .answers
 
-            button(onclick='checkAnswer(' + '"' + 0 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer0}
-            button(onclick='checkAnswer(' + '"' + 1 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer1}
-            button(onclick='checkAnswer(' + '"' + 2 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer2}
-            button(onclick='checkAnswer(' + '"' + 3 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ')') #{qAnswer3}
+            button(onclick='checkAnswer(' + '"' + 0 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ',' + '"' + quizScore + '"' + ')') #{qAnswer0}
+            button(onclick='checkAnswer(' + '"' + 1 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ',' + '"' + quizScore + '"' + ')') #{qAnswer1}
+            button(onclick='checkAnswer(' + '"' + 2 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ',' + '"' + quizScore + '"' + ')') #{qAnswer2}
+            button(onclick='checkAnswer(' + '"' + 3 + '"' + ',' + '"' + ra + '"' + ',' + '"' + count + '"' + ',' + '"' + quizScore + '"' + ')') #{qAnswer3}
 
 
             | #{ra}

@@ -19,6 +19,45 @@ setSessionUser = (userID) => {
 }
 
 
+createNewUser = async (userID) => {
+    let existingUsers = await getUsers();
+    let existingUsersArray = existingUsers["users"];
+    return new Promise((resolve, reject) => {
+        currentUser = userID;
+
+        let userData = {};
+        userData.id = currentUser;
+        userData.score = 0;
+
+        existingUsers['users'].push(userData)
+        resolve(existingUsers);
+    });
+};
+loginUser = async (userID) => {
+    let existingUsers = await getUsers();
+    let existingUsersArray = existingUsers["users"];
+    let newUser = true;
+    let existingUser;
+    let exisitingScore;
+    for (let i = 0; i < existingUsersArray.length; i++) {
+
+        if (parseInt(userID) === existingUsersArray[i].id) {
+            userID = existingUsersArray[i];
+            existingUser = existingUsersArray[i].id;
+            exisitingScore = existingUsersArray[i].score;
+            currentScore = exisitingScore;
+            currentUser = existingUser;
+            newUser = false;
+        }
+    }
+    if(newUser)
+    {
+        console.error("ERROR");
+        return 0
+    }
+}
+
+
 setUserID = async (userID) => {
 
     let existingUsers = await getUsers();
@@ -98,9 +137,10 @@ setUserID = async (userID) => {
 getSessionUserID = () => {
     return currentUser;
 }
+
 getUsers = () => {
 
-    console.log("HALLO TEST???");
+    console.log("Start GET users");
     return new Promise((resolve, reject) => {
 
 
@@ -109,17 +149,11 @@ getUsers = () => {
             // A chunk of data has been recieved.
             resp.on('data', (chunk) => {
                 data = chunk;
-                console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" + data);
             });
 
-            // The whole response has been received. Print out the result.
+            // The whole response has been received. Resolve the result.
             resp.on('end', () => {
-                //console.log(JSON.parse(data));
-                console.log("wwwwwwwwwwww");
                 let jsonData = JSON.parse(data);
-                //let innerKey = Object.keys(data)
-
-                console.log("WAS GEHT HIER AB??" + jsonData);
                 resolve(jsonData);
             });
 
@@ -129,7 +163,7 @@ getUsers = () => {
         });
     })
 
-}
+};
 
 
 // TODO : HTTP POST MODULE INSTALLED TO GO 4 EASY POST REQ
@@ -256,25 +290,20 @@ postUsers = (dataToSave) => {
 }*/
 
 updatePlayerScore = (userScore) => {
-    //currentUser = userID;
     currentScore = userScore;
-
     console.log("Score for player " + currentUser + " has been updated for " + currentScore)
 
-
     let jsonObject = {};
-
     jsonObject.id = currentUser;
     jsonObject.score = userScore;
 
-
-    console.log ("PUT AUFRUFEN!!!");
+    console.log ("Start PUT on users");
 
     return new Promise((resolve, reject) => {
 
     request.put('http://localhost:3000/users', {
             json: jsonObject
-        }, (error, res, body) => {
+        }, (error, res) => {
             if (error) {
                 console.error(error)
                 reject(error)
@@ -285,10 +314,7 @@ updatePlayerScore = (userScore) => {
 
         })
     })
-
-
-
-}
+};
 
 updateSessionPlayerScore = (score) => {
 
@@ -364,10 +390,10 @@ getSpecificPlayerScore = (userID) => {
 }
 
 
-getQuizData = () => {
+getQuizData = (query) => {
 
     return new Promise((resolve, reject) => {
-        http.get('http://localhost:3000/quiz', (resp) => {
+        http.get('http://localhost:3000/quiz' + query, (resp) => {
             let data = '';
 
             // A chunk of data has been recieved.
@@ -387,7 +413,7 @@ getQuizData = () => {
 
         }).on("error", (err) => {
             console.log("Error: " + err.message);
-            resolve(err.message)
+            reject(err.message)
         });
     });
 }
@@ -416,4 +442,156 @@ postCustomQuestion = (dataToSave) => {
         })
 
     })
+}
+putCustomQuestion = (dataToSave) => {
+    return new Promise((resolve, reject) => {
+
+        request.put('http://localhost:3000/questions', {
+            json: dataToSave
+        }, (error, res, body) => {
+            if (error) {
+                console.error(error)
+                reject(error)
+                return
+            }
+            console.log(`statusCode: ${res.statusCode}`)
+            console.log(body)
+            resolve(body)
+        })
+
+    })
+}
+
+deleteCustomQuestion = (id) => {
+    return new Promise((resolve, reject) => {
+        console.log("START DELETE :)");
+        request.delete('http://localhost:3000/questions/' + id, {
+        }, (error, res) => {
+            if (error) {
+                console.error(error)
+                reject(error)
+                return
+            }
+            console.log(`statusCode: ${res.statusCode}`)
+            resolve(res.statusCode)
+        })
+
+    })
+}
+
+
+getServerTopics = () => {
+    return new Promise((resolve, reject) => {
+        http.get('http://localhost:3000/topics', (resp) => {
+            let data = '';
+
+            // A chunk of data has been recieved.
+            resp.on('data', (chunk) => {
+                data += chunk;
+                console.log("I GOT DATA")
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                //console.log(JSON.parse(data));
+                let topics = JSON.parse(data);
+
+
+                resolve(topics)
+            });
+
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+            reject(err.message)
+        });
+    });
+}
+
+getPlayerQuestions = (questionArray) => {
+
+    let innerKeys = Object.keys(questionArray);
+
+
+
+
+/*    console.log(keys);
+    console.log(values);
+    console.log(values[0]);
+    console.log(values[1]);*/
+/*
+    let testi = Object.values(values[0]);
+    let auchtesti = Object.keys(values[0])
+    console.log(" AUHC"  + auchtesti)
+    console.log(auchtesti[0]);
+    console.log(auchtesti[1]);
+    console.log(auchtesti[2]);
+    console.log(auchtesti[3]);*/
+
+
+
+    // USER ID MATCHES
+    console.log("DB DATA " + questionArray)
+    console.log("DBA Lenght" + questionArray.length)
+
+    //console.log("x  3 " + x[3])
+    console.log("x  req user id " + currentUser)
+
+
+/*    console.log(myTest + " MY TEST :)");
+    let inMyTest = Object.values(myTest[0])*/
+
+    //console.log("inmi :D"+ inMyTest);
+
+
+
+    return new Promise ((resolve, reject) => {
+
+        let userQuestionObject = {
+            questions: []
+        };
+
+        for (let i = 0; i < questionArray.length; i++) {
+            let innerObject = Object.values((questionArray[i]));
+            console.log("\n \n INNER OBJECT " + innerObject+"\n \n \n \n" )
+            let innerKey = Object.keys(questionArray[i])
+            let myInnerKey = innerKey[0]
+            console.log("INNER KEYS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "+ innerKey)
+            innerObject[0][4] = myInnerKey;
+            console.log("\n \n INNER OBJECTfutollllllll " + innerObject+"\n \n \n \n" )
+            let x = innerObject[0];
+
+            if(x[3] === currentUser){
+                console.log("FRAGE : " + innerObject + " klappt mit UserID " + currentUser)
+                userQuestionObject['questions'].push(innerObject)
+            }
+        }
+        resolve (userQuestionObject)
+    });
+};
+
+getCustomQuestions = () => {
+    return new Promise((resolve, reject) => {
+        http.get('http://localhost:3000/questions/allCustom', (resp) => {
+            let data = '';
+
+            // A chunk of data has been recieved.
+            resp.on('data', (chunk) => {
+                data += chunk;
+                console.log("I GOT DATA")
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                //console.log(JSON.parse(data));
+                let customQuestionArray = JSON.parse(data);
+
+
+                resolve(customQuestionArray)
+            });
+
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+            reject(err.message)
+        });
+    });
 }

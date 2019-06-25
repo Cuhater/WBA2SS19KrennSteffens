@@ -22,7 +22,15 @@ router.get('/', async function(req, res) {
     }
 
 
+
+    let allPlayerQuestionsArray = await getCustomQuestions();
+    let playerQuestions = await getPlayerQuestions(allPlayerQuestionsArray);
+
+    console.log(JSON.stringify(playerQuestions,null,2))
+
     let tryToGetUsers = await getUsers();
+
+
     console.log("\n\n TRY TO GET USERS \n" + tryToGetUsers);
 
     for (let i = 0; i < tryToGetUsers['users'].length; i++) {
@@ -33,7 +41,7 @@ router.get('/', async function(req, res) {
 
 
 
-    res.render('more', { title: 'More', users : tryToGetUsers});
+    res.render('more', { title: 'More', users : tryToGetUsers, playerQuestions: playerQuestions});
 });
 
 router.get('/questionadded', async function(req, res) {
@@ -76,8 +84,56 @@ router.get('/addquestion', async function(req, res) {
     await postCustomQuestion(newQuestionObject)
 
 
-    res.render('questionAdded', { title: 'More', users : tryToGetUsers, qText: req.query.qText, a1: req.query.a0, a2: req.query.a1, a3: req.query.a2, a4: req.query.a3, ra: req.query.ra});
+    res.render('questionAdded', { title: 'More', users : tryToGetUsers, playerQuestions: playerQuestions, qText: req.query.qText, a1: req.query.a0, a2: req.query.a1, a3: req.query.a2, a4: req.query.a3, ra: req.query.ra});
     //res.redirect(req.baseUrl + '/questionadded')
+});
+
+router.put('/', function(req, res) {
+
+
+    res.render('error', { title: 'quiz-Wars' });
+});
+router.get('/changequestion', async function(req, res) {
+    console.log("qtext " + req.query.qText);
+    console.log("a1 " + req.query.a1);
+    console.log("a2 " + req.query.a2);
+    console.log("a3 " + req.query.a3);
+    console.log("a4 " + req.query.a4);
+    console.log("ra " + req.query.ra);
+    console.log("qID " + req.query.qID);
+
+
+    let currentUser = getSessionUserID();
+    console.log("userID " + currentUser);
+    let editObject = {};
+    let answers = {};
+    answers.a1 = req.query.a1;
+    answers.a2 = req.query.a2;
+    answers.a3 = req.query.a3;
+    answers.a4 = req.query.a4;
+
+
+    editObject.qID = req.query.qID;
+    editObject.userID = currentUser;
+    editObject.text = req.query.qText;
+    editObject.answers = answers;
+    editObject.right = parseInt(req.query.ra);
+
+    // TODO : HAU MAL N PUT RAUS UND SHEPPER HIER HEFTIG YOAA :)
+
+    console.log("HALLO FINAL HERE : " + JSON.stringify(editObject, null,2))
+
+    await putCustomQuestion(editObject);
+
+
+
+    res.render('changeQuestion', { title: 'question successfully changed', qText: req.query.qText, a1: req.query.a1, a2: req.query.a2, a3: req.query.a3, a4: req.query.a4,ra: req.query.ra});
+});
+
+router.get('/deletequestion', async function(req, res) {
+
+    await deleteCustomQuestion(req.query.qID);
+    res.render('deletedQuestion', { title: 'quiz-Wars', qID: req.query.qID });
 });
 
 module.exports = router;
