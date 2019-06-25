@@ -1,7 +1,6 @@
 const express = require('express');
 const functions = express();
 const https = require('https');
-http.post = require('http-post');
 const request = require('request');
 
 let currentUser;
