@@ -166,7 +166,7 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
             }, 3000); // 5 seconds
         }
         // Normale Frage - Erhöhe playerscore um 10
-        else {
+        else if (window.location.href.match('question') != null){
 
             setTimeout(function () {
                 window.location.href = "/dashboard?score=" + baseScore;
