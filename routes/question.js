@@ -67,7 +67,7 @@ router.get('/', async function (req, res, next) {
 
     console.log("b4 AWAIT :O")
 
-    await http.get('http://localhost:3000/questions' + myQuery, (resp) => {
+    await https.get('https://quiz-wars.herokuapp.com/questions' + myQuery, (resp) => {
 
 
         let a0 = '';

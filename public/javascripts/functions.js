@@ -1,6 +1,6 @@
 const express = require('express');
 const functions = express();
-const http = require('http');
+const https = require('https');
 http.post = require('http-post');
 const request = require('request');
 
@@ -144,7 +144,7 @@ getUsers = () => {
     return new Promise((resolve, reject) => {
 
 
-        http.get('http://localhost:3000/users', (resp) => {
+        https.get('https://quiz-wars.herokuapp.com/users', (resp) => {
             let data;
             // A chunk of data has been recieved.
             resp.on('data', (chunk) => {
@@ -242,7 +242,7 @@ postUsers = (dataToSave) => {
 
     return new Promise((resolve, reject) => {
 
-        request.post('http://localhost:3000/users', {
+        request.post('https://quiz-wars.herokuapp.com/users', {
             json: dataToSave
         }, (error, res, body) => {
             if (error) {
@@ -301,7 +301,7 @@ updatePlayerScore = (userScore) => {
 
     return new Promise((resolve, reject) => {
 
-    request.put('http://localhost:3000/users', {
+    request.put('https://quiz-wars.herokuapp.com/users', {
             json: jsonObject
         }, (error, res) => {
             if (error) {
@@ -393,7 +393,7 @@ getSpecificPlayerScore = (userID) => {
 getQuizData = (query) => {
 
     return new Promise((resolve, reject) => {
-        http.get('http://localhost:3000/quiz' + query, (resp) => {
+        https.get('https://quiz-wars.herokuapp.com/quiz' + query, (resp) => {
             let data = '';
 
             // A chunk of data has been recieved.
@@ -428,7 +428,7 @@ getLocalQuizArray = () => {
 postCustomQuestion = (dataToSave) => {
     return new Promise((resolve, reject) => {
 
-        request.post('http://localhost:3000/questions', {
+        request.post('https://quiz-wars.herokuapp.com/questions', {
             json: dataToSave
         }, (error, res, body) => {
             if (error) {
@@ -446,7 +446,7 @@ postCustomQuestion = (dataToSave) => {
 putCustomQuestion = (dataToSave) => {
     return new Promise((resolve, reject) => {
 
-        request.put('http://localhost:3000/questions', {
+        request.put('https://quiz-wars.herokuapp.com/questions', {
             json: dataToSave
         }, (error, res, body) => {
             if (error) {
@@ -465,7 +465,7 @@ putCustomQuestion = (dataToSave) => {
 deleteCustomQuestion = (id) => {
     return new Promise((resolve, reject) => {
         console.log("START DELETE :)");
-        request.delete('http://localhost:3000/questions/' + id, {
+        request.delete('https://quiz-wars.herokuapp.com/questions/' + id, {
         }, (error, res) => {
             if (error) {
                 console.error(error)
@@ -482,7 +482,7 @@ deleteCustomQuestion = (id) => {
 
 getServerTopics = () => {
     return new Promise((resolve, reject) => {
-        http.get('http://localhost:3000/topics', (resp) => {
+        https.get('https://quiz-wars.herokuapp.com/topics', (resp) => {
             let data = '';
 
             // A chunk of data has been recieved.
@@ -571,7 +571,7 @@ getPlayerQuestions = (questionArray) => {
 
 getCustomQuestions = () => {
     return new Promise((resolve, reject) => {
-        http.get('http://localhost:3000/questions/allCustom', (resp) => {
+        https.get('https://quiz-wars.herokuapp.com/questions/allCustom', (resp) => {
             let data = '';
 
             // A chunk of data has been recieved.
