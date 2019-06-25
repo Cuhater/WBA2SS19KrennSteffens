@@ -163,7 +163,7 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
             }, 3000); // 5 seconds
         }
         // Wenn es sich um eine Quizfrage handelt
-        if (window.location.href.match('quiz') != null) {
+        else if (window.location.href.match('quiz') != null) {
             let qScore = parseInt(quizScore);
             qScore += baseScore
             setTimeout(function () {
