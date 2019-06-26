@@ -156,18 +156,18 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
         document.getElementById('points').style.display = "block";
 
         // Normale Frage - Erhöhe playerscore um 10
-        if (window.location.href.match('question') != null){
-
-            setTimeout(function () {
-                window.location.href = "/dashboard?score=" + baseScore;
-            }, 3000); // 5 seconds
-        }
-        // Wenn es sich um eine Quizfrage handelt
-        else if (window.location.href.match('quiz') != null) {
+        if (window.location.href.match('quiz') != null) {
             let qScore = parseInt(quizScore);
             qScore += baseScore
             setTimeout(function () {
                 window.location.href = '/quiz?question=' + count + "&score=" + qScore;
+            }, 3000); // 5 seconds
+        }
+        // Normale Frage - Erhöhe playerscore um 10
+        else {
+
+            setTimeout(function () {
+                window.location.href = "/dashboard?score=" + baseScore;
             }, 3000); // 5 seconds
         }
 
