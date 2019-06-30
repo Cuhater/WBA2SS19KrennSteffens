@@ -21,17 +21,17 @@ block content
         .spacer Choose question or quiz
 
         .tab
-            button.tablinks.active(onclick="openCity(event, 'Question')") question
+            button.tablinks.active(onclick="openOuterTab(event, 'Question')") question
             |
-            button.tablinks(onclick="openCity(event, 'Quiz')") quiz
+            button.tablinks(onclick="openOuterTab(event, 'Quiz')") quiz
 
         #Question.outertabcontent
             .tab
-                button.innertablinks.active(onclick="openCity1(event, 'Random')") Random question
+                button.innertablinks.active(onclick="openInnerTab(event, 'Random')") Random question
                 |
-                button.innertablinks(onclick="openCity1(event, 'SC')") Specific Category
+                button.innertablinks(onclick="openInnerTab(event, 'SC')") Specific Category
                 |
-                button.innertablinks(onclick="openCity1(event, 'CQ')") Custom question
+                button.innertablinks(onclick="openInnerTab(event, 'CQ')") Custom question
             // Tab content
             #Random.innertabcontent
                 h3 Random question
@@ -65,11 +65,11 @@ block content
                 button.btn.btn-primary(onclick="getSingleQuestion('custom')") Get community question
         #Quiz.outertabcontent
             .tab
-                button.innertablinks.active(onclick="openCity1(event, 'RandomQuiz')") Random quiz
+                button.innertablinks.active(onclick="openInnerTab(event, 'RandomQuiz')") Random quiz
                 |
-                button.innertablinks(onclick="openCity1(event, 'SpecificQuiz')") Specific Category
+                button.innertablinks(onclick="openInnerTab(event, 'SpecificQuiz')") Specific Category
                 |
-                button.innertablinks(onclick="openCity1(event, 'CustomQuiz')") Community quiz
+                button.innertablinks(onclick="openInnerTab(event, 'CustomQuiz')") Community quiz
             // Tab content
             #RandomQuiz.innertabcontent
                 h3 Random question

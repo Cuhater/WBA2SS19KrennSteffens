@@ -32,6 +32,21 @@ body {
 
 
 }
+
+
+.secret {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size:3rem;
+  color:transparent;
+
+}
+.secret:hover{
+  display:block;
+  color:greenyellow;
+}
+
 .text-container{
   padding-left:0%;
 
@@ -186,25 +201,25 @@ a {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 }
 
- ul {
+ul {
 
-   font-size:1.5rem;
-   list-style-type: none;
-   top:calc(200px + 6vh);
-   padding: 0;
-   width: auto;
-   background-color: rgba(242, 242, 242, 0.95);
-   height: 100%; /* Full height */
-   position: fixed; /* Make it stick, even on scroll */
-   overflow: auto;
+  font-size:1.5rem;
+  list-style-type: none;
+  top:calc(200px + 6vh);
+  padding: 0;
+  width: auto;
+  background-color: rgba(242, 242, 242, 0.95);
+  height: 100%; /* Full height */
+  position: fixed; /* Make it stick, even on scroll */
+  overflow: auto;
 
- }
+}
 
- li:first-child{
+li:first-child{
   /*   padding-bottom:45px;
      font-size:7rem;*/
 
- }
+}
 li a {
   display: block;
   color: #000;
@@ -402,11 +417,11 @@ li a:hover:not(.active) {
 .slideUp {
   top:0;
   animation: slideUp 1s; /
-/*  animation-name: slideUp;
-  -webkit-animation-name: slideUp;
-  animation-duration: 1s;
-  -webkit-animation-duration: 1s;*/
-  visibility: visible;
+  /*  animation-name: slideUp;
+    -webkit-animation-name: slideUp;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;*/
+visibility: visible;
 }
 
 @keyframes slideUp {

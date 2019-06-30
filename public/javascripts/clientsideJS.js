@@ -5,8 +5,7 @@ if (window.location.href.match('more') != null || window.location.href.match('/'
             let mainContent = document.getElementsByClassName("tabcontent");
             mainContent[0].style.display = "block";
         } else {
-            console.log("RISS");
-            alert("aaaaaaaa")
+            alert("document State incomplete")
         }
     }, 500); // 5 seconds
 }
@@ -20,8 +19,7 @@ if (window.location.href.match('dashboard') != null) {
             secondContent[0].style.display = "block";
 
         } else {
-            console.log("RISS");
-            alert("aaaaaaaa")
+            alert("document State incomplete")
         }
     }, 500); // 5 seconds
 }
@@ -40,11 +38,6 @@ showEditEntry = () => {
     let entry = document.getElementById("customStatus")
     entry.style.display = "block";
 }
-
-testit = () => {
-    startLoading();
-}
-
 startLoading = () => {
     let loadingObject = document.getElementsByClassName("loading")
     loadingObject[0].style.display = "block";
@@ -58,21 +51,16 @@ stopLoading = () => {
 getSingleQuestion = (query) => {
     startLoading();
     let myLocation = '/question ${query}'
-    console.log('/questions' + query + "\n\n\n SHIIIIIIIIIIIIIIIED")
     window.location.href = '/question?type=' + query;
 }
 
 getSingleQuiz = (query) => {
     startLoading();
     let myLocation = '/quiz ${query}'
-    console.log('/questions' + query + "\n\n\n SHIIIIIIIIIIIIIIIED")
     window.location.href = '/quiz?type=' + query;
 }
 
-
 checkDifficulty = () => {
-    alert("HALLO?");
-
     return 20;
 }
 
@@ -82,8 +70,6 @@ startTimer = (correctAnswer) => {
     let timerLength;
     let baseTime = 20;
     let counterObject = document.getElementById('counter');
-    //alert("testi" +difficultyObject.innerText)
-    //alert("a8uch n testi" + difficultyObject.innerHTML)
     if(difficultyObject.innerHTML === 'easy')
     {
         timerLength = baseTime;
@@ -147,7 +133,6 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
     }
     document.getElementById('points').innerHTML = "+ " + baseScore;
 
-
     if (givenAnswer === correctAnswer) {
         console.log("DIE ANTWORT IST KORREKT");
         myDOM = document.getElementsByClassName("answers");
@@ -155,7 +140,7 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
         document.getElementById('aRight').style.display = "block";
         document.getElementById('points').style.display = "block";
 
-        // Normale Frage - Erhöhe playerscore um 10
+        // Wenn es sich um eine Quizfrage handelt
         if (window.location.href.match('quiz') != null) {
             let qScore = parseInt(quizScore);
             qScore += baseScore
@@ -165,28 +150,21 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
         }
         // Normale Frage - Erhöhe playerscore um 10
         else {
-
             setTimeout(function () {
                 window.location.href = "/dashboard?score=" + baseScore;
             }, 3000); // 5 seconds
         }
 
-
-
-
     } else {
         console.log("DIE ANTWORT IST NICHT KORREKT");
         // Wenn es sich um eine Quizfrage handelt
-            wrongAnswer(correctAnswer, quizScore, baseScore, count);
+        wrongAnswer(correctAnswer, quizScore, baseScore, count);
     }
-
 
 };
 
 wrongAnswer = (correctAnswer, quizScore, baseScore, count) => {
     let myDOM = document.getElementsByClassName("answers");
-    let childrenLength = document.getElementsByClassName("answers");
-    let correct = false;
 
     for (let i = 0; i < 4; i++) {
         myDOM[0].children[i].style.backgroundColor = "red";
@@ -217,7 +195,7 @@ getDashboard = () => {
 }
 
 
-function openCity2(evt, cityName) {
+function openTab(evt, cityName) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -232,22 +210,11 @@ function openCity2(evt, cityName) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    /*    tabcontent = document.getElementsByClassName("innertabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("innertablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }*/
-    // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
-function openCity(evt, cityName) {
+function openOuterTab(evt, cityName) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -262,22 +229,11 @@ function openCity(evt, cityName) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    /*    tabcontent = document.getElementsByClassName("innertabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("innertablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }*/
-    // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
-function openCity1(evt, cityName) {
+function openInnerTab(evt, cityName) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
