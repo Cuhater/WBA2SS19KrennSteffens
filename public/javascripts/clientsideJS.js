@@ -141,7 +141,7 @@ checkAnswer = (givenAnswer, correctAnswer, count, quizScore) => {
         document.getElementById('points').style.display = "block";
 
         // Wenn es sich um eine Quizfrage handelt
-        if (window.location.href.match('quiz') != null) {
+        if (window.location.href.match('https://quiz-wars-client.herokuapp.com/quiz') != null) {
             let qScore = parseInt(quizScore);
             qScore += baseScore
             setTimeout(function () {
