@@ -6,16 +6,9 @@ block content
     script(type='text/javascript').
 
         {
-            console.log(!{JSON.stringify(users['users'])})
             let allUsers = !{JSON.stringify(users['users'])}
-            console.log("TESTI" + allUsers);
-            console.log(allUsers[0]);
-
             setTimeout(function () {
                 let myDom = document.getElementById("Scoreboard")
-                //alert(myDom)=
-
-
                 for (let i = 0; i < allUsers.length; i++) {
                     console.log(allUsers[i].id)
                     console.log(allUsers[i].score)
@@ -33,13 +26,9 @@ block content
                 }
             }, 500); // 5 seconds
         }
-
-
-
         window.onscroll = function () {
             myFunction()
         };
-
         function myFunction() {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 document.getElementById("nav").className = "slideUp";
@@ -50,16 +39,6 @@ block content
                 document.getElementById("nav").className = "";
             }
         }
-
-
-
-
-
-
-
-
-
-
     ul#nav
         li
             a(href='/') Login
@@ -72,18 +51,15 @@ block content
         li
             a.active(href='/more') More
 
-
-
     .maincontent
         .spacer More
         .tab
-            button.tablinks.active(onclick="openCity2(event, 'Scoreboard')") Show Scoreboard
+            button.tablinks.active(onclick="openTab(event, 'Scoreboard')") Show Scoreboard
             |
-            button.tablinks(onclick="openCity2(event, 'AC')") Add Custom question
+            button.tablinks(onclick="openTab(event, 'AC')") Add Custom question
             |
-            button.tablinks(onclick="openCity2(event, 'UC')") update Custom question
+            button.tablinks(onclick="openTab(event, 'UC')") update / delete Custom question
             |
-            button.tablinks(onclick="openCity2(event, 'DC')") Delete Custom question
         // Tab content
         #Scoreboard.tabcontent
             h3 Scoreboard
@@ -100,7 +76,7 @@ block content
                 | Fill in all the fields below to submit your individual question
                 br
 
-                form(method='GET' action='/more/addquestion')
+                form(method='POST' action='/more/addquestion')
                     div.form-group
                         label(for='qText') questiontext:
                         br
@@ -136,17 +112,14 @@ block content
                 br
                 | meh
             script(type='text/javascript').
-                console.log(!{JSON.stringify(playerQuestions['questions'])})
                 setTimeout(function () {
                     let myDom = document.getElementById("UC")
                     let allUsers = !{JSON.stringify(playerQuestions['questions'])}
-                    console.log(allUsers + " KOMM SCHON :)")
                     let qCount = 0;
 
                     for (let j = 0; j < allUsers.length; j++) {
                         let qdiv = document.createElement("div");
                         qdiv.setAttribute("id", "customQuestion" + qCount);
-
                         qdiv.style.height = "auto";
                         qdiv.style.width = "auto";
                         qdiv.style.marginTop = "2rem";
@@ -155,23 +128,10 @@ block content
                         qdiv.style.color = "#000000";
                         myDom.appendChild(qdiv);
 
-                    //for (let i = 0; i < allUsers.length; i++) {
-
                             let myTest = allUsers[j];
-
-
-
-
                             let nochTest = myTest[0];
-                            //console.log(nochTest +" NOCH")
                             let answers = nochTest[1]
-                            //alert(answers.a1)
-                            // alert(nochTest[0] + " MY TEST " + nochTest[1])
-                            //alert(" FRAGE : " + nochTest[0])
-                            //alert(" ANTWORTEN : " + nochTest[1])
-                            //alert(" richtig : " + nochTest[2])
-                            //alert(" userID : " + nochTest[3])
-                            //let answers = nochtest[1];
+
 
                             let qID = document.createElement('input')
                             let spanIDText = document.createElement('span')
@@ -181,8 +141,6 @@ block content
                             qID.setAttribute('name', 'qID')
                             qID.setAttribute('readonly',"readonly")
                             qID.value = "" + nochTest[4];
-
-
 
                             let closebtn = document.createElement('button')
                             closebtn.innerHTML = '✖';
@@ -194,8 +152,7 @@ block content
                                 alert("ÖH ? ");
                                 return false;
                             };
-                            //let frage = document.createElement("div");
-                            //frage.innerHTML =  nochTest[0];
+
                             let text0 = document.createElement('div')
                             let input0 = document.createElement('textarea')
                             input0.setAttribute('class', "orbi");
@@ -242,14 +199,6 @@ block content
 
                             let div = document.createElement("div");
                             let spacer = document.createElement("div");
-                            // WORKAROUND PUT NOT WORKING :(
-                            //spacer.setAttribute('type', 'hidden');
-                            //spacer.setAttribute('name', '_METHOD');
-                            //spacer.setAttribute('value', 'PUT');
-
-
-
-
 
                             div.style.fontFamily = "Orbitron"
                             div.style.height = "auto";
@@ -268,16 +217,9 @@ block content
 
                             form.setAttribute('method', "GET");
                             form.setAttribute('action', '/more/changequestion')
-                            //button.onclick = function () {
 
-
-                            //    alert('here be dragons');
-                            //    return false;
-                            //};
                             setTimeout(function () {
 
-                            //myQDom.appendChild(frage);
-                                // myQDom.appendChild(div);
                             myQDom.appendChild(form);
                             // Q-Text
 
@@ -309,13 +251,3 @@ block content
                     //}
                 }, 500); // 5 seconds
 
-            //button.btn.btn-primary(onclick="getSingleQuestion('custom')") reload custom question
-
-        #DC.tabcontent
-            h3 Delete Custom question
-            |
-            p
-                | Delete one of your created questions from the database
-                br
-                | meh
-            button.btn.btn-primary(onclick="getSingleQuestion('custom')") Delete Custom question

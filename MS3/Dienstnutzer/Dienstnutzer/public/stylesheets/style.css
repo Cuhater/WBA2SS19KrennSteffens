@@ -32,6 +32,21 @@ body {
 
 
 }
+
+
+.secret {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size:3rem;
+  color:transparent;
+
+}
+.secret:hover{
+  display:block;
+  color:greenyellow;
+}
+
 .text-container{
   padding-left:0%;
 
