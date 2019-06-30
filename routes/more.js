@@ -4,56 +4,19 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', async function(req, res) {
 
-
-
-    // TODO : ÜBERGEBEN VON OBJEKT MIT PLAYERSCORES
-    // TODO : ÜBERGEBEN ?? VON FRAGEN, die vom nutz erstellt wurden
-    //TODO : übergen von userID ? bzw currentUser abcheckern
-    // todo heftig css scheppern :>
-
-
-    if(req.query.param === 'hallo')
-    {
-        console.log("\n\n\n\n\n\n AAAAAAAAAAAAAAAAAA \n\n\n\n")
-    }
-    if(req.query.param === undefined)
-    {
-        console.log("\n\n\n\n\n\n BBBBBBBBBBBBBBBBBBBBBBB \n\n\n\n")
-    }
-
-
-
     let allPlayerQuestionsArray = await getCustomQuestions();
     let playerQuestions = await getPlayerQuestions(allPlayerQuestionsArray);
-
-    console.log(JSON.stringify(playerQuestions,null,2))
-
+    //console.log(JSON.stringify(playerQuestions,null,2))
     let tryToGetUsers = await getUsers();
-
-
-    console.log("\n\n TRY TO GET USERS \n" + tryToGetUsers);
-
-    for (let i = 0; i < tryToGetUsers['users'].length; i++) {
-        console.log("\n i" + i + " "+ tryToGetUsers['users'][i]);
-        console.log("\n i" + i + " "+ tryToGetUsers['users'][i].id);
-        console.log("\n i" + i + " "+ tryToGetUsers['users'][i].score);
-    }
-
-
-
+    /*    for (let i = 0; i < tryToGetUsers['users'].length; i++) {
+            console.log("\n i" + i + " "+ tryToGetUsers['users'][i]);
+            console.log("\n i" + i + " "+ tryToGetUsers['users'][i].id);
+            console.log("\n i" + i + " "+ tryToGetUsers['users'][i].score);
+        }*/
     res.render('more', { title: 'More', users : tryToGetUsers, playerQuestions: playerQuestions});
 });
 
-router.get('/questionadded', async function(req, res) {
-    console.log("QUESTIONADD")
-    res.render('more', { title: 'More', users : '', testiiiii: 'hallo'});
-});
-
-router.get('/addquestion', async function(req, res) {
-
-
-    console.log("AAAAAAAAAAAAAADQUEEEEEEEEEEESTIOOOOOOOOOOOOOOON")
-    let tryToGetUsers = await getUsers();
+router.post('/addquestion', async function(req, res) {
 
     let currentUser = getSessionUserID();
     console.log(currentUser + " CURRENT USER :>")
@@ -84,15 +47,10 @@ router.get('/addquestion', async function(req, res) {
     await postCustomQuestion(newQuestionObject)
 
 
-    res.render('questionAdded', { title: 'More', users : tryToGetUsers, playerQuestions: playerQuestions, qText: req.query.qText, a1: req.query.a0, a2: req.query.a1, a3: req.query.a2, a4: req.query.a3, ra: req.query.ra});
+    res.render('questionAdded', { title: 'More', qText: req.query.qText, a1: req.query.a0, a2: req.query.a1, a3: req.query.a2, a4: req.query.a3, ra: req.query.ra});
     //res.redirect(req.baseUrl + '/questionadded')
 });
 
-router.put('/', function(req, res) {
-
-
-    res.render('error', { title: 'quiz-Wars' });
-});
 router.get('/changequestion', async function(req, res) {
     console.log("qtext " + req.query.qText);
     console.log("a1 " + req.query.a1);
