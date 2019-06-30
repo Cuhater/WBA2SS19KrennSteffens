@@ -1,172 +1,172 @@
 {
   "0": [
     [
-      "Which average Lifespan got the species Vulptereen ?",
+      "Which Skincolor(s) got the species Kaleesh ?",
       [
-        "86",
-        "1000",
-        "70",
-        "unknown"
+        "brown, orange, tan",
+        "grey, yellow, purple",
+        "green, blue, brown, red",
+        "green, yellow"
       ],
-      3,
-      "hard"
-    ],
-    [
-      "Which Language(s) speak the species Pau'an ?",
-      [
-        "vulpterish",
-        "Toydarian",
-        "Gungan basic",
-        "Utapese"
-      ],
-      3,
-      "easy"
-    ],
-    [
-      "Which Language(s) speak the species Tholothian ?",
-      [
-        "Mon Calamarian",
-        "Iktotchese",
-        "Kaminoan",
-        "unknown"
-      ],
-      3,
-      "easy"
-    ],
-    [
-      "Which Skincolor(s) got the species Hutt ?",
-      [
-        "green, blue",
-        "grey, green",
-        "green, brown, tan",
-        "caucasian, black, asian, hispanic"
-      ],
-      2,
+      0,
       "normal"
     ],
     [
-      "Which Language(s) speak the species Tholothian ?",
+      "Which Language(s) speak the species Zabrak ?",
       [
-        "Mirialan",
-        "Sullutese",
-        "Chagria",
-        "unknown"
+        "Aleena",
+        "Clawdite",
+        "vulpterish",
+        "Zabraki"
       ],
       3,
+      "easy"
+    ],
+    [
+      "Which Language(s) speak the species Iktotchi ?",
+      [
+        "Chagria",
+        "vulpterish",
+        "n/a",
+        "Iktotchese"
+      ],
+      3,
+      "easy"
+    ],
+    [
+      "Which Skincolor(s) got the species Gungan ?",
+      [
+        "blue, green, grey",
+        "brown, green",
+        "grey, white",
+        "green, brown, tan"
+      ],
+      1,
+      "normal"
+    ],
+    [
+      "Which Language(s) speak the species Toydarian ?",
+      [
+        "Toydarian",
+        "Chagria",
+        "Twi'leki",
+        "Ewokese"
+      ],
+      0,
       "easy"
     ]
   ],
   "1": [
     [
-      "Which Terrain got the Planet Haruun Kal ?",
+      "Which Clima got the Planet Naboo ?",
       [
-        "urban, oceans, swamps, bogs",
-        "jungles, forests, deserts",
-        "toxic cloudsea, plateaus, volcanoes",
-        "grass"
-      ],
-      2,
-      "normal"
-    ],
-    [
-      "Which Terrain got the Planet Tund ?",
-      [
-        "volcanoes, lava rivers, mountains, caves",
-        "barren, ash",
-        "urban, barren",
-        "oceans, savannas, mountains, grasslands"
+        "temperate, moist",
+        "temperate",
+        "hot",
+        "unknown"
       ],
       1,
       "normal"
     ],
     [
-      "Which population got the Planet Dathomir ?",
+      "Which Clima got the Planet Aleen Minor ?",
       [
-        "300000000",
-        "450000000",
         "unknown",
-        "5200"
-      ],
-      3,
-      "normal"
-    ],
-    [
-      "Which Terrain got the Planet Mygeeto ?",
-      [
-        "plains, forests",
-        "glaciers, mountains, ice canyons",
-        "jungles, oceans, urban, swamps",
-        "ocean"
-      ],
-      1,
-      "normal"
-    ],
-    [
-      "Which population got the Planet Utapau ?",
-      [
-        "95000000",
-        "2000000000",
-        "4000000000",
-        "45000000"
+        "artificial temperate ",
+        "temperate",
+        "temperate, arid, subartic"
       ],
       0,
+      "normal"
+    ],
+    [
+      "Which Clima got the Planet Tund ?",
+      [
+        "hot, humid",
+        "unknown",
+        "temperate",
+        "temperate, tropical"
+      ],
+      1,
+      "normal"
+    ],
+    [
+      "Which Clima got the Planet Tholoth ?",
+      [
+        "temperate",
+        "unknown",
+        "hot",
+        "temperate, tropical"
+      ],
+      1,
+      "normal"
+    ],
+    [
+      "Which Clima got the Planet Muunilinst ?",
+      [
+        "hot",
+        "temperate",
+        "unknown",
+        "polluted"
+      ],
+      1,
       "normal"
     ]
   ],
   "2": [
     [
-      "Which gender got Biggs Darklighter ?",
+      "Which Haircolor got IG-88 ?",
       [
-        "female",
-        "n/a",
+        "black",
+        "brown, grey",
         "none",
-        "male"
-      ],
-      3,
-      "normal"
-    ],
-    [
-      "Which Homeworld got Barriss Offee ?",
-      [
-        "https://swapi.co/api/planets/2/",
-        "https://swapi.co/api/planets/11/",
-        "https://swapi.co/api/planets/1/",
-        "https://swapi.co/api/planets/51/"
-      ],
-      3,
-      "normal"
-    ],
-    [
-      "Which gender got Bib Fortuna ?",
-      [
-        "none",
-        "female",
-        "n/a",
-        "male"
-      ],
-      3,
-      "normal"
-    ],
-    [
-      "Which Haircolor got Obi-Wan Kenobi ?",
-      [
-        "brown",
-        "blond",
-        "auburn, white",
-        "black"
+        "brown"
       ],
       2,
       "normal"
     ],
     [
-      "Which Haircolor got Wilhuff Tarkin ?",
+      "Which Homeworld got Rey ?",
       [
-        "none",
-        "auburn, grey",
-        "brown",
-        "white"
+        "https://swapi.co/api/planets/10/",
+        "https://swapi.co/api/planets/28/",
+        "https://swapi.co/api/planets/8/",
+        "https://swapi.co/api/planets/9/"
       ],
       1,
+      "normal"
+    ],
+    [
+      "Which gender got Finis Valorum ?",
+      [
+        "n/a",
+        "female",
+        "male",
+        "none"
+      ],
+      2,
+      "normal"
+    ],
+    [
+      "Which Haircolor got R2-D2 ?",
+      [
+        "none",
+        "auburn, white",
+        "black",
+        "n/a"
+      ],
+      3,
+      "normal"
+    ],
+    [
+      "Which Haircolor got Poggle the Lesser ?",
+      [
+        "brown",
+        "auburn",
+        "n/a",
+        "none"
+      ],
+      3,
       "normal"
     ]
   ],
@@ -174,137 +174,126 @@
     [
       "Which Lenght in (m) got Sail barge ?",
       [
-        "6.6",
-        "49.4",
-        "4.5",
-        "30"
+        "30",
+        "28.82",
+        "10.4",
+        "20"
       ],
-      3,
+      0,
       "normal"
     ],
     [
-      "How big have to be the Crew of XJ-6 airspeeder ?",
+      "How big have to be the Crew of Neimoidian shuttle ?",
       [
+        "1",
         "2",
-        "0",
-        "1",
-        "25"
-      ],
-      2,
-      "normal"
-    ],
-    [
-      "How big have to be the Crew of Imperial Speeder Bike ?",
-      [
         "6",
-        "1",
-        "0",
-        "2"
+        "4"
       ],
       1,
       "normal"
     ],
     [
-      "How big have to be the Crew of TIE bomber ?",
+      "How big have to be the Crew of Bantha-II cargo skiff ?",
       [
-        "2",
-        "140",
+        "5",
         "1",
+        "2",
+        "6"
+      ],
+      0,
+      "normal"
+    ],
+    [
+      "How big have to be the Crew of Oevvaor jet catamaran ?",
+      [
+        "1",
+        "25",
+        "2",
         "4"
       ],
       2,
       "normal"
     ],
     [
-      "Which Lenght in (m) got Droid tri-fighter ?",
+      "How big have to be the Crew of TIE/IN interceptor ?",
       [
-        "20",
-        "3.5",
-        "5.4",
-        "36.8"
+        "2",
+        "1",
+        "0",
+        "20"
       ],
-      2,
+      1,
       "normal"
     ]
   ],
   "4": [
     [
-      "How Expensive (in Credits) is  TIE Advanced x1 ?",
+      "Which Starshipclass got Naboo fighter ?",
       [
-        "104000000",
-        "unknown",
-        "3500000",
-        "180000"
-      ],
-      1,
-      "normal"
-    ],
-    [
-      "Which Starshipclass got Naboo star skiff ?",
-      [
-        "starfighter",
-        "fighter",
-        "Escort ship",
-        "yacht"
+        "Space Transport",
+        "landing craft",
+        "cruiser",
+        "Starfighter"
       ],
       3,
       "normal"
     ],
     [
-      "How Expensive (in Credits) is  Republic Cruiser ?",
+      "Which Starshipclass got Droid control ship ?",
       [
-        "unknown",
-        "104000000",
-        "8500000",
-        "150000000"
+        "Deep Space Mobile Battlestation",
+        "Escort ship",
+        "yacht",
+        "Droid control ship"
+      ],
+      3,
+      "normal"
+    ],
+    [
+      "Which Starshipclass got EF76 Nebulon-B escort frigate ?",
+      [
+        "Escort ship",
+        "assault ship",
+        "Starfighter",
+        "Star dreadnought"
       ],
       0,
       "normal"
     ],
     [
-      "How many Passengers can carry EF76 Nebulon-B escort frigate ?",
+      "How Expensive (in Credits) is  B-wing ?",
       [
+        "55000000",
         "unknown",
-        "3",
-        "75",
-        "11"
+        "220000",
+        "8500000"
       ],
       2,
       "normal"
     ],
     [
-      "How Expensive (in Credits) is  Scimitar ?",
+      "How Expensive (in Credits) is  V-wing ?",
       [
-        "55000000",
-        "175000",
         "57000000",
-        "155000"
+        "150000000",
+        "104000000",
+        "102500"
       ],
-      0,
+      3,
       "normal"
     ]
   ],
   "5": [
     [
-      "Who is the Director of Return of the Jedi ?",
+      "Who is the Director of The Empire Strikes Back ?",
       [
         "Irvin Kershner",
         "George Lucas",
-        "Richard Marquand",
-        "J. J. Abrams"
-      ],
-      2,
-      "normal"
-    ],
-    [
-      "Who is the Director of Revenge of the Sith ?",
-      [
-        "Richard Marquand",
         "J. J. Abrams",
-        "Irvin Kershner",
-        "George Lucas"
+        "Richard Marquand"
       ],
-      3,
+      0,
       "normal"
     ],
     [
@@ -319,25 +308,36 @@
       "normal"
     ],
     [
-      "Who is the Director of The Force Awakens ?",
+      "Who is the Director of The Phantom Menace ?",
       [
-        "George Lucas",
         "J. J. Abrams",
         "Irvin Kershner",
+        "George Lucas",
         "Richard Marquand"
       ],
-      1,
+      2,
       "normal"
     ],
     [
-      "Who is the Director of The Phantom Menace ?",
+      "Who is the Director of The Force Awakens ?",
       [
         "George Lucas",
-        "J. J. Abrams",
         "Irvin Kershner",
-        "Richard Marquand"
+        "Richard Marquand",
+        "J. J. Abrams"
       ],
-      0,
+      3,
+      "normal"
+    ],
+    [
+      "Who is the Director of Attack of the Clones ?",
+      [
+        "Irvin Kershner",
+        "Richard Marquand",
+        "J. J. Abrams",
+        "George Lucas"
+      ],
+      3,
       "normal"
     ]
   ]

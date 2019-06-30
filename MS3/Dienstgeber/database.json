@@ -1,19 +1,6 @@
 [
   {
-    "0": [
-      "Wer war Darth Vader im früheren Leben?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      {
-        "a1": "Luke Skywalker",
-        "a2": "Obi-Wan Kenobi",
-        "a3": "Anakin Skywalker",
-        "a4": "Jar-Jar Binks"
-      },
-      3,
-      3
-    ]
-  },
-  {
-    "1": [
+    "9": [
       "Wie heißt Imperator Palpatine mit seinem Sith-Namen?bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
       {
         "a1": "Darth Vader",
@@ -26,7 +13,7 @@
     ]
   },
   {
-    "2": [
+    "12": [
       "Wie heißt Meister Kenobi mit vollem Namen?",
       {
         "a1": "Obi Kenoben",
@@ -39,26 +26,13 @@
     ]
   },
   {
-    "3": [
+    "8": [
       "Über welchen Planeten baute das I Galaktische Imperium den 2 Todesstern?",
       {
         "a1": "Fondor",
         "a2": "Endor",
         "a3": "Bendor",
         "a4": "Grendor"
-      },
-      1,
-      3
-    ]
-  },
-  {
-    "4": [
-      "Hallo tobi",
-      {
-        "a1": "1",
-        "a2": "2",
-        "a3": "4",
-        "a4": "5"
       },
       1,
       3

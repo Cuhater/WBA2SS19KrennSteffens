@@ -471,7 +471,8 @@ router.delete('/:questionID', async (req, res) => {
 
 
     console.log(req.params);
-
+    let requested = req.params["questionID"];
+    console.log("REQUESTED" + requested)
     let myDBData = await getDBData();
     let gotEntry = false;
     if (myDBData.length === 0) {
@@ -480,15 +481,24 @@ router.delete('/:questionID', async (req, res) => {
     }
     //Check if userID match
 
-
+    //console.log(JSON.stringify(myDBData, null, 2))
     for (let i = 0; i < myDBData.length; i++) {
 
-        let innerKeys = Object.keys(myDBData);
+        let innerKeys = Object.values(myDBData);
+        console.log("iii ")
+        let a = JSON.stringify(innerKeys[i]);
 
-        console.log("HIIILFEEE SOS" + innerKeys[i] + "\n\n");
-        if (req.params["questionID"] === innerKeys[i]&& !gotEntry) {
+        console.log("aa " + a[0]);
+        console.log("aa " + a[1]);
+        console.log("aa " + a[2]);
+        //console.log("iii "+innerKeys[i])
+        //console.log("iii "+innerKeys[2])
+
+        console.log("HIIILFEEE SOS" + a[2] + "\n\n");
+        if (requested === a[2]&& !gotEntry) {
             gotEntry = true;
-            /*let innerObject = Object.values(innerKeys[i]);
+            console.log(" ##### HGAT GEKLAPPT " + requested + " AHH " + innerKeys[i] + " OHHHH " + i)
+            /*let innerObject = Object.values(i nnerKeys[i]);
 
             let x = innerObject[0];
 
@@ -506,6 +516,7 @@ router.delete('/:questionID', async (req, res) => {
                 if (err) throw err;
                 console.log('The Database were updated!');
             });
+            res.status(200).send(myDBData);
 
         }
         /*        else
@@ -523,7 +534,7 @@ router.delete('/:questionID', async (req, res) => {
         res.contentType("text/plain");
         res.status(404).send("Question with QuestionID : " + req.params["questionID"] + " was not found")
     }
-    res.status(200).send(myDBData);
+
 });
 module.exports = router;
 
